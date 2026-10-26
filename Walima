@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abdul Wali & Fatima Sajjad | Walima Invitation</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;600&family=Marcellus&family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ margin:0;
+ background:#fbf7ee;
+ color:#174d3e;
+ font-family:'Cormorant Garamond',serif;
+ text-align:center;
+}
+:root{
+ --gold:#c6a15b;
+ --green:#174d3e;
+ --ivory:#fbf7ee;
+}
+/* OPENING CURTAINS */
+#intro{
+ position:fixed;
+ inset:0;
+ z-index:100;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ background:#12382e;
+ overflow:hidden;
+ color:#fff8e8;
+}
+.curtain{
+ position:absolute;
+ top:0;
+ width:51%;
+ height:100%;
+ background:repeating-linear-gradient(
+  90deg,
+  #0b281f 0 12px,
+  #1d5140 13px 28px,
+  #174333 29px 42px
+ );
+ border:1px solid #c6a15b55;
+ transition:transform 2.5s cubic-bezier(.7,0,.2,1);
+ z-index:3;
+}
+.left{left:0}
+.right{right:0}
+#intro.open .left{transform:translateX(-105%)}
+#intro.open .right{transform:translateX(105%)}
+.intro-content{
+ position:relative;
+ z-index:5;
+ padding:15px;
+ transition:opacity .7s;
+}
+#intro.open .intro-content{opacity:0}
+.intro-title{
+ font-family:Marcellus,serif;
+ letter-spacing:4px;
+ color:#f5dfaa;
+ font-size:clamp(23px,4vw,38px);
+}
+.welcome{
+ font:clamp(38px,7vw,65px) 'Great Vibes',cursive;
+ margin:12px 0;
+}
+.hint{
+ font-family:Marcellus,serif;
+ letter-spacing:3px;
+ font-size:12px;
+ color:#f2dca4;
+}
+/* GOLD RIBBON */
+#ribbon{
+ width:150px;
+ height:130px;
+ position:relative;
+ display:block;
+ margin:15px auto;
+ background:none;
+ border:0;
+ cursor:pointer;
+ filter:drop-shadow(0 5px 8px #0007);
+}
+.loop{
+ position:absolute;
+ top:22px;
+ width:65px;
+ height:48px;
+ border:9px solid #d6b365;
+ background:linear-gradient(135deg,#fff0b8,#a77a2c);
+}
+.loop.one{
+ left:10px;
+ transform:rotate(28deg);
+ border-radius:70% 20% 70% 20%;
+}
+.loop.two{
+ right:10px;
+ transform:rotate(-28deg);
+ border-radius:20% 70% 20% 70%;
+}
+.knot{
+ position:absolute;
+ left:64px;
+ top:35px;
+ width:27px;
+ height:27px;
+ background:linear-gradient(135deg,#fff1bb,#b18131);
+ transform:rotate(45deg);
+ z-index:2;
+ border-radius:4px;
+}
+.tail{
+ position:absolute;
+ top:54px;
+ width:29px;
+ height:70px;
+ background:linear-gradient(90deg,#a77a2c,#f7dda0,#b18131);
+ clip-path:polygon(0 0,100% 0,100% 100%,50% 78%,0 100%);
+}
+.tail.one{left:43px;transform:rotate(8deg)}
+.tail.two{right:42px;transform:rotate(-8deg)}
+#intro.open #ribbon{
+ animation:untie .8s forwards;
+}
+@keyframes untie{
+ 40%{transform:scale(1.15) rotate(10deg)}
+ 100%{transform:scale(.2) rotate(35deg);opacity:0}
+}
+#intro.gone{
+ opacity:0;
+ visibility:hidden;
+ transition:opacity 1.5s,visibility 1.5s;
+}
+/* INVITATION PAGES */
+main{
+ opacity:0;
+ transition:opacity 1.5s;
+}
+main.show{opacity:1}
+.scene{
+ min-height:100vh;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ padding:65px 20px;
+ position:relative;
+ overflow:hidden;
+ background:radial-gradient(ellipse,#fffef9,#eee0c4);
+}
+.scene:before{
+ content:"✦";
+ position:absolute;
+ top:25px;
+ color:var(--gold);
+ font-size:22px;
+}
+.inner{
+ max-width:800px;
+ width:100%;
+ opacity:0;
+ transform:translateY(30px);
+ transition:1.2s;
+}
+.inner.visible{
+ opacity:1;
+ transform:translateY(0);
+}
+.script{
+ font:clamp(55px,10vw,95px) 'Great Vibes',cursive;
+ color:var(--green);
+ margin:10px 0;
+}
+.amp{
+ font:55px 'Great Vibes',cursive;
+ color:var(--gold);
+}
+.eyebrow{
+ font:12px Marcellus,serif;
+ letter-spacing:4px;
+ text-transform:uppercase;
+}
+p{
+ font-size:22px;
+ line-height:1.5;
+}
+.urdu{
+ font:18px/2.4 'Noto Nastaliq Urdu',serif;
+ direction:rtl;
+}
+.goldline{
+ height:1px;
+ width:130px;
+ margin:25px auto;
+ background:var(--gold);
+}
+.dark{
+ background:linear-gradient(145deg,#143e32,#0d2b24);
+ color:#fff8e8;
+}
+.dark .eyebrow{color:#e8d39b}
+.dark h2{color:#f0d69a}
+.dark .urdu{color:#f4dfac}
+h2{
+ font:clamp(52px,8vw,75px) 'Great Vibes',cursive;
+ color:var(--green);
+ margin:15px 0;
+}
+/* COUNTDOWN */
+.countdown{
+ display:flex;
+ gap:12px;
+ justify-content:center;
+ flex-wrap:wrap;
+ margin:30px 0;
+}
+.time{
+ border:1px solid #c6a15b;
+ padding:16px;
+ min-width:72px;
+}
+.time b{
+ display:block;
+ font:32px Marcellus,serif;
+}
+.time span{
+ font-size:11px;
+ letter-spacing:2px;
+}
+/* EVENT CARD */
+.event-card{
+ max-width:760px;
+ width:100%;
+ padding:35px 20px;
+ border:1px solid var(--gold);
+ outline:1px solid #c6a15b55;
+ outline-offset:-9px;
+ background:#fffdf7;
+ box-shadow:0 20px 60px #46351a18;
+}
+.date{
+ color:var(--gold);
+ font:15px Marcellus,serif;
+ letter-spacing:2px;
+}
+.venue{
+ font-weight:600;
+ color:var(--green);
+}
+.map{
+ display:inline-block;
+ padding:12px 20px;
+ margin:12px;
+ border:1px solid var(--gold);
+ color:var(--green);
+ text-decoration:none;
+ font:12px Marcellus,serif;
+ letter-spacing:1px;
+}
+.map:hover{
+ background:var(--green);
+ color:white;
+}
+/* RSVP PAGE */
+.rsvp-card{
+ max-width:700px;
+ width:100%;
+ padding:40px 22px;
+ border:1px solid var(--gold);
+ outline:1px solid #c6a15b55;
+ outline-offset:-10px;
+ background:#fffdf7;
+ box-shadow:0 20px 60px #46351a18;
+}
+.rsvp-heading{
+ font:clamp(42px,7vw,65px) 'Great Vibes',cursive;
+ color:var(--green);
+ margin:0 0 8px;
+}
+.rsvp-subheading{
+ font:12px Marcellus,serif;
+ letter-spacing:4px;
+ color:var(--gold);
+ text-transform:uppercase;
+}
+.rsvp-list{
+ list-style:none;
+ padding:0;
+ margin:25px 0 0;
+}
+.rsvp-list li{
+ font-size:24px;
+ line-height:1.8;
+ color:var(--green);
+}
+.rsvp-list li::after{
+ content:"";
+ display:block;
+ width:45px;
+ height:1px;
+ background:#c6a15b77;
+ margin:3px auto;
+}
+.rsvp-list li:last-child::after{
+ display:none;
+}
+/* FLYING DOVES */
+.dove{
+ position:fixed;
+ left:-50px;
+ z-index:20;
+ pointer-events:none;
+ font-size:30px;
+ animation:fly 18s linear infinite;
+}
+.dove:nth-child(2){top:20%;animation-delay:2s}
+.dove:nth-child(3){top:55%;animation-delay:8s}
+.dove:nth-child(4){top:75%;animation-delay:13s}
+@keyframes fly{
+ 0%{transform:translateX(-5vw) translateY(0)}
+ 50%{transform:translateX(55vw) translateY(-35px)}
+ 100%{transform:translateX(110vw) translateY(10px)}
+}
+/* MOVIE CONTROLS */
+.controls{
+ position:fixed;
+ bottom:12px;
+ right:12px;
+ z-index:50;
+ display:flex;
+ gap:8px;
+}
+.controls button{
+ padding:10px 14px;
+ border-radius:25px;
+ border:1px solid var(--gold);
+ background:#fff9e8;
+ color:var(--green);
+ cursor:pointer;
+}
+@media(max-width:500px){
+ .scene{padding:50px 15px}
+ .time{min-width:62px;padding:12px 8px}
+ p{font-size:19px}
+ .eyebrow{letter-spacing:2px}
+ .event-card,.rsvp-card{padding:30px 16px}
+ .rsvp-list li{font-size:21px}
+}
+</style>
+</head>
+<body>
+<!-- OPENING SCREEN -->
+<div id="intro">
+ <div class="curtain left"></div>
+ <div class="curtain right"></div>
+ <div class="intro-content">
+  <div class="intro-title">WALIMA INVITATION</div>
+  <button id="ribbon" aria-label="Click the ribbon to open">
+   <span class="tail one"></span>
+   <span class="tail two"></span>
+   <span class="loop one"></span>
+   <span class="loop two"></span>
+   <span class="knot"></span>
+  </button>
+  <div class="welcome">Welcome to Our Walima</div>
+  <div class="hint">CLICK THE RIBBON</div>
+ </div>
+</div>
+<main id="invitation">
+ <div class="dove">🕊</div>
+ <div class="dove">🕊</div>
+ <div class="dove">🕊</div>
+ <!-- COUPLE INTRO -->
+ <section class="scene">
+  <div class="inner">
+   <div class="eyebrow">Together with our families</div>
+   <p class="urdu">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
+   <p class="urdu">محبت، خوشی اور دعاؤں کے اس خوبصورت سفر میں</p>
+   <div class="script">Abdul Wali</div>
+   <div class="amp">&amp;</div>
+   <div class="script">Fatima Sajjad</div>
+   <div class="goldline"></div>
+   <p>Request the pleasure of your company<br>
+   at the celebration of our Walima.</p>
+   <p class="urdu">آپ کی شرکت ہمارے لیے باعثِ مسرت ہوگی</p>
+   <div class="eyebrow">Lahore · December 2026</div>
+  </div>
+ </section>
+ <!-- WALIMA COUNTDOWN -->
+ <section class="scene dark">
+  <div class="inner">
+   <div class="eyebrow">The countdown to forever</div>
+   <h2>Our Beautiful Beginning</h2>
+   <p>Our Walima celebration begins in...</p>
+   <div class="countdown">
+    <div class="time">
+     <b id="days">--</b>
+     <span>DAYS</span>
+    </div>
+    <div class="time">
+     <b id="hours">--</b>
+     <span>HOURS</span>
+    </div>
+    <div class="time">
+     <b id="minutes">--</b>
+     <span>MINUTES</span>
+    </div>
+    <div class="time">
+     <b id="seconds">--</b>
+     <span>SECONDS</span>
+    </div>
+   </div>
+   <p class="urdu">اللہ ہماری نئی زندگی کو خوشیوں اور برکتوں سے بھر دے</p>
+  </div>
+ </section>
+ <!-- WALIMA EVENT -->
+ <section class="scene">
+  <div class="inner event-card">
+   <div class="eyebrow">A New Chapter · Walima</div>
+   <h2>Walima</h2>
+   <div class="date">THURSDAY · 24 DECEMBER 2026</div>
+   <div class="goldline"></div>
+   <p>6:00 PM – 10:00 PM</p>
+   <p class="venue">The Ball Room</p>
+   <p>Raiwind Hall No. 1, Lahore, Pakistan</p>
+   <p class="urdu">ولیمہ کی پُروقار تقریب</p>
+   <a class="map"
+      target="_blank"
+      rel="noopener"
+      href="https://www.google.com/maps/search/?api=1&query=The+Ball+Room+Raiwind+Hall+No+1+Lahore">
+      OPEN IN GOOGLE MAPS ↗
+   </a>
+  </div>
+ </section>
+ <!-- LOOKING FORWARD & RSVP -->
+ <section class="scene">
+  <div class="inner rsvp-card">
+   <div class="rsvp-subheading">With warm regards</div>
+   <h2 class="rsvp-heading">Looking Forward</h2>
+   <div class="eyebrow">By Mr. &amp; Mrs. Imran Ahmed</div>
+   <div class="goldline"></div>
+   <p class="rsvp-subheading">R.S.V.P. By</p>
+   <ul class="rsvp-list">
+    <li>Mr. &amp; Mrs. Irfan Ahmed</li>
+    <li>Mr. &amp; Mrs. Zeeshan Ahmed</li>
+    <li>Mr. &amp; Mrs. Saad Ahmed</li>
+    <li>Abdul Moiz</li>
+    <li>M. Mahad</li>
+   </ul>
+  </div>
+ </section>
+ <!-- FINAL CLOSING PAGE -->
+ <section class="scene dark">
+  <div class="inner">
+   <div class="eyebrow">With love and gratitude</div>
+   <div class="script" style="color:#f0d69a">
+    Abdul Wali
+   </div>
+   <div class="amp">&amp;</div>
+   <div class="script" style="color:#f0d69a">
+    Fatima Sajjad
+   </div>
+   <div class="goldline"></div>
+   <p>Your presence and prayers<br>
+   will make our day even more special.</p>
+   <p class="urdu">
+    آپ کی محبت اور دعاؤں کے منتظر
+   </p>
+   <div class="eyebrow">
+    Forever Begins · Lahore · 2026
+   </div>
+  </div>
+ </section>
+</main>
+<!-- PAUSE AND REPLAY -->
+<div class="controls" id="controls" hidden>
+ <button id="pause">Ⅱ Pause Movie</button>
+ <button id="replay">↻ Replay</button>
+</div>
+<script>
+const intro = document.getElementById('intro');
+const ribbon = document.getElementById('ribbon');
+const main = document.getElementById('invitation');
+const scenes = [...document.querySelectorAll('.scene')];
+const controls = document.getElementById('controls');
+const pauseButton = document.getElementById('pause');
+let opened = false;
+let paused = false;
+let index = 0;
+let timer = null;
+function showVisible(){
+ document.querySelectorAll('.inner').forEach(el=>{
+  if(el.getBoundingClientRect().top < window.innerHeight * 0.9){
+   el.classList.add('visible');
+  }
+ });
+}
+function stopMovie(){
+ clearTimeout(timer);
+ timer = null;
+}
+function playMovie(){
+ stopMovie();
+ if(paused || !opened || index >= scenes.length) return;
+ scenes[index].scrollIntoView({
+  behavior:'smooth',
+  block:'start'
+ });
+ showVisible();
+ index++;
+ timer = setTimeout(
+  playMovie,
+  index === 1 ? 7500 : 6500
+ );
+}
+/* OPEN INVITATION */
+ribbon.addEventListener('click',()=>{
+ if(opened) return;
+ opened = true;
+ intro.classList.add('open');
+ setTimeout(()=>{
+  intro.classList.add('gone');
+  main.classList.add('show');
+  controls.hidden = false;
+  index = 0;
+  setTimeout(playMovie,600);
+ },2500);
+});
+/* PAUSE / PLAY */
+pauseButton.addEventListener('click',()=>{
+ paused = !paused;
+ if(paused){
+  stopMovie();
+  pauseButton.textContent = '▶ Play Movie';
+ }else{
+  pauseButton.textContent = 'Ⅱ Pause Movie';
+  playMovie();
+ }
+});
+/* REPLAY FROM BEGINNING */
+document.getElementById('replay').addEventListener('click',()=>{
+ paused = false;
+ pauseButton.textContent = 'Ⅱ Pause Movie';
+ index = 0;
+ playMovie();
+});
+window.addEventListener('scroll',showVisible,{passive:true});
+/* WALIMA COUNTDOWN — LAHORE TIME */
+const target = new Date('2026-12-24T18:00:00+05:00').getTime();
+function countdown(){
+ let diff = Math.max(0,target-Date.now());
+ const d = Math.floor(diff/86400000);
+ diff %= 86400000;
+ const h = Math.floor(diff/3600000);
+ diff %= 3600000;
+ const m = Math.floor(diff/60000);
+ diff %= 60000;
+ const s = Math.floor(diff/1000);
+ document.getElementById('days').textContent = d;
+ document.getElementById('hours').textContent = String(h).padStart(2,'0');
+ document.getElementById('minutes').textContent = String(m).padStart(2,'0');
+ document.getElementById('seconds').textContent = String(s).padStart(2,'0');
+}
+countdown();
+setInterval(countdown,1000);
+showVisible();
+</script>
+</body>
+</html>
