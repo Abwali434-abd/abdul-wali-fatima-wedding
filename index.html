@@ -3,1249 +3,1127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#f8f5ed">
-  <title>abdul-wali-fatima-wedding</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Marcellus&family=Noto+Nastaliq+Urdu:wght@400;500;600&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --ivory: #faf8f1;
-      --paper: #fffdf8;
-      --gold: #b99a5c;
-      --gold-light: #e5d4a8;
-      --green: #244f40;
-      --green-light: #527461;
-      --ink: #333c32;
-      --muted: #77776b;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      min-height: 100vh;
-      background: var(--ivory);
-      color: var(--ink);
-      font-family: "Cormorant Garamond", serif;
-      overflow-x: hidden;
-    }
-
-    button, a {
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    button {
-      font: inherit;
-    }
-
-    /* Opening screen */
-
-    .intro {
-      position: fixed;
-      inset: 0;
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background:
-        radial-gradient(ellipse at center, #fffdf8 0%, #f4eddb 100%);
-      overflow: hidden;
-      transition: opacity 1s ease, visibility 1s ease;
-    }
-
-    .intro.finished {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
-
-    .intro-border {
-      position: absolute;
-      inset: 18px;
-      border: 1px solid rgba(185, 154, 92, .65);
-      outline: 1px solid rgba(185, 154, 92, .25);
-      outline-offset: 6px;
-      pointer-events: none;
-    }
-
-    .intro-content {
-      width: min(90%, 560px);
-      text-align: center;
-      position: relative;
-      z-index: 5;
-      padding: 32px 16px;
-    }
-
-    .intro-kicker {
-      color: var(--gold);
-      font: 12px "Marcellus", serif;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      margin-bottom: 26px;
-    }
-
-    .intro-names {
-      color: var(--green);
-      font: 400 clamp(48px, 10vw, 88px)/1.08 "Great Vibes", cursive;
-    }
-
-    .intro-amp {
-      color: var(--gold);
-      font: 30px "Cormorant Garamond", serif;
-      margin: 5px 0;
-    }
-
-    .intro-urdu {
-      font: 21px/2.2 "Noto Nastaliq Urdu", serif;
-      color: var(--green);
-      margin-top: 22px;
-      direction: rtl;
-    }
-
-    .open-hint {
-      margin-top: 32px;
-      font: 11px "Marcellus", serif;
-      letter-spacing: 3px;
-      color: var(--muted);
-    }
-
-    /* Animated ribbon and bow */
-
-    .ribbon-stage {
-      position: relative;
-      width: 140px;
-      height: 110px;
-      margin: 20px auto 0;
-      cursor: pointer;
-    }
-
-    .ribbon-vertical {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 59px;
-      width: 22px;
-      background: linear-gradient(90deg, #a9894a, #e8d6a5, #b99a5c);
-      box-shadow: 0 2px 7px #a9894c33;
-      transition: transform .8s ease, opacity .6s ease;
-      z-index: 2;
-    }
-
-    .ribbon-horizontal {
-      position: absolute;
-      top: 42px;
-      left: 0;
-      right: 0;
-      height: 20px;
-      background: linear-gradient(180deg, #e7d5a5, #b99a5c);
-      box-shadow: 0 2px 7px #a9894c33;
-      transition: transform .8s ease, opacity .6s ease;
-      z-index: 2;
-    }
-
-    .bow {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 90px;
-      height: 55px;
-      transform: translate(-50%, -50%);
-      z-index: 3;
-    }
-
-    .bow-loop {
-      position: absolute;
-      top: 7px;
-      width: 43px;
-      height: 33px;
-      border: 9px solid #c6a866;
-      background: #ead9ae;
-      box-shadow: inset 0 0 0 1px #fff4d3;
-    }
-
-    .bow-loop.left {
-      left: 1px;
-      border-radius: 80% 20% 65% 35%;
-      transform: rotate(20deg);
-    }
-
-    .bow-loop.right {
-      right: 1px;
-      border-radius: 20% 80% 35% 65%;
-      transform: rotate(-20deg);
-    }
-
-    .bow-knot {
-      position: absolute;
-      top: 17px;
-      left: 35px;
-      width: 21px;
-      height: 21px;
-      border-radius: 4px;
-      background: linear-gradient(135deg, #f1dfb4, #ad8b49);
-      transform: rotate(45deg);
-    }
-
-    .ribbon-stage:hover .bow {
-      transform: translate(-50%, -50%) scale(1.06);
-    }
-
-    .intro.opening .ribbon-vertical {
-      transform: translateX(85px) rotate(20deg);
-      opacity: 0;
-    }
-
-    .intro.opening .ribbon-horizontal {
-      transform: translateY(-70px) rotate(-12deg);
-      opacity: 0;
-    }
-
-    .intro.opening .bow {
-      animation: bowRelease .8s ease forwards;
-    }
-
-    @keyframes bowRelease {
-      0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-      55% { transform: translate(-50%, -90%) scale(1.15) rotate(15deg); }
-      100% { transform: translate(-50%, -160%) scale(.7) rotate(35deg); opacity: 0; }
-    }
-
-    .tap-button {
-      border: 1px solid var(--gold);
-      border-radius: 30px;
-      padding: 12px 27px;
-      background: transparent;
-      color: var(--green);
-      font: 11px "Marcellus", serif;
-      letter-spacing: 2px;
-      cursor: pointer;
-      margin-top: 18px;
-      transition: background .3s, color .3s;
-    }
-
-    .tap-button:hover {
-      background: var(--green);
-      color: white;
-      border-color: var(--green);
-    }
-
-    /* Curtains */
-
-    .curtain {
-      position: fixed;
-      z-index: 900;
-      top: 0;
-      bottom: 0;
-      width: 51%;
-      background:
-        repeating-linear-gradient(90deg, #204637 0, #285440 12%, #1e4033 24%, #315c48 36%);
-      box-shadow: inset 0 0 35px #10291f88;
-      transition: transform 1.5s cubic-bezier(.76, 0, .24, 1);
-      pointer-events: none;
-    }
-
-    .curtain::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 3px;
-      background: linear-gradient(transparent, var(--gold-light), transparent);
-      opacity: .7;
-    }
-
-    .curtain.left {
-      left: 0;
-      border-right: 2px solid var(--gold);
-    }
-
-    .curtain.left::after {
-      right: 10px;
-    }
-
-    .curtain.right {
-      right: 0;
-      border-left: 2px solid var(--gold);
-    }
-
-    .curtain.right::after {
-      left: 10px;
-    }
-
-    .curtain.open-left {
-      transform: translateX(-105%);
-    }
-
-    .curtain.open-right {
-      transform: translateX(105%);
-    }
-
-    /* Decorative page details */
-
-    .ornament {
-      color: var(--gold);
-      letter-spacing: 8px;
-      font-size: 18px;
-      margin: 14px 0;
-    }
-
-    .page-frame {
-      position: relative;
-      border: 1px solid var(--gold-light);
-      outline: 1px solid #c8ae7440;
-      outline-offset: 6px;
-    }
-
-    .page-frame::before,
-    .page-frame::after {
-      content: "✦";
-      position: absolute;
-      color: var(--gold);
-      font-size: 18px;
-    }
-
-    .page-frame::before {
-      top: 9px;
-      left: 12px;
-    }
-
-    .page-frame::after {
-      bottom: 9px;
-      right: 12px;
-    }
-
-    /* Main invitation */
-
-    .site {
-      opacity: 0;
-      transform: translateY(15px);
-      transition: opacity 1.2s ease, transform 1.2s ease;
-    }
-
-    .site.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px clamp(20px, 5vw, 65px);
-      border-bottom: 1px solid #d9c99f70;
-      background: #fffdf8c9;
-    }
-
-    .brand {
-      font: 14px "Marcellus", serif;
-      letter-spacing: 2px;
-      color: var(--green);
-    }
-
-    .topbar-note {
-      font: 10px "Marcellus", serif;
-      color: var(--gold);
-      letter-spacing: 2px;
-    }
-
-    .hero {
-      position: relative;
-      min-height: 690px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 75px 22px 85px;
-      overflow: hidden;
-      background:
-        radial-gradient(ellipse at 50% 40%, #ffffff 0%, #faf8f1 60%, #f4efdf 100%);
-    }
-
-    .hero::before,
-    .hero::after {
-      content: "";
-      position: absolute;
-      width: 240px;
-      height: 240px;
-      border: 1px solid #c9ad6c45;
-      border-radius: 50%;
-      pointer-events: none;
-    }
-
-    .hero::before {
-      top: -120px;
-      left: -110px;
-    }
-
-    .hero::after {
-      right: -110px;
-      bottom: -120px;
-    }
-
-    .hero-card {
-      width: min(100%, 710px);
-      padding: clamp(30px, 7vw, 65px) 22px;
-      text-align: center;
-      background: #fffdf8a8;
-      box-shadow: 0 15px 55px #695a3010;
-    }
-
-    .small-caps {
-      font: 11px "Marcellus", serif;
-      text-transform: uppercase;
-      letter-spacing: 4px;
-      color: var(--gold);
-    }
-
-    .bismillah {
-      font: 19px/2.3 "Noto Nastaliq Urdu", serif;
-      color: var(--green);
-      margin-bottom: 20px;
-      direction: rtl;
-    }
-
-    .hero h1 {
-      font: 400 clamp(51px, 9vw, 92px)/1.1 "Great Vibes", cursive;
-      color: var(--green);
-      margin-top: 24px;
-    }
-
-    .hero .amp {
-      display: block;
-      color: var(--gold);
-      font: 34px "Cormorant Garamond", serif;
-      margin: 2px 0;
-    }
-
-    .urdu-names {
-      font: clamp(18px, 4vw, 25px)/2.2 "Noto Nastaliq Urdu", serif;
-      direction: rtl;
-      color: var(--green);
-      margin-top: 20px;
-    }
-
-    .invitation-copy {
-      max-width: 470px;
-      margin: 22px auto 0;
-      color: #6f7064;
-      font: 19px/1.6 "Cormorant Garamond", serif;
-    }
-
-    .date-ribbon {
-      display: inline-block;
-      border-top: 1px solid var(--gold-light);
-      border-bottom: 1px solid var(--gold-light);
-      margin-top: 27px;
-      padding: 12px 24px;
-      color: var(--green);
-      font: 12px "Marcellus", serif;
-      letter-spacing: 2px;
-    }
-
-    .hero-actions {
-      margin-top: 27px;
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .action-btn {
-      display: inline-block;
-      padding: 12px 20px;
-      border: 1px solid var(--gold);
-      text-decoration: none;
-      color: var(--green);
-      background: transparent;
-      font: 10px "Marcellus", serif;
-      letter-spacing: 1.6px;
-      cursor: pointer;
-      transition: all .25s;
-    }
-
-    .action-btn:hover {
-      background: var(--green);
-      color: white;
-      border-color: var(--green);
-    }
-
-    /* Flying pigeons */
-
-    .pigeon {
-      position: absolute;
-      width: 48px;
-      height: 34px;
-      opacity: .65;
-      color: var(--green-light);
-      animation: flyAcross 18s linear infinite;
-      pointer-events: none;
-    }
-
-    .pigeon svg {
-      width: 100%;
-      height: 100%;
-      fill: currentColor;
-    }
-
-    .pigeon.one {
-      top: 14%;
-      left: -60px;
-      animation-delay: 0s;
-    }
-
-    .pigeon.two {
-      top: 28%;
-      left: -70px;
-      width: 35px;
-      animation-delay: 7s;
-      animation-duration: 22s;
-    }
-
-    .pigeon.three {
-      top: 65%;
-      left: -60px;
-      width: 40px;
-      animation-delay: 11s;
-      animation-duration: 20s;
-    }
-
-    @keyframes flyAcross {
-      0% { transform: translateX(-70px) translateY(0) rotate(-5deg); }
-      30% { transform: translateY(-20px) rotate(3deg); }
-      65% { transform: translateY(12px) rotate(-2deg); }
-      100% { transform: translateX(calc(100vw + 150px)) translateY(-10px) rotate(5deg); }
-    }
-
-    /* Countdown */
-
-    .countdown-section {
-      text-align: center;
-      padding: 70px 20px;
-      background: var(--green);
-      color: var(--paper);
-    }
-
-    .countdown-section .small-caps {
-      color: var(--gold-light);
-    }
-
-    .countdown-title {
-      margin: 15px 0 28px;
-      font: 400 clamp(35px, 6vw, 52px) "Great Vibes", cursive;
-      color: #fff8e7;
-    }
-
-    .countdown {
-      display: flex;
-      justify-content: center;
-      gap: clamp(12px, 4vw, 42px);
-      flex-wrap: wrap;
-    }
-
-    .count-unit {
-      min-width: 62px;
-    }
-
-    .count-number {
-      display: block;
-      font: 400 clamp(30px, 5vw, 43px) "Cormorant Garamond", serif;
-      color: var(--gold-light);
-    }
-
-    .count-label {
-      display: block;
-      margin-top: 5px;
-      font: 9px "Marcellus", serif;
-      letter-spacing: 2px;
-      color: #f1e7cf;
-    }
-
-    #countdownNote {
-      margin-top: 20px;
-      color: #e7dcc0;
-      font: 15px "Cormorant Garamond", serif;
-    }
-
-    /* Event navigation */
-
-    .events-section {
-      padding: 80px 20px;
-      text-align: center;
-      background: var(--ivory);
-    }
-
-    .section-title {
-      color: var(--green);
-      font: 400 clamp(43px, 7vw, 60px) "Great Vibes", cursive;
-      margin: 12px 0;
-    }
-
-    .section-subtitle {
-      color: var(--muted);
-      font-size: 18px;
-      margin-bottom: 35px;
-    }
-
-    .event-tabs {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 35px;
-    }
-
-    .event-tab {
-      border: 1px solid var(--gold-light);
-      padding: 12px 20px;
-      background: transparent;
-      color: var(--green);
-      font: 10px "Marcellus", serif;
-      letter-spacing: 1.4px;
-      cursor: pointer;
-      transition: all .25s;
-    }
-
-    .event-tab.active,
-    .event-tab:hover {
-      background: var(--green);
-      color: white;
-      border-color: var(--green);
-    }
-
-    .event-card {
-      width: min(100%, 680px);
-      margin: 0 auto;
-      padding: clamp(25px, 6vw, 55px) clamp(18px, 5vw, 50px);
-      background: var(--paper);
-      border: 1px solid var(--gold-light);
-      box-shadow: 0 15px 45px #5848210b;
-      animation: cardIn .45s ease;
-    }
-
-    @keyframes cardIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .event-number {
-      color: var(--gold);
-      font: 11px "Marcellus", serif;
-      letter-spacing: 4px;
-    }
-
-    .event-name {
-      color: var(--green);
-      font: 400 clamp(38px, 7vw, 57px) "Great Vibes", cursive;
-      margin: 14px 0;
-    }
-
-    .event-urdu {
-      direction: rtl;
-      font: 20px/2.2 "Noto Nastaliq Urdu", serif;
-      color: var(--green);
-      margin-bottom: 14px;
-    }
-
-    .event-date {
-      font: 14px "Marcellus", serif;
-      color: var(--gold);
-      letter-spacing: 1px;
-      line-height: 1.8;
-    }
-
-    .event-time {
-      margin-top: 8px;
-      font: 19px "Cormorant Garamond", serif;
-      color: var(--ink);
-    }
-
-    .event-divider {
-      width: 75px;
-      height: 1px;
-      background: var(--gold-light);
-      margin: 23px auto;
-    }
-
-    .venue-name {
-      color: var(--green);
-      font: 600 23px "Cormorant Garamond", serif;
-    }
-
-    .venue-detail {
-      margin-top: 5px;
-      font-size: 17px;
-      color: var(--muted);
-    }
-
-    .event-map {
-      margin-top: 25px;
-    }
-
-    .event-map .action-btn {
-      margin: 4px;
-    }
-
-    .event-pagination {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 25px;
-    }
-
-    .event-dot {
-      width: 8px;
-      height: 8px;
-      border: 0;
-      border-radius: 50%;
-      background: #d8c9a6;
-      cursor: pointer;
-    }
-
-    .event-dot.active {
-      background: var(--green);
-      transform: scale(1.3);
-    }
-
-    /* Closing section */
-
-    .closing {
-      padding: 70px 20px;
-      text-align: center;
-      background: #f0ead9;
-    }
-
-    .closing-card {
-      width: min(100%, 700px);
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
-
-    .closing-names {
-      color: var(--green);
-      font: 400 clamp(48px, 8vw, 75px)/1.15 "Great Vibes", cursive;
-      margin: 20px 0;
-    }
-
-    .closing-urdu {
-      direction: rtl;
-      font: 20px/2.2 "Noto Nastaliq Urdu", serif;
-      color: var(--green);
-    }
-
-    .closing-note {
-      margin-top: 20px;
-      font-size: 19px;
-      color: var(--muted);
-    }
-
-    footer {
-      text-align: center;
-      padding: 23px 15px;
-      background: var(--green);
-      color: #e8dcc0;
-      font: 10px "Marcellus", serif;
-      letter-spacing: 2px;
-    }
-
-    .footer-heart {
-      color: var(--gold-light);
-      padding: 0 5px;
-    }
-
-    @media (max-width: 600px) {
-      .topbar {
-        padding: 16px;
-      }
-
-      .brand {
-        font-size: 11px;
-        letter-spacing: 1px;
-      }
-
-      .topbar-note {
-        font-size: 8px;
-        letter-spacing: 1px;
-      }
-
-      .hero {
-        min-height: 640px;
-        padding: 45px 18px;
-      }
-
-      .hero-card {
-        padding: 36px 16px;
-      }
-
-      .small-caps {
-        letter-spacing: 2.5px;
-        font-size: 9px;
-      }
-
-      .intro-border {
-        inset: 12px;
-      }
-
-      .intro-kicker {
-        letter-spacing: 3px;
-      }
-
-      .date-ribbon {
-        font-size: 10px;
-        letter-spacing: 1px;
-        padding: 11px 14px;
-      }
-
-      .action-btn {
-        padding: 12px 15px;
-        font-size: 9px;
-      }
-
-      .countdown-section {
-        padding: 58px 15px;
-      }
-
-      .events-section {
-        padding: 60px 15px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        scroll-behavior: auto !important;
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#faf8f1">
+<title>abdul-wali-fatima-wedding</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Marcellus&family=Noto+Nastaliq+Urdu:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --ivory: #faf8f1;
+  --paper: #fffdf8;
+  --gold: #b99a5c;
+  --gold-light: #e5d4a8;
+  --green: #244f40;
+  --green-light: #527461;
+  --ink: #333c32;
+  --muted: #77776b;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  min-height: 100vh;
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: "Cormorant Garamond", serif;
+  overflow-x: hidden;
+}
+
+button, a { -webkit-tap-highlight-color: transparent; }
+button { font: inherit; }
+
+/* WELCOME SCREEN */
+
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: radial-gradient(ellipse at center, #fffdf8 0%, #f1ead8 100%);
+  transition: opacity 1s ease, visibility 1s ease;
+}
+
+.intro.finished {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.intro-border {
+  position: absolute;
+  inset: 18px;
+  border: 1px solid #b99a5c99;
+  outline: 1px solid #b99a5c30;
+  outline-offset: 6px;
+  pointer-events: none;
+}
+
+.intro-content {
+  position: relative;
+  z-index: 5;
+  width: min(90%, 560px);
+  padding: 30px 16px;
+  text-align: center;
+}
+
+.intro-kicker {
+  color: var(--gold);
+  font: 12px "Marcellus", serif;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+}
+
+.welcome-title {
+  color: var(--green);
+  font: 400 clamp(48px, 10vw, 83px)/1.15 "Great Vibes", cursive;
+  margin-bottom: 10px;
+}
+
+.intro-description {
+  color: var(--muted);
+  font: 18px "Cormorant Garamond", serif;
+  letter-spacing: 1px;
+}
+
+.ornament {
+  color: var(--gold);
+  letter-spacing: 8px;
+  font-size: 18px;
+  margin: 20px 0;
+}
+
+.open-hint {
+  margin: 10px 0 16px;
+  font: 10px "Marcellus", serif;
+  letter-spacing: 3px;
+  color: var(--muted);
+}
+
+/* GOLDEN RIBBON */
+
+.ribbon-stage {
+  position: relative;
+  width: 140px;
+  height: 115px;
+  margin: 0 auto;
+  cursor: pointer;
+  outline-offset: 5px;
+}
+
+.ribbon-vertical {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 59px;
+  width: 22px;
+  background: linear-gradient(90deg, #a9894a, #ead9aa, #b99a5c);
+  box-shadow: 0 2px 7px #a9894c33;
+  transition: transform .8s ease, opacity .6s ease;
+  z-index: 2;
+}
+
+.ribbon-horizontal {
+  position: absolute;
+  top: 43px;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: linear-gradient(180deg, #ead9aa, #b99a5c);
+  box-shadow: 0 2px 7px #a9894c33;
+  transition: transform .8s ease, opacity .6s ease;
+  z-index: 2;
+}
+
+.bow {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 90px;
+  height: 55px;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+
+.bow-loop {
+  position: absolute;
+  top: 7px;
+  width: 43px;
+  height: 33px;
+  border: 9px solid #c6a866;
+  background: #ead9ae;
+  box-shadow: inset 0 0 0 1px #fff4d3;
+}
+
+.bow-loop.left {
+  left: 1px;
+  border-radius: 80% 20% 65% 35%;
+  transform: rotate(20deg);
+}
+
+.bow-loop.right {
+  right: 1px;
+  border-radius: 20% 80% 35% 65%;
+  transform: rotate(-20deg);
+}
+
+.bow-knot {
+  position: absolute;
+  top: 17px;
+  left: 35px;
+  width: 21px;
+  height: 21px;
+  border-radius: 4px;
+  background: linear-gradient(135deg, #f1dfb4, #ad8b49);
+  transform: rotate(45deg);
+}
+
+.ribbon-stage:hover .bow {
+  transform: translate(-50%, -50%) scale(1.06);
+}
+
+.intro.opening .ribbon-vertical {
+  transform: translateX(85px) rotate(20deg);
+  opacity: 0;
+}
+
+.intro.opening .ribbon-horizontal {
+  transform: translateY(-70px) rotate(-12deg);
+  opacity: 0;
+}
+
+.intro.opening .bow {
+  animation: bowRelease .8s ease forwards;
+}
+
+@keyframes bowRelease {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  55% { transform: translate(-50%, -90%) scale(1.15) rotate(15deg); }
+  100% { transform: translate(-50%, -160%) scale(.7) rotate(35deg); opacity: 0; }
+}
+
+.tap-button {
+  border: 1px solid var(--gold);
+  border-radius: 30px;
+  padding: 12px 25px;
+  background: transparent;
+  color: var(--green);
+  font: 10px "Marcellus", serif;
+  letter-spacing: 2px;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: background .3s, color .3s;
+}
+
+.tap-button:hover {
+  background: var(--green);
+  color: white;
+  border-color: var(--green);
+}
+
+/* GREEN CURTAINS */
+
+.curtain {
+  position: fixed;
+  z-index: 900;
+  top: 0;
+  bottom: 0;
+  width: 51%;
+  background: repeating-linear-gradient(
+    90deg,
+    #204637 0,
+    #285440 12%,
+    #1e4033 24%,
+    #315c48 36%
+  );
+  box-shadow: inset 0 0 35px #10291f88;
+  transition: transform 1.5s cubic-bezier(.76, 0, .24, 1);
+  pointer-events: none;
+}
+
+.curtain::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(transparent, var(--gold-light), transparent);
+  opacity: .7;
+}
+
+.curtain.left {
+  left: 0;
+  border-right: 2px solid var(--gold);
+}
+
+.curtain.left::after { right: 10px; }
+
+.curtain.right {
+  right: 0;
+  border-left: 2px solid var(--gold);
+}
+
+.curtain.right::after { left: 10px; }
+
+.curtain.open-left { transform: translateX(-105%); }
+.curtain.open-right { transform: translateX(105%); }
+
+/* INVITATION */
+
+.site {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+.site.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 18px clamp(20px, 5vw, 65px);
+  border-bottom: 1px solid #d9c99f70;
+  background: #fffdf8c9;
+}
+
+.brand {
+  font: 14px "Marcellus", serif;
+  letter-spacing: 2px;
+  color: var(--green);
+}
+
+.topbar-note {
+  font: 10px "Marcellus", serif;
+  color: var(--gold);
+  letter-spacing: 2px;
+  text-align: right;
+}
+
+.hero {
+  position: relative;
+  min-height: 690px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 75px 22px 85px;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 40%, #fff 0%, #faf8f1 60%, #f4efdf 100%);
+}
+
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  border: 1px solid #c9ad6c45;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero::before { top: -120px; left: -110px; }
+.hero::after { right: -110px; bottom: -120px; }
+
+.hero-card {
+  position: relative;
+  width: min(100%, 710px);
+  padding: clamp(30px, 7vw, 65px) 22px;
+  text-align: center;
+  background: #fffdf8b8;
+  box-shadow: 0 15px 55px #695a3010;
+  border: 1px solid var(--gold-light);
+  outline: 1px solid #c8ae7440;
+  outline-offset: 6px;
+}
+
+.hero-card::before,
+.hero-card::after {
+  content: "✦";
+  position: absolute;
+  color: var(--gold);
+  font-size: 18px;
+}
+
+.hero-card::before { top: 9px; left: 12px; }
+.hero-card::after { bottom: 9px; right: 12px; }
+
+.small-caps {
+  font: 11px "Marcellus", serif;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: var(--gold);
+}
+
+.bismillah {
+  font: 19px/2.3 "Noto Nastaliq Urdu", serif;
+  color: var(--green);
+  margin-bottom: 20px;
+  direction: rtl;
+}
+
+.hero h1 {
+  font: 400 clamp(51px, 9vw, 92px)/1.1 "Great Vibes", cursive;
+  color: var(--green);
+  margin-top: 24px;
+}
+
+.hero .amp {
+  display: block;
+  color: var(--gold);
+  font: 34px "Cormorant Garamond", serif;
+  margin: 2px 0;
+}
+
+.urdu-names {
+  font: clamp(18px, 4vw, 25px)/2.2 "Noto Nastaliq Urdu", serif;
+  direction: rtl;
+  color: var(--green);
+  margin-top: 20px;
+}
+
+.invitation-copy {
+  max-width: 470px;
+  margin: 22px auto 0;
+  color: #6f7064;
+  font: 19px/1.6 "Cormorant Garamond", serif;
+}
+
+.date-ribbon {
+  display: inline-block;
+  border-top: 1px solid var(--gold-light);
+  border-bottom: 1px solid var(--gold-light);
+  margin-top: 27px;
+  padding: 12px 24px;
+  color: var(--green);
+  font: 12px "Marcellus", serif;
+  letter-spacing: 2px;
+}
+
+.hero-actions {
+  margin-top: 27px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  display: inline-block;
+  padding: 12px 20px;
+  border: 1px solid var(--gold);
+  text-decoration: none;
+  color: var(--green);
+  background: transparent;
+  font: 10px "Marcellus", serif;
+  letter-spacing: 1.6px;
+  cursor: pointer;
+  transition: all .25s;
+}
+
+.action-btn:hover {
+  background: var(--green);
+  color: white;
+  border-color: var(--green);
+}
+
+/* FLYING WHITE PIGEONS */
+
+.pigeon {
+  position: absolute;
+  width: 48px;
+  height: 34px;
+  opacity: .7;
+  color: #fff;
+  filter: drop-shadow(0 1px 2px #8d927d66);
+  animation: flyAcross 18s linear infinite;
+  pointer-events: none;
+}
+
+.pigeon svg { width: 100%; height: 100%; fill: currentColor; }
+
+.pigeon.one { top: 14%; left: -60px; }
+.pigeon.two {
+  top: 28%;
+  left: -70px;
+  width: 35px;
+  animation-delay: 7s;
+  animation-duration: 22s;
+}
+.pigeon.three {
+  top: 65%;
+  left: -60px;
+  width: 40px;
+  animation-delay: 11s;
+  animation-duration: 20s;
+}
+
+@keyframes flyAcross {
+  0% { transform: translateX(-70px) translateY(0) rotate(-5deg); }
+  30% { transform: translateY(-20px) rotate(3deg); }
+  65% { transform: translateY(12px) rotate(-2deg); }
+  100% { transform: translateX(calc(100vw + 150px)) translateY(-10px) rotate(5deg); }
+}
+
+/* COUNTDOWN */
+
+.countdown-section {
+  text-align: center;
+  padding: 70px 20px;
+  background: var(--green);
+  color: var(--paper);
+}
+
+.countdown-section .small-caps { color: var(--gold-light); }
+
+.countdown-title {
+  margin: 15px 0 28px;
+  font: 400 clamp(35px, 6vw, 52px) "Great Vibes", cursive;
+  color: #fff8e7;
+}
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: clamp(12px, 4vw, 42px);
+  flex-wrap: wrap;
+}
+
+.count-unit { min-width: 62px; }
+
+.count-number {
+  display: block;
+  font: 400 clamp(30px, 5vw, 43px) "Cormorant Garamond", serif;
+  color: var(--gold-light);
+}
+
+.count-label {
+  display: block;
+  margin-top: 5px;
+  font: 9px "Marcellus", serif;
+  letter-spacing: 2px;
+  color: #f1e7cf;
+}
+
+#countdownNote {
+  margin-top: 20px;
+  color: #e7dcc0;
+  font: 15px "Cormorant Garamond", serif;
+}
+
+/* EVENTS */
+
+.events-section {
+  padding: 80px 20px;
+  text-align: center;
+  background: var(--ivory);
+}
+
+.section-title {
+  color: var(--green);
+  font: 400 clamp(43px, 7vw, 60px) "Great Vibes", cursive;
+  margin: 12px 0;
+}
+
+.section-subtitle {
+  color: var(--muted);
+  font-size: 18px;
+  margin-bottom: 35px;
+}
+
+.event-tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 35px;
+}
+
+.event-tab {
+  border: 1px solid var(--gold-light);
+  padding: 12px 20px;
+  background: transparent;
+  color: var(--green);
+  font: 10px "Marcellus", serif;
+  letter-spacing: 1.4px;
+  cursor: pointer;
+  transition: all .25s;
+}
+
+.event-tab.active,
+.event-tab:hover {
+  background: var(--green);
+  color: white;
+  border-color: var(--green);
+}
+
+.event-card {
+  width: min(100%, 680px);
+  margin: 0 auto;
+  padding: clamp(25px, 6vw, 55px) clamp(18px, 5vw, 50px);
+  background: var(--paper);
+  border: 1px solid var(--gold-light);
+  box-shadow: 0 15px 45px #5848210b;
+  animation: cardIn .45s ease;
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.event-number {
+  color: var(--gold);
+  font: 11px "Marcellus", serif;
+  letter-spacing: 4px;
+}
+
+.event-name {
+  color: var(--green);
+  font: 400 clamp(38px, 7vw, 57px) "Great Vibes", cursive;
+  margin: 14px 0;
+}
+
+.event-urdu {
+  direction: rtl;
+  font: 20px/2.2 "Noto Nastaliq Urdu", serif;
+  color: var(--green);
+  margin-bottom: 14px;
+}
+
+.event-date {
+  font: 14px "Marcellus", serif;
+  color: var(--gold);
+  letter-spacing: 1px;
+  line-height: 1.8;
+}
+
+.event-time {
+  margin-top: 8px;
+  font: 19px "Cormorant Garamond", serif;
+  color: var(--ink);
+}
+
+.event-divider {
+  width: 75px;
+  height: 1px;
+  background: var(--gold-light);
+  margin: 23px auto;
+}
+
+.venue-name {
+  color: var(--green);
+  font: 600 23px "Cormorant Garamond", serif;
+}
+
+.venue-detail {
+  margin-top: 5px;
+  font-size: 17px;
+  color: var(--muted);
+}
+
+.event-map { margin-top: 25px; }
+.event-map .action-btn { margin: 4px; }
+
+.event-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 25px;
+}
+
+.event-dot {
+  width: 8px;
+  height: 8px;
+  border: 0;
+  border-radius: 50%;
+  background: #d8c9a6;
+  cursor: pointer;
+}
+
+.event-dot.active {
+  background: var(--green);
+  transform: scale(1.3);
+}
+
+/* CLOSING */
+
+.closing {
+  padding: 70px 20px;
+  text-align: center;
+  background: #f0ead9;
+}
+
+.closing-card {
+  width: min(100%, 700px);
+  margin: 0 auto;
+  padding: 40px 20px;
+  border: 1px solid var(--gold-light);
+  outline: 1px solid #c8ae7440;
+  outline-offset: 6px;
+}
+
+.closing-names {
+  color: var(--green);
+  font: 400 clamp(48px, 8vw, 75px)/1.15 "Great Vibes", cursive;
+  margin: 20px 0;
+}
+
+.closing-urdu {
+  direction: rtl;
+  font: 20px/2.2 "Noto Nastaliq Urdu", serif;
+  color: var(--green);
+}
+
+.closing-note {
+  margin-top: 20px;
+  font-size: 19px;
+  color: var(--muted);
+}
+
+footer {
+  text-align: center;
+  padding: 23px 15px;
+  background: var(--green);
+  color: #e8dcc0;
+  font: 10px "Marcellus", serif;
+  letter-spacing: 2px;
+}
+
+.footer-heart { color: var(--gold-light); padding: 0 5px; }
+
+@media (max-width: 600px) {
+  .topbar { padding: 16px; }
+  .brand { font-size: 11px; letter-spacing: 1px; }
+  .topbar-note { font-size: 8px; letter-spacing: 1px; }
+  .hero { min-height: 640px; padding: 45px 18px; }
+  .hero-card { padding: 36px 16px; }
+  .small-caps { letter-spacing: 2.5px; font-size: 9px; }
+  .intro-border { inset: 12px; }
+  .intro-kicker { letter-spacing: 3px; }
+  .date-ribbon { font-size: 10px; letter-spacing: 1px; padding: 11px 14px; }
+  .action-btn { padding: 12px 15px; font-size: 9px; }
+  .countdown-section { padding: 58px 15px; }
+  .events-section { padding: 60px 15px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <!-- Opening ribbon screen -->
-  <section class="intro" id="intro" aria-label="Wedding invitation opening">
-    <div class="intro-border"></div>
+<!-- OPENING: only Wedding Invitation, no names on the curtain screen -->
+<section class="intro" id="intro" aria-label="Wedding Invitation opening">
+  <div class="intro-border"></div>
 
-    <div class="intro-content">
-      <div class="intro-kicker">A Beautiful Beginning</div>
+  <div class="intro-content">
+    <div class="intro-kicker">YOU ARE CORDIALLY INVITED</div>
 
-      <div class="intro-names">Abdul Wali</div>
-      <div class="intro-amp">&amp;</div>
-      <div class="intro-names">Fatima Sajjad</div>
+    <h1 class="welcome-title">Wedding Invitation</h1>
+    <p class="intro-description">A celebration of love, joy and togetherness</p>
 
-      <div class="intro-urdu">عبدالولی اور فاطمہ سجاد</div>
+    <div class="ornament">— ✧ ❦ ✧ —</div>
 
-      <div class="ornament">— ✧ —</div>
+    <div class="open-hint">UNTIE THE RIBBON TO BEGIN</div>
 
-      <button class="tap-button" id="openButton" type="button">
-        OPEN YOUR INVITATION
-      </button>
-
-      <div class="ribbon-stage" id="untieRibbon" role="button"
-           tabindex="0" aria-label="Open the wedding invitation">
-        <div class="ribbon-vertical"></div>
-        <div class="ribbon-horizontal"></div>
-        <div class="bow">
-          <div class="bow-loop left"></div>
-          <div class="bow-loop right"></div>
-          <div class="bow-knot"></div>
-        </div>
+    <div class="ribbon-stage" id="untieRibbon" role="button"
+         tabindex="0" aria-label="Open the wedding invitation">
+      <div class="ribbon-vertical"></div>
+      <div class="ribbon-horizontal"></div>
+      <div class="bow">
+        <div class="bow-loop left"></div>
+        <div class="bow-loop right"></div>
+        <div class="bow-knot"></div>
       </div>
-
-      <div class="open-hint">A CELEBRATION OF LOVE</div>
     </div>
-  </section>
 
-  <!-- Curtains -->
-  <div class="curtain left" id="curtainLeft"></div>
-  <div class="curtain right" id="curtainRight"></div>
+    <button class="tap-button" id="openButton" type="button">
+      OPEN INVITATION
+    </button>
+  </div>
+</section>
 
-  <!-- Main invitation -->
-  <main class="site" id="site">
+<!-- CURTAINS -->
+<div class="curtain left" id="curtainLeft"></div>
+<div class="curtain right" id="curtainRight"></div>
 
-    <header class="topbar">
-      <div class="brand">A W <span style="color:var(--gold)">&amp;</span> F S</div>
-      <div class="topbar-note">THE WEDDING CELEBRATION · 2026</div>
-    </header>
+<!-- MAIN INVITATION: all on the same page -->
+<main class="site" id="site">
 
-    <section class="hero">
-      <!-- Flying pigeons -->
-      <div class="pigeon one" aria-hidden="true">
-        <svg viewBox="0 0 100 65">
-          <path d="M7 43 Q25 29 39 35 Q29 15 13 7 Q41 13 52 31 Q62 22 77 24 Q68 31 66 37 Q80 36 94 44 Q76 43 64 48 Q53 56 39 50 L22 57 L28 48 Z"/>
-        </svg>
-      </div>
+<header class="topbar">
+  <div class="brand">A W <span style="color:var(--gold)">&amp;</span> F S</div>
+  <div class="topbar-note">THE WEDDING CELEBRATION · 2026</div>
+</header>
 
-      <div class="pigeon two" aria-hidden="true">
-        <svg viewBox="0 0 100 65">
-          <path d="M7 43 Q25 29 39 35 Q29 15 13 7 Q41 13 52 31 Q62 22 77 24 Q68 31 66 37 Q80 36 94 44 Q76 43 64 48 Q53 56 39 50 L22 57 L28 48 Z"/>
-        </svg>
-      </div>
+<section class="hero">
+  <div class="pigeon one" aria-hidden="true">
+    <svg viewBox="0 0 100 65">
+      <path d="M7 43 Q25 29 39 35 Q29 15 13 7 Q41 13 52 31 Q62 22 77 24 Q68 31 66 37 Q80 36 94 44 Q76 43 64 48 Q53 56 39 50 L22 57 L28 48 Z"/>
+    </svg>
+  </div>
+  <div class="pigeon two" aria-hidden="true">
+    <svg viewBox="0 0 100 65">
+      <path d="M7 43 Q25 29 39 35 Q29 15 13 7 Q41 13 52 31 Q62 22 77 24 Q68 31 66 37 Q80 36 94 44 Q76 43 64 48 Q53 56 39 50 L22 57 L28 48 Z"/>
+    </svg>
+  </div>
+  <div class="pigeon three" aria-hidden="true">
+    <svg viewBox="0 0 100 65">
+      <path d="M7 43 Q25 29 39 35 Q29 15 13 7 Q41 13 52 31 Q62 22 77 24 Q68 31 66 37 Q80 36 94 44 Q76 43 64 48 Q53 56 39 50 L22 57 L28 48 Z"/>
+    </svg>
+  </div>
 
-      <div class="pigeon three" aria-hidden="true">
-        <svg viewBox="0 0 100 65">
-          <path d="M7 43 Q25 29 39 35 Q29 15 13 7 Q41 13 52 31 Q62 22 77 24 Q68 31 66 37 Q80 36 94 44 Q76 43 64 48 Q53 56 39 50 L22 57 L28 48 Z"/>
-        </svg>
-      </div>
+  <div class="hero-card">
+    <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+    <div class="small-caps">Together With Their Families</div>
 
-      <div class="hero-card page-frame">
-        <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+    <h1>Abdul Wali</h1>
+    <span class="amp">&amp;</span>
+    <h1 style="margin-top:0">Fatima Sajjad</h1>
 
-        <div class="small-caps">Together With Their Families</div>
+    <div class="urdu-names">عبدالولی اور فاطمہ سجاد</div>
+    <div class="ornament">✧ ❦ ✧</div>
 
-        <h1>Abdul Wali</h1>
-        <span class="amp">&amp;</span>
-        <h1 style="margin-top:0">Fatima Sajjad</h1>
+    <p class="invitation-copy">
+      With the blessings of Allah Almighty, we joyfully invite you
+      to share in the beautiful beginning of our new journey together.
+    </p>
 
-        <div class="urdu-names">عبدالولی اور فاطمہ سجاد</div>
+    <div class="date-ribbon">21 — 24 DECEMBER 2026 · LAHORE</div>
 
-        <div class="ornament">✧ ❦ ✧</div>
+    <div class="hero-actions">
+      <a class="action-btn" href="#events">VIEW EVENTS</a>
+      <a class="action-btn" href="#countdown">COUNTDOWN</a>
+    </div>
+  </div>
+</section>
 
-        <p class="invitation-copy">
-          With the blessings of Allah Almighty, we joyfully invite you
-          to share in the beautiful beginning of our new journey together.
-        </p>
+<section class="countdown-section" id="countdown">
+  <div class="small-caps">The Celebration Begins In</div>
+  <h2 class="countdown-title">Counting Down to Our Special Day</h2>
 
-        <div class="date-ribbon">21 — 24 DECEMBER 2026 · LAHORE</div>
+  <div class="countdown" aria-live="polite">
+    <div class="count-unit">
+      <span class="count-number" id="days">000</span>
+      <span class="count-label">DAYS</span>
+    </div>
+    <div class="count-unit">
+      <span class="count-number" id="hours">00</span>
+      <span class="count-label">HOURS</span>
+    </div>
+    <div class="count-unit">
+      <span class="count-number" id="minutes">00</span>
+      <span class="count-label">MINUTES</span>
+    </div>
+    <div class="count-unit">
+      <span class="count-number" id="seconds">00</span>
+      <span class="count-label">SECONDS</span>
+    </div>
+  </div>
 
-        <div class="hero-actions">
-          <a class="action-btn" href="#events">VIEW EVENTS</a>
-          <a class="action-btn" href="#countdown">COUNTDOWN</a>
-        </div>
-      </div>
-    </section>
+  <p id="countdownNote">We can't wait to celebrate with you.</p>
+</section>
 
-    <!-- Countdown to first event -->
-    <section class="countdown-section" id="countdown">
-      <div class="small-caps">The Celebration Begins In</div>
-      <h2 class="countdown-title">Counting Down to Our Special Day</h2>
+<section class="events-section" id="events">
+  <div class="small-caps">Save the Dates</div>
+  <h2 class="section-title">Wedding Celebrations</h2>
+  <p class="section-subtitle">Three special occasions, one beautiful journey.</p>
 
-      <div class="countdown" aria-live="polite">
-        <div class="count-unit">
-          <span class="count-number" id="days">000</span>
-          <span class="count-label">DAYS</span>
-        </div>
-        <div class="count-unit">
-          <span class="count-number" id="hours">00</span>
-          <span class="count-label">HOURS</span>
-        </div>
-        <div class="count-unit">
-          <span class="count-number" id="minutes">00</span>
-          <span class="count-label">MINUTES</span>
-        </div>
-        <div class="count-unit">
-          <span class="count-number" id="seconds">00</span>
-          <span class="count-label">SECONDS</span>
-        </div>
-      </div>
+  <div class="event-tabs" role="tablist" aria-label="Wedding events">
+    <button class="event-tab active" data-event="0" role="tab"
+            aria-selected="true" type="button">NIKAH &amp; MEHNDI</button>
+    <button class="event-tab" data-event="1" role="tab"
+            aria-selected="false" type="button">BARAAT</button>
+    <button class="event-tab" data-event="2" role="tab"
+            aria-selected="false" type="button">WALIMA</button>
+  </div>
 
-      <p id="countdownNote">We can't wait to celebrate with you.</p>
-    </section>
+  <article class="event-card" id="eventCard" aria-live="polite">
+    <div class="event-number" id="eventNumber">EVENT I</div>
+    <h3 class="event-name" id="eventName">Nikah &amp; Mehndi</h3>
+    <div class="event-urdu" id="eventUrdu">نکاح اور مہندی</div>
+    <div class="event-date" id="eventDate">MONDAY · 21 DECEMBER 2026</div>
+    <div class="event-time" id="eventTime">5:30 PM – 10:30 PM</div>
 
-    <!-- Event details -->
-    <section class="events-section" id="events">
-      <div class="small-caps">Save the Dates</div>
-      <h2 class="section-title">Wedding Celebrations</h2>
-      <p class="section-subtitle">Three special occasions, one beautiful journey.</p>
+    <div class="event-divider"></div>
 
-      <div class="event-tabs" role="tablist" aria-label="Wedding events">
-        <button class="event-tab active" data-event="0" role="tab"
-                aria-selected="true" type="button">NIKAH &amp; MEHNDI</button>
-        <button class="event-tab" data-event="1" role="tab"
-                aria-selected="false" type="button">BARAAT</button>
-        <button class="event-tab" data-event="2" role="tab"
-                aria-selected="false" type="button">WALIMA</button>
-      </div>
+    <div class="venue-name" id="venueName">Casperd Farmhouse</div>
+    <div class="venue-detail" id="venueDetail">Lahore, Pakistan</div>
 
-      <article class="event-card" id="eventCard" aria-live="polite">
-        <div class="event-number" id="eventNumber">EVENT I</div>
-        <h3 class="event-name" id="eventName">Nikah &amp; Mehndi</h3>
-        <div class="event-urdu" id="eventUrdu">نکاح اور مہندی</div>
-        <div class="event-date" id="eventDate">MONDAY · 21 DECEMBER 2026</div>
-        <div class="event-time" id="eventTime">5:30 PM – 10:30 PM</div>
+    <div class="event-map">
+      <a class="action-btn" id="mapLink" target="_blank"
+         rel="noopener noreferrer"
+         href="https://www.google.com/maps/search/?api=1&query=Casperd+Farmhouse+Lahore">
+        OPEN GOOGLE MAPS
+      </a>
+      <button class="action-btn" id="nextEvent" type="button">NEXT EVENT →</button>
+    </div>
+  </article>
 
-        <div class="event-divider"></div>
+  <div class="event-pagination" aria-label="Select an event">
+    <button class="event-dot active" data-event="0" aria-label="Nikah and Mehndi" type="button"></button>
+    <button class="event-dot" data-event="1" aria-label="Baraat" type="button"></button>
+    <button class="event-dot" data-event="2" aria-label="Walima" type="button"></button>
+  </div>
+</section>
 
-        <div class="venue-name" id="venueName">Casperd Farmhouse</div>
-        <div class="venue-detail" id="venueDetail">Lahore, Pakistan</div>
+<section class="closing">
+  <div class="closing-card">
+    <div class="small-caps">Your Presence Is Our Blessing</div>
+    <div class="closing-names">Abdul Wali &amp; Fatima Sajjad</div>
+    <div class="closing-urdu">آپ کی شرکت ہمارے لیے باعثِ مسرت ہوگی</div>
+    <div class="ornament">✧ ❦ ✧</div>
+    <p class="closing-note">
+      We look forward to celebrating these unforgettable moments with you.
+    </p>
+    <div style="margin-top:25px">
+      <button class="action-btn" id="replayButton" type="button">
+        REPLAY THE OPENING
+      </button>
+    </div>
+  </div>
+</section>
 
-        <div class="event-map">
-          <a class="action-btn" id="mapLink" target="_blank"
-             rel="noopener noreferrer"
-             href="https://www.google.com/maps/search/?api=1&query=Casperd+Farmhouse+Lahore">
-            OPEN GOOGLE MAPS
-          </a>
-          <button class="action-btn" id="nextEvent" type="button">NEXT EVENT →</button>
-        </div>
-      </article>
+<footer>
+  MADE WITH <span class="footer-heart">♥</span> FOR A BEAUTIFUL BEGINNING · 2026
+</footer>
 
-      <div class="event-pagination" aria-label="Select an event">
-        <button class="event-dot active" data-event="0" aria-label="Nikah and Mehndi" type="button"></button>
-        <button class="event-dot" data-event="1" aria-label="Baraat" type="button"></button>
-        <button class="event-dot" data-event="2" aria-label="Walima" type="button"></button>
-      </div>
-    </section>
+</main>
 
-    <!-- Closing message -->
-    <section class="closing">
-      <div class="closing-card page-frame">
-        <div class="small-caps">Your Presence Is Our Blessing</div>
-        <div class="closing-names">Abdul Wali &amp; Fatima Sajjad</div>
-        <div class="closing-urdu">آپ کی شرکت ہمارے لیے باعثِ مسرت ہوگی</div>
-        <div class="ornament">✧ ❦ ✧</div>
-        <p class="closing-note">
-          We look forward to celebrating these unforgettable moments with you.
-        </p>
-        <div style="margin-top:25px">
-          <button class="action-btn" id="replayButton" type="button">
-            REPLAY THE OPENING
-          </button>
-        </div>
-      </div>
-    </section>
+<script>
+const events = [
+  {
+    number: "EVENT I",
+    name: "Nikah & Mehndi",
+    urdu: "نکاح اور مہندی",
+    date: "MONDAY · 21 DECEMBER 2026",
+    start: "2026-12-21T17:30:00+05:00",
+    time: "5:30 PM – 10:30 PM",
+    venue: "Casperd Farmhouse",
+    detail: "Lahore, Pakistan",
+    map: "Casperd Farmhouse Lahore"
+  },
+  {
+    number: "EVENT II",
+    name: "Baraat",
+    urdu: "بارات",
+    date: "WEDNESDAY · 23 DECEMBER 2026",
+    start: "2026-12-23T18:00:00+05:00",
+    time: "6:00 PM – 10:00 PM",
+    venue: "The Ball Room",
+    detail: "Raiwind Hall No. 2, Lahore",
+    map: "The Ball Room Raiwind Hall No. 2 Lahore"
+  },
+  {
+    number: "EVENT III",
+    name: "Walima",
+    urdu: "ولیمہ",
+    date: "THURSDAY · 24 DECEMBER 2026",
+    start: "2026-12-24T18:00:00+05:00",
+    time: "6:00 PM – 10:00 PM",
+    venue: "The Ball Room",
+    detail: "Raiwind Hall No. 1, Lahore",
+    map: "The Ball Room Raiwind Hall No. 1 Lahore"
+  }
+];
 
-    <footer>
-      MADE WITH <span class="footer-heart">♥</span> FOR A BEAUTIFUL BEGINNING · 2026
-    </footer>
-  </main>
+let currentEvent = 0;
+let tourTimer = null;
+let tourActive = false;
+let invitationOpened = false;
 
-  <script>
-    /* Wedding event information */
-    const events = [
-      {
-        number: "EVENT I",
-        name: "Nikah & Mehndi",
-        urdu: "نکاح اور مہندی",
-        date: "MONDAY · 21 DECEMBER 2026",
-        start: "2026-12-21T17:30:00+05:00",
-        time: "5:30 PM – 10:30 PM",
-        venue: "Casperd Farmhouse",
-        detail: "Lahore, Pakistan",
-        map: "Casperd Farmhouse Lahore"
-      },
-      {
-        number: "EVENT II",
-        name: "Baraat",
-        urdu: "بارات",
-        date: "WEDNESDAY · 23 DECEMBER 2026",
-        start: "2026-12-23T18:00:00+05:00",
-        time: "6:00 PM – 10:00 PM",
-        venue: "The Ball Room",
-        detail: "Raiwind Hall No. 2, Lahore",
-        map: "The Ball Room Raiwind Hall No. 2 Lahore"
-      },
-      {
-        number: "EVENT III",
-        name: "Walima",
-        urdu: "ولیمہ",
-        date: "THURSDAY · 24 DECEMBER 2026",
-        start: "2026-12-24T18:00:00+05:00",
-        time: "6:00 PM – 10:00 PM",
-        venue: "The Ball Room",
-        detail: "Raiwind Hall No. 1, Lahore",
-        map: "The Ball Room Raiwind Hall No. 1 Lahore"
+const intro = document.getElementById("intro");
+const site = document.getElementById("site");
+const curtainLeft = document.getElementById("curtainLeft");
+const curtainRight = document.getElementById("curtainRight");
+
+/* Ribbon opens first, then curtains, then the invitation on the same page */
+function openInvitation() {
+  if (invitationOpened) return;
+  invitationOpened = true;
+
+  intro.classList.add("opening");
+
+  setTimeout(() => {
+    curtainLeft.classList.add("open-left");
+    curtainRight.classList.add("open-right");
+  }, 650);
+
+  setTimeout(() => {
+    site.classList.add("visible");
+  }, 1150);
+
+  setTimeout(() => {
+    intro.classList.add("finished");
+  }, 2550);
+}
+
+document.getElementById("openButton")
+  .addEventListener("click", openInvitation);
+
+document.getElementById("untieRibbon")
+  .addEventListener("click", openInvitation);
+
+document.getElementById("untieRibbon")
+  .addEventListener("keydown", function(event) {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openInvitation();
+    }
+  });
+
+/* Replay the opening */
+document.getElementById("replayButton").addEventListener("click", () => {
+  stopTour();
+  invitationOpened = false;
+
+  intro.classList.remove("finished", "opening");
+  curtainLeft.classList.remove("open-left");
+  curtainRight.classList.remove("open-right");
+  site.classList.remove("visible");
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+/* Event cards */
+function showEvent(index) {
+  currentEvent = (index + events.length) % events.length;
+  const event = events[currentEvent];
+  const card = document.getElementById("eventCard");
+
+  card.style.animation = "none";
+  void card.offsetWidth;
+  card.style.animation = "";
+
+  document.getElementById("eventNumber").textContent = event.number;
+  document.getElementById("eventName").textContent = event.name;
+  document.getElementById("eventUrdu").textContent = event.urdu;
+  document.getElementById("eventDate").textContent = event.date;
+  document.getElementById("eventTime").textContent = event.time;
+  document.getElementById("venueName").textContent = event.venue;
+  document.getElementById("venueDetail").textContent = event.detail;
+
+  document.getElementById("mapLink").href =
+    "https://www.google.com/maps/search/?api=1&query=" +
+    encodeURIComponent(event.map);
+
+  document.querySelectorAll(".event-tab").forEach(button => {
+    const active = Number(button.dataset.event) === currentEvent;
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-selected", String(active));
+  });
+
+  document.querySelectorAll(".event-dot").forEach(button => {
+    button.classList.toggle(
+      "active",
+      Number(button.dataset.event) === currentEvent
+    );
+  });
+}
+
+document.querySelectorAll("[data-event]").forEach(button => {
+  button.addEventListener("click", () => {
+    stopTour();
+    showEvent(Number(button.dataset.event));
+  });
+});
+
+document.getElementById("nextEvent").addEventListener("click", () => {
+  stopTour();
+  showEvent(currentEvent + 1);
+});
+
+/* Countdown to Nikah and Mehndi */
+function updateCountdown() {
+  const target = new Date(events[0].start).getTime();
+  const difference = target - Date.now();
+  const note = document.getElementById("countdownNote");
+
+  if (difference <= 0) {
+    document.getElementById("days").textContent = "000";
+    document.getElementById("hours").textContent = "00";
+    document.getElementById("minutes").textContent = "00";
+    document.getElementById("seconds").textContent = "00";
+    note.textContent = "The celebration day has arrived!";
+    return;
+  }
+
+  const days = Math.floor(difference / 86400000);
+  const hours = Math.floor((difference / 3600000) % 24);
+  const minutes = Math.floor((difference / 60000) % 60);
+  const seconds = Math.floor((difference / 1000) % 60);
+
+  document.getElementById("days").textContent = String(days).padStart(3, "0");
+  document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+  document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
+  document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+
+  note.textContent = "We can't wait to celebrate with you.";
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+/* Automatic event tour while the events section is visible */
+function stopTour() {
+  if (tourTimer !== null) {
+    clearInterval(tourTimer);
+    tourTimer = null;
+  }
+  tourActive = false;
+}
+
+function startTour() {
+  stopTour();
+  tourActive = true;
+  showEvent(0);
+
+  tourTimer = setInterval(() => {
+    if (tourActive) showEvent(currentEvent + 1);
+  }, 5000);
+}
+
+if ("IntersectionObserver" in window) {
+  const eventObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !tourActive) {
+        startTour();
+      } else if (!entry.isIntersecting && tourActive) {
+        stopTour();
       }
-    ];
-
-    let currentEvent = 0;
-    let tourTimer = null;
-    let tourActive = false;
-    let invitationOpened = false;
-
-    const intro = document.getElementById("intro");
-    const site = document.getElementById("site");
-    const curtainLeft = document.getElementById("curtainLeft");
-    const curtainRight = document.getElementById("curtainRight");
-
-    /* Ribbon first, then curtains, then invitation */
-    function openInvitation() {
-      if (invitationOpened) return;
-      invitationOpened = true;
-
-      intro.classList.add("opening");
-
-      // Bow and ribbon release first
-      setTimeout(() => {
-        curtainLeft.classList.add("open-left");
-        curtainRight.classList.add("open-right");
-      }, 650);
-
-      // Reveal the invitation after the curtains begin to open
-      setTimeout(() => {
-        site.classList.add("visible");
-      }, 1150);
-
-      // Remove the opening screen after the animation
-      setTimeout(() => {
-        intro.classList.add("finished");
-      }, 2550);
-    }
-
-    document.getElementById("openButton")
-      .addEventListener("click", openInvitation);
-
-    document.getElementById("untieRibbon")
-      .addEventListener("click", openInvitation);
-
-    document.getElementById("untieRibbon")
-      .addEventListener("keydown", function(event) {
-        if (event.key === "Enter" || event.key === " ") {
-          event.preventDefault();
-          openInvitation();
-        }
-      });
-
-    /* Replay the opening animation */
-    document.getElementById("replayButton").addEventListener("click", () => {
-      stopTour();
-      invitationOpened = false;
-
-      intro.classList.remove("finished", "opening");
-      curtainLeft.classList.remove("open-left");
-      curtainRight.classList.remove("open-right");
-      site.classList.remove("visible");
-
-      window.scrollTo({ top: 0, behavior: "smooth" });
     });
+  }, { threshold: 0.25 });
 
-    /* Event cards and navigation */
-    function showEvent(index) {
-      currentEvent = (index + events.length) % events.length;
-      const event = events[currentEvent];
+  eventObserver.observe(document.getElementById("events"));
+}
 
-      const card = document.getElementById("eventCard");
-
-      // Restart card entrance animation
-      card.style.animation = "none";
-      void card.offsetWidth;
-      card.style.animation = "";
-
-      document.getElementById("eventNumber").textContent = event.number;
-      document.getElementById("eventName").textContent = event.name;
-      document.getElementById("eventUrdu").textContent = event.urdu;
-      document.getElementById("eventDate").textContent = event.date;
-      document.getElementById("eventTime").textContent = event.time;
-      document.getElementById("venueName").textContent = event.venue;
-      document.getElementById("venueDetail").textContent = event.detail;
-
-      const mapUrl = "https://www.google.com/maps/search/?api=1&query="
-        + encodeURIComponent(event.map);
-
-      document.getElementById("mapLink").href = mapUrl;
-
-      document.querySelectorAll(".event-tab").forEach(button => {
-        const active = Number(button.dataset.event) === currentEvent;
-        button.classList.toggle("active", active);
-        button.setAttribute("aria-selected", String(active));
-      });
-
-      document.querySelectorAll(".event-dot").forEach(button => {
-        button.classList.toggle(
-          "active",
-          Number(button.dataset.event) === currentEvent
-        );
-      });
-    }
-
-    document.querySelectorAll("[data-event]").forEach(button => {
-      button.addEventListener("click", () => {
-        showEvent(Number(button.dataset.event));
-      });
-    });
-
-    document.getElementById("nextEvent").addEventListener("click", () => {
-      showEvent(currentEvent + 1);
-    });
-
-    /* Countdown to the first event */
-    function updateCountdown() {
-      const target = new Date(events[0].start).getTime();
-      const now = Date.now();
-      const difference = target - now;
-      const note = document.getElementById("countdownNote");
-
-      if (difference <= 0) {
-        document.getElementById("days").textContent = "000";
-        document.getElementById("hours").textContent = "00";
-        document.getElementById("minutes").textContent = "00";
-        document.getElementById("seconds").textContent = "00";
-        note.textContent = "The celebration day has arrived!";
-        return;
-      }
-
-      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((difference / (1000 * 60)) % 60);
-      const seconds = Math.floor((difference / 1000) % 60);
-
-      document.getElementById("days").textContent = String(days).padStart(3, "0");
-      document.getElementById("hours").textContent = String(hours).padStart(2, "0");
-      document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
-      document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
-
-      note.textContent = "We can't wait to celebrate with you.";
-    }
-
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-
-    /* Automatic tour through all three event cards */
-    function stopTour() {
-      if (tourTimer !== null) {
-        clearInterval(tourTimer);
-        tourTimer = null;
-      }
-      tourActive = false;
-    }
-
-    function startTour() {
-      stopTour();
-      tourActive = true;
-      showEvent(0);
-
-      tourTimer = setInterval(() => {
-        if (!tourActive) return;
-        showEvent(currentEvent + 1);
-      }, 5000);
-    }
-
-    // Begin the event tour when the visitor reaches the events section.
-    if ("IntersectionObserver" in window) {
-      const eventObserver = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting && !tourActive) {
-            startTour();
-          } else if (!entry.isIntersecting && tourActive) {
-            stopTour();
-          }
-        });
-      }, { threshold: 0.25 });
-
-      eventObserver.observe(document.getElementById("events"));
-    }
-
-    // Pause the automatic tour while the visitor interacts with the tabs.
-    document.querySelectorAll(".event-tab, .event-dot, #nextEvent")
-      .forEach(button => {
-        button.addEventListener("click", () => {
-          stopTour();
-        });
-      });
-
-    // Show the first event initially.
-    showEvent(0);
-  </script>
+showEvent(0);
+</script>
 
 </body>
 </html>
