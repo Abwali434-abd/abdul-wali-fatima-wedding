@@ -4,18 +4,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Abdul Wali & Fatima Sajjad | A Royal Wedding</title>
+<title>Abdul Wali & Fatima Sajjad — Wedding Invitation</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Marcellus&family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
 
 <style>
 :root {
   --ivory: #fffdf7;
+  --cream: #f8f0df;
   --gold: #c9a45c;
-  --dark-gold: #98743b;
-  --green: #123d30;
-  --deep-green: #082a21;
-  --text: #314238;
+  --gold-light: #ead49a;
+  --gold-dark: #94713b;
+  --green: #164734;
+  --deep-green: #092b21;
+  --text: #34473b;
 }
 
 * {
@@ -43,178 +47,177 @@ button {
   font-family: inherit;
 }
 
-/* MAIN INVITATION */
-
-#invitation {
-  min-height: 100vh;
-  opacity: 0;
-  transition: opacity 1.5s ease;
-}
-
-#invitation.visible {
-  opacity: 1;
-}
+/* ========== WELCOME / HERO ========== */
 
 .hero {
   min-height: 100vh;
-  padding: 70px 20px;
+  padding: 75px 22px;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
   position: relative;
+  text-align: center;
   overflow: hidden;
   background:
-    radial-gradient(ellipse at center, #ffffff 0%, #fffdf7 58%, #f2e7d1 100%);
+    radial-gradient(ellipse at center, #ffffff 0%, #fffdf7 55%, #f0e3c8 100%);
 }
 
-.hero::before,
-.hero::after {
+.hero::before {
   content: "";
   position: absolute;
   inset: 18px;
-  border: 1px solid rgba(201,164,92,.65);
+  border: 1px solid rgba(201,164,92,.7);
   pointer-events: none;
 }
 
 .hero::after {
-  inset: 26px;
-  border-color: rgba(201,164,92,.25);
+  content: "";
+  position: absolute;
+  inset: 27px;
+  border: 1px solid rgba(201,164,92,.28);
+  pointer-events: none;
 }
 
 .hero-content {
-  max-width: 850px;
+  max-width: 900px;
+  width: 100%;
   position: relative;
   z-index: 2;
-  animation: riseIn 1.8s ease both;
+  animation: gracefulRise 1.6s ease both;
 }
 
 .eyebrow {
-  color: var(--dark-gold);
+  font-family: "Marcellus", serif;
+  font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 5px;
-  font-family: Marcellus, serif;
-  font-size: 12px;
-  margin-bottom: 25px;
+  color: var(--gold-dark);
+  margin-bottom: 24px;
 }
 
 .hero h1 {
   font-family: "Great Vibes", cursive;
-  color: var(--green);
-  font-size: clamp(52px, 9vw, 105px);
+  font-size: clamp(58px, 10vw, 112px);
   font-weight: 400;
   line-height: 1.2;
-  text-shadow: 0 5px 25px rgba(201,164,92,.18);
+  color: var(--green);
+  text-shadow: 0 5px 25px rgba(201,164,92,.16);
 }
 
 .ampersand {
+  font-size: clamp(34px, 5vw, 55px);
   color: var(--gold);
-  font-family: "Cormorant Garamond", serif;
-  font-size: clamp(32px, 5vw, 55px);
-  margin: 4px 0;
+  margin: 0 0 4px;
+}
+
+.urdu-names {
+  font-family: "Noto Nastaliq Urdu", serif;
+  font-size: clamp(23px, 4vw, 34px);
+  line-height: 2.1;
+  color: var(--gold-dark);
+  margin-top: 10px;
 }
 
 .ornament {
   color: var(--gold);
-  letter-spacing: 9px;
+  letter-spacing: 8px;
   font-size: 24px;
-  margin: 20px 0;
+  margin: 19px 0;
 }
 
 .hero-subtitle {
   font-size: clamp(19px, 3vw, 27px);
-  letter-spacing: 2px;
   line-height: 1.7;
+  letter-spacing: 1px;
 }
 
 .urdu {
   font-family: "Noto Nastaliq Urdu", serif;
-  color: var(--dark-gold);
-  font-size: 21px;
+  color: var(--gold-dark);
+  font-size: 20px;
   line-height: 2.5;
-  margin: 16px auto;
+  margin: 15px auto;
 }
 
 .gold-button {
+  display: inline-block;
   border: 1px solid var(--gold);
   background: var(--green);
   color: white;
-  border-radius: 2px;
-  padding: 14px 28px;
-  font-family: Marcellus, serif;
+  padding: 14px 25px;
+  cursor: pointer;
+  font-family: "Marcellus", serif;
+  font-size: 11px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  font-size: 11px;
-  cursor: pointer;
   transition: .3s ease;
 }
 
 .gold-button:hover {
-  background: var(--dark-gold);
+  background: var(--gold-dark);
+  box-shadow: 0 8px 24px #c9a45c33;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px #c9a45c33;
 }
 
 .hero .gold-button {
   margin-top: 22px;
 }
 
-/* NAVIGATION */
+/* ========== NAVIGATION ========== */
 
 .navigation {
   position: sticky;
   top: 0;
-  z-index: 20;
+  z-index: 30;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 8px;
-  padding: 14px 12px;
+  gap: 7px;
+  padding: 13px 10px;
   background: rgba(255,253,247,.96);
   backdrop-filter: blur(12px);
-  border-top: 1px solid #c9a45c55;
-  border-bottom: 1px solid #c9a45c55;
+  border-top: 1px solid #c9a45c66;
+  border-bottom: 1px solid #c9a45c66;
 }
 
 .nav-btn {
   background: transparent;
   border: 1px solid transparent;
-  padding: 10px 14px;
+  padding: 10px 13px;
   color: var(--green);
   cursor: pointer;
+  font-family: "Marcellus", serif;
+  font-size: 10px;
   letter-spacing: 1px;
-  font-family: Marcellus, serif;
-  font-size: 11px;
   transition: .25s;
 }
 
 .nav-btn:hover,
 .nav-btn.active {
+  background: var(--cream);
   border-color: var(--gold);
-  background: #f6efdf;
 }
 
 .auto-btn {
-  border: 1px solid var(--gold);
   background: var(--green);
   color: white;
-  padding: 10px 14px;
+  border: 1px solid var(--gold);
+  padding: 10px 13px;
   cursor: pointer;
-  font-family: Marcellus, serif;
+  font-family: "Marcellus", serif;
   font-size: 10px;
   letter-spacing: 1px;
 }
 
-/* PAGES */
+/* ========== EVENT PAGES ========== */
 
 .page {
   display: none;
-  min-height: 80vh;
-  padding: 75px 20px 90px;
-  background:
-    radial-gradient(ellipse at top, #ffffff 0%, var(--ivory) 65%);
-  animation: pageIn .8s ease both;
+  min-height: 78vh;
+  padding: 75px 20px 85px;
+  background: radial-gradient(ellipse at top, #fff 0%, var(--ivory) 70%);
+  animation: pageReveal .8s ease both;
 }
 
 .page.active {
@@ -224,34 +227,35 @@ button {
 .page-inner {
   max-width: 850px;
   margin: auto;
+  padding: 40px 22px;
   text-align: center;
-  padding: 35px 20px;
-  border: 1px solid #c9a45c88;
-  outline: 1px solid #c9a45c33;
+  border: 1px solid #c9a45c99;
+  outline: 1px solid #c9a45c35;
   outline-offset: 7px;
   position: relative;
 }
 
 .page-kicker {
-  color: var(--dark-gold);
+  color: var(--gold-dark);
+  font-family: "Marcellus", serif;
+  font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 5px;
-  font: 12px Marcellus, serif;
-  margin-bottom: 22px;
+  margin-bottom: 23px;
 }
 
 .page h2 {
   color: var(--green);
-  font-size: clamp(37px, 7vw, 65px);
+  font-size: clamp(39px, 7vw, 67px);
   font-weight: 500;
   line-height: 1.2;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
 }
 
 .event-date {
-  color: var(--dark-gold);
-  font-size: 27px;
-  margin: 20px 0 8px;
+  font-size: clamp(22px, 4vw, 29px);
+  color: var(--gold-dark);
+  margin: 20px 0 7px;
 }
 
 .event-time {
@@ -260,46 +264,31 @@ button {
 }
 
 .detail-label {
-  color: var(--dark-gold);
+  color: var(--gold-dark);
+  font-family: "Marcellus", serif;
+  font-size: 11px;
+  letter-spacing: 4px;
   text-transform: uppercase;
-  letter-spacing: 3px;
-  font: 11px Marcellus, serif;
   margin: 22px 0 9px;
 }
 
 .venue {
-  font-size: 25px;
+  font-size: clamp(24px, 4vw, 32px);
   line-height: 1.5;
   color: var(--green);
 }
 
 .venue-note {
-  font-size: 19px;
-  margin-top: 5px;
-}
-
-.map-link {
-  display: inline-block;
-  margin-top: 23px;
-  padding: 12px 22px;
-  text-decoration: none;
-  border: 1px solid var(--gold);
-  color: var(--green);
-  letter-spacing: 1px;
-  font-size: 15px;
-  transition: .3s;
-}
-
-.map-link:hover {
-  color: white;
-  background: var(--green);
+  font-size: 20px;
+  margin-top: 4px;
 }
 
 .countdown-title {
   margin-top: 35px;
-  font: 12px Marcellus, serif;
+  font-family: "Marcellus", serif;
+  font-size: 11px;
   letter-spacing: 4px;
-  color: var(--dark-gold);
+  color: var(--gold-dark);
 }
 
 .countdown {
@@ -311,10 +300,10 @@ button {
 }
 
 .time-box {
-  min-width: 76px;
-  padding: 15px 10px;
-  background: #f8f1e3;
-  border: 1px solid #d8c08b;
+  min-width: 75px;
+  padding: 14px 10px;
+  background: #f8f0df;
+  border: 1px solid #d6bd82;
 }
 
 .time-box strong {
@@ -326,43 +315,64 @@ button {
 
 .time-box span {
   display: block;
-  margin-top: 4px;
-  color: var(--dark-gold);
-  font: 9px Marcellus, serif;
+  color: var(--gold-dark);
+  font-family: "Marcellus", serif;
+  font-size: 9px;
   letter-spacing: 2px;
+  margin-top: 4px;
+}
+
+.map-link {
+  display: inline-block;
+  margin-top: 22px;
+  padding: 12px 20px;
+  text-decoration: none;
+  border: 1px solid var(--gold);
+  color: var(--green);
+  font-size: 16px;
+  transition: .3s;
+}
+
+.map-link:hover {
+  background: var(--green);
+  color: white;
 }
 
 .event-note {
+  max-width: 650px;
+  margin: 28px auto 0;
   font-size: 21px;
   font-style: italic;
-  margin-top: 28px;
-  line-height: 1.7;
+  line-height: 1.8;
 }
 
 .page-controls {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 12px;
   margin-top: 38px;
-  flex-wrap: wrap;
 }
+
+/* ========== FOOTER ========== */
 
 footer {
+  padding: 36px 20px;
   text-align: center;
-  padding: 35px 20px;
   background: var(--deep-green);
-  color: #f8ebce;
+  color: #f7e8c7;
   letter-spacing: 2px;
-  font-size: 15px;
+  font-size: 13px;
 }
 
-footer .signature {
-  font: 34px "Great Vibes", cursive;
-  color: #e1c47f;
+.footer-names {
+  font-family: "Great Vibes", cursive;
+  font-size: 37px;
+  color: var(--gold-light);
   margin-bottom: 8px;
 }
 
-/* CURTAIN INTRO */
+/* ========== ROYAL CURTAIN INTRO ========== */
 
 #intro {
   position: fixed;
@@ -378,43 +388,43 @@ footer .signature {
   top: 0;
   left: 0;
   right: 0;
-  height: 15px;
+  height: 16px;
   background: linear-gradient(
     to bottom,
-    #f5dfa1,
-    #98743b 45%,
-    #f0d78c 70%,
-    #6c4c20
+    #fff0bf,
+    #b58a43 35%,
+    #f4dc99 65%,
+    #795525
   );
-  box-shadow: 0 4px 15px #0007;
+  box-shadow: 0 4px 16px #0008;
 }
 
 .curtain {
   position: absolute;
+  z-index: 4;
   top: 0;
   bottom: 0;
   width: 51%;
-  z-index: 4;
-  transition: transform 2.5s cubic-bezier(.77,0,.18,1);
+  transition: transform 2.55s cubic-bezier(.77,0,.18,1);
   background:
     repeating-linear-gradient(
       90deg,
-      rgba(0,0,0,.17) 0px,
-      rgba(255,255,255,.07) 10px,
-      rgba(0,0,0,.15) 25px,
-      transparent 40px,
-      rgba(0,0,0,.13) 54px
+      rgba(0,0,0,.20) 0,
+      rgba(255,255,255,.06) 9px,
+      rgba(0,0,0,.15) 22px,
+      transparent 38px,
+      rgba(0,0,0,.12) 54px
     ),
     linear-gradient(
       90deg,
-      #061f18 0%,
-      #15513d 18%,
-      #0a3327 38%,
-      #1a5a43 54%,
-      #0b3025 75%,
-      #08251d 100%
+      #071e17 0%,
+      #174c39 17%,
+      #0b3326 36%,
+      #1b5941 53%,
+      #0d3528 73%,
+      #062219 100%
     );
-  box-shadow: inset 0 0 50px #0007;
+  box-shadow: inset 0 0 55px #0007;
 }
 
 .curtain::before {
@@ -422,14 +432,8 @@ footer .signature {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 10px;
-  background: linear-gradient(
-    90deg,
-    #775323,
-    #f5d98b,
-    #98743b
-  );
-  opacity: .9;
+  width: 8px;
+  background: linear-gradient(90deg, #775323, #f4d98e, #98743b);
 }
 
 .curtain::after {
@@ -437,18 +441,13 @@ footer .signature {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 35px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(0,0,0,.22),
-    transparent
-  );
+  width: 34px;
+  background: linear-gradient(90deg, transparent, #0003, transparent);
 }
 
 .curtain.left {
   left: 0;
-  border-right: 2px solid #c9a45c;
+  border-right: 2px solid var(--gold);
 }
 
 .curtain.left::before {
@@ -456,12 +455,12 @@ footer .signature {
 }
 
 .curtain.left::after {
-  right: 10px;
+  right: 9px;
 }
 
 .curtain.right {
   right: 0;
-  border-left: 2px solid #c9a45c;
+  border-left: 2px solid var(--gold);
 }
 
 .curtain.right::before {
@@ -469,7 +468,7 @@ footer .signature {
 }
 
 .curtain.right::after {
-  left: 10px;
+  left: 9px;
 }
 
 #intro.open .curtain.left {
@@ -485,28 +484,38 @@ footer .signature {
   inset: 0;
   z-index: 2;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   padding: 25px;
   text-align: center;
-  color: #f8e8bf;
-}
-
-.intro-title {
-  font: clamp(40px, 8vw, 84px) "Great Vibes", cursive;
-  line-height: 1.3;
-  text-shadow: 0 0 35px #c9a45c44;
+  color: #f8e7bd;
 }
 
 .intro-small {
-  font: 11px Marcellus, serif;
+  font-family: "Marcellus", serif;
   text-transform: uppercase;
-  letter-spacing: 5px;
-  color: #e0c47f;
-  margin-bottom: 22px;
+  letter-spacing: 4px;
+  font-size: 11px;
+  color: var(--gold-light);
+  margin-bottom: 20px;
 }
 
-/* RIBBON GATE */
+.intro-title {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(45px, 8vw, 84px);
+  line-height: 1.35;
+  text-shadow: 0 0 35px #c9a45c55;
+}
+
+.intro-urdu {
+  font-family: "Noto Nastaliq Urdu", serif;
+  font-size: clamp(19px, 4vw, 27px);
+  color: var(--gold-light);
+  line-height: 2.4;
+  margin-top: 12px;
+}
+
+/* ========== RIBBON AND BOW ========== */
 
 #ribbonGate {
   position: absolute;
@@ -526,23 +535,23 @@ footer .signature {
 }
 
 .ribbon-card {
-  width: min(390px, 88vw);
-  padding: 34px 20px 28px;
   position: relative;
+  width: min(390px, 88vw);
+  padding: 33px 20px 29px;
   text-align: center;
-  color: #fff4d4;
-  background: linear-gradient(145deg, #123f30ee, #08271fee);
-  border: 1px solid #d8b86f;
-  box-shadow: 0 15px 60px #0008, inset 0 0 25px #d9bb6a12;
+  color: #fff0cb;
+  background: linear-gradient(145deg, rgba(18,63,47,.96), rgba(6,35,26,.97));
+  border: 1px solid #d7b76b;
+  box-shadow: 0 15px 60px #0008, inset 0 0 30px #d9bb6a14;
 }
 
 .ribbon-card::before,
 .ribbon-card::after {
-  content: "✦";
+  content: "✦  ❦  ✦";
   display: block;
-  color: #e7c77e;
-  letter-spacing: 8px;
-  font-size: 17px;
+  color: var(--gold-light);
+  letter-spacing: 5px;
+  font-size: 15px;
 }
 
 .ribbon-card::before {
@@ -550,41 +559,45 @@ footer .signature {
 }
 
 .ribbon-card::after {
-  margin-top: 18px;
+  margin-top: 19px;
 }
 
 .ribbon-heading {
-  font: 11px Marcellus, serif;
+  font-family: "Marcellus", serif;
+  font-size: 11px;
   letter-spacing: 4px;
-  color: #e7c77e;
+  color: var(--gold-light);
   text-transform: uppercase;
 }
 
 .ribbon-message {
-  font: 31px "Great Vibes", cursive;
-  margin: 12px 0 18px;
+  font-family: "Great Vibes", cursive;
+  font-size: 34px;
+  margin: 12px 0 15px;
 }
 
 .ribbon-instruction {
+  color: #f3e3c0;
   font-size: 16px;
-  color: #f1dfb8;
-  margin-bottom: 20px;
+  margin-bottom: 21px;
 }
 
 #untieRibbon {
-  padding: 12px 19px;
+  padding: 13px 18px;
   cursor: pointer;
-  color: #18392c;
-  background: linear-gradient(135deg, #f7e7b6, #c9a45c);
-  border: 1px solid #fff0c6;
-  font: 10px Marcellus, serif;
+  border: 1px solid #fff0c4;
+  color: #163b2d;
+  background: linear-gradient(135deg, #f7e8b8, #c9a45c);
+  font-family: "Marcellus", serif;
+  font-size: 10px;
   letter-spacing: 2px;
   text-transform: uppercase;
   box-shadow: 0 4px 15px #0003;
+  transition: .3s;
 }
 
 #untieRibbon:hover {
-  filter: brightness(1.1);
+  filter: brightness(1.12);
   transform: translateY(-2px);
 }
 
@@ -594,25 +607,25 @@ footer .signature {
   pointer-events: none;
   background: linear-gradient(
     90deg,
-    #8c642e,
-    #f5df9d 25%,
+    #89622d,
+    #f8e5a8 24%,
     #c49b4d 48%,
-    #f6e6b4 65%,
+    #f8e6b3 67%,
     #98713a
   );
-  box-shadow: 0 4px 12px #0005;
+  box-shadow: 0 4px 12px #0006;
 }
 
 .ribbon-band.horizontal {
-  height: 17px;
+  height: 16px;
   width: 100%;
-  left: 0;
   top: 50%;
+  left: 0;
   transform: translateY(-50%);
 }
 
 .ribbon-band.vertical {
-  width: 17px;
+  width: 16px;
   height: 100%;
   top: 0;
   left: 50%;
@@ -624,9 +637,9 @@ footer .signature {
   z-index: 9;
   top: 50%;
   left: 50%;
-  width: 74px;
-  height: 62px;
-  transform: translate(-50%, -50%);
+  width: 76px;
+  height: 64px;
+  transform: translate(-50%,-50%);
   pointer-events: none;
   filter: drop-shadow(0 5px 5px #0005);
 }
@@ -636,10 +649,10 @@ footer .signature {
   content: "";
   position: absolute;
   top: 7px;
-  width: 34px;
-  height: 35px;
-  background: linear-gradient(135deg, #f6e6b4, #c9a45c 55%, #8c642e);
-  border: 1px solid #f9e9ba;
+  width: 35px;
+  height: 36px;
+  background: linear-gradient(135deg, #fff0bf, #d0a553 55%, #8c642e);
+  border: 1px solid #fae9b9;
 }
 
 .ribbon-bow::before {
@@ -656,33 +669,93 @@ footer .signature {
 
 .bow-knot {
   position: absolute;
+  z-index: 2;
   top: 19px;
   left: 27px;
-  width: 21px;
-  height: 23px;
-  z-index: 2;
+  width: 22px;
+  height: 24px;
   border-radius: 4px;
   border: 1px solid #f9e9ba;
   background: linear-gradient(135deg, #fff0bd, #b88a3d);
 }
 
-/* WHITE DOVES */
+#ribbonGate.ribbon-releasing .ribbon-bow {
+  animation: bowRelease .7s cubic-bezier(.55,.05,.8,.4) forwards;
+}
+
+#ribbonGate.ribbon-releasing .ribbon-band.horizontal {
+  animation: ribbonSlipH .65s ease-in forwards;
+}
+
+#ribbonGate.ribbon-releasing .ribbon-band.vertical {
+  animation: ribbonSlipV .65s ease-in forwards;
+}
+
+#ribbonGate.ribbon-releasing .ribbon-card {
+  animation: cardFade .55s ease forwards;
+}
+
+@keyframes bowRelease {
+  0% {
+    transform: translate(-50%,-50%) scale(1);
+    opacity: 1;
+  }
+  45% {
+    transform: translate(-50%,-50%) scale(1.13) rotate(12deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%,-50%) scale(.3) rotate(35deg);
+    opacity: 0;
+  }
+}
+
+@keyframes ribbonSlipH {
+  from {
+    transform: translateY(-50%) scaleX(1);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-50%) scaleX(.02);
+    opacity: 0;
+  }
+}
+
+@keyframes ribbonSlipV {
+  from {
+    transform: translateX(-50%) scaleY(1);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-50%) scaleY(.02);
+    opacity: 0;
+  }
+}
+
+@keyframes cardFade {
+  to {
+    opacity: 0;
+    transform: scale(.96);
+  }
+}
+
+/* ========== FLOATING WHITE PIGEONS ========== */
 
 .dove {
   position: fixed;
   z-index: 5;
-  width: 65px;
-  height: 48px;
-  opacity: .8;
+  width: 62px;
+  height: 46px;
+  opacity: .82;
   pointer-events: none;
-  animation: doveFloat 14s linear infinite;
+  animation: doveFlight 15s linear infinite;
 }
 
 .dove svg {
   width: 100%;
   height: 100%;
   fill: #fff;
-  filter: drop-shadow(0 2px 4px #b69b5a55);
+  filter: drop-shadow(0 2px 5px #b69b5a66);
 }
 
 .dove.one {
@@ -693,25 +766,45 @@ footer .signature {
 .dove.two {
   top: 62%;
   left: -100px;
-  width: 46px;
+  width: 45px;
   animation-delay: 6s;
-  animation-duration: 18s;
+  animation-duration: 19s;
 }
 
-@keyframes doveFloat {
-  0% { transform: translateX(-10vw) translateY(0) rotate(-5deg); }
-  50% { transform: translateX(55vw) translateY(-45px) rotate(5deg); }
-  100% { transform: translateX(120vw) translateY(5px) rotate(-4deg); }
+@keyframes doveFlight {
+  0% {
+    transform: translateX(-5vw) translateY(0) rotate(-5deg);
+  }
+  50% {
+    transform: translateX(55vw) translateY(-42px) rotate(5deg);
+  }
+  100% {
+    transform: translateX(120vw) translateY(5px) rotate(-4deg);
+  }
 }
 
-@keyframes riseIn {
-  from { opacity: 0; transform: translateY(25px); }
-  to { opacity: 1; transform: translateY(0); }
+/* ========== ANIMATIONS ========== */
+
+@keyframes gracefulRise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-@keyframes pageIn {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes pageReveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 520px) {
@@ -736,7 +829,7 @@ footer .signature {
   .auto-btn {
     padding: 9px 8px;
     font-size: 9px;
-    letter-spacing: .5px;
+    letter-spacing: .4px;
   }
 
   .page {
@@ -748,8 +841,8 @@ footer .signature {
   }
 
   .time-box {
-    min-width: 64px;
-    padding: 12px 6px;
+    min-width: 62px;
+    padding: 11px 5px;
   }
 
   .time-box strong {
@@ -757,7 +850,7 @@ footer .signature {
   }
 
   .venue {
-    font-size: 22px;
+    font-size: 23px;
   }
 
   .ribbon-band.horizontal {
@@ -781,14 +874,18 @@ footer .signature {
 
 <body>
 
-<!-- ROYAL CURTAIN + RIBBON INTRO -->
+<!-- ========== RIBBON AND CURTAIN INTRO ========== -->
+
 <div id="intro">
   <div class="curtain-rod"></div>
 
   <div class="intro-center">
     <div>
-      <div class="intro-small">You are cordially invited to celebrate</div>
+      <div class="intro-small">A Royal Wedding Invitation</div>
       <div class="intro-title">Abdul Wali<br>&amp; Fatima Sajjad</div>
+      <div class="intro-urdu" lang="ur" dir="rtl">
+        عبدالولی &amp; فاطمہ سجاد
+      </div>
     </div>
   </div>
 
@@ -803,13 +900,13 @@ footer .signature {
     <div class="ribbon-card">
       <div class="ribbon-heading">A Royal Invitation</div>
       <div class="ribbon-message">A celebration of love</div>
-      <p class="ribbon-instruction">Untie the ribbon to begin the celebration</p>
+      <p class="ribbon-instruction">Untie the golden ribbon to begin</p>
       <button id="untieRibbon" type="button">Untie the Ribbon ✦</button>
     </div>
   </div>
 </div>
 
-<!-- FLOATING WHITE DOVES -->
+<!-- WHITE PIGEONS -->
 <div class="dove one" aria-hidden="true">
   <svg viewBox="0 0 100 70">
     <path d="M7 43 Q20 26 34 33 Q28 18 19 8 Q39 13 48 31 Q61 21 76 26 Q88 29 94 18 Q92 39 74 43 Q63 45 53 40 Q43 57 24 54 Q13 52 7 43Z"/>
@@ -826,7 +923,8 @@ footer .signature {
   </svg>
 </div>
 
-<!-- INVITATION CONTENT -->
+<!-- ========== MAIN INVITATION ========== -->
+
 <div id="invitation">
 
   <section class="hero" id="welcome">
@@ -836,6 +934,10 @@ footer .signature {
       <h1>Abdul Wali</h1>
       <div class="ampersand">&amp;</div>
       <h1>Fatima Sajjad</h1>
+
+      <div class="urdu-names" lang="ur" dir="rtl">
+        عبدالولی &amp; فاطمہ سجاد
+      </div>
 
       <div class="ornament">✦ ❦ ✦</div>
 
@@ -868,18 +970,23 @@ footer .signature {
       <div class="page-kicker">With love and gratitude</div>
       <h2>A New Chapter Begins</h2>
       <div class="ornament">✦ ❦ ✦</div>
+
       <p class="event-note">
         Two hearts, two families, and a lifetime of memories to create.
         We would be honoured to have you with us on our special days.
       </p>
-      <p class="urdu" lang="ur" dir="rtl">محبت، خوشی اور نئی زندگی کا آغاز</p>
+
+      <p class="urdu" lang="ur" dir="rtl">
+        محبت، خوشی اور نئی زندگی کا آغاز
+      </p>
+
       <div class="page-controls">
         <button class="gold-button" onclick="showPage('nikah')">View Wedding Events →</button>
       </div>
     </div>
   </section>
 
-  <!-- NIKAH & MEHNDI -->
+  <!-- NIKAH AND MEHNDI -->
   <section class="page" id="page-nikah">
     <div class="page-inner">
       <div class="page-kicker">The first celebration</div>
@@ -993,7 +1100,7 @@ footer .signature {
   </section>
 
   <footer>
-    <div class="signature">Abdul Wali &amp; Fatima Sajjad</div>
+    <div class="footer-names">Abdul Wali &amp; Fatima Sajjad</div>
     <p>WITH LOVE, JOY &amp; BLESSINGS</p>
     <p style="margin-top:12px;font-size:12px;letter-spacing:1px;">December 2026</p>
   </footer>
@@ -1001,30 +1108,41 @@ footer .signature {
 </div>
 
 <script>
-/* OPEN THE RIBBON AND CURTAINS */
-let invitationOpened = false;
+/* ========== OPEN RIBBON, THEN CURTAINS ========== */
+
+const intro = document.getElementById("intro");
+const invitation = document.getElementById("invitation");
+const ribbonGate = document.getElementById("ribbonGate");
+
+let entranceStarted = false;
 
 function openInvitation() {
-  if (invitationOpened) return;
-  invitationOpened = true;
+  if (entranceStarted) return;
+  entranceStarted = true;
 
-  const intro = document.getElementById("intro");
-  const invitation = document.getElementById("invitation");
+  // First: the golden bow and ribbons release
+  ribbonGate.classList.add("ribbon-releasing");
 
-  intro.classList.add("open");
+  // Next: the royal curtains open
+  window.setTimeout(() => {
+    intro.classList.add("open");
+  }, 650);
 
-  setTimeout(() => {
+  // Finally: reveal the original invitation
+  window.setTimeout(() => {
     invitation.classList.add("visible");
-  }, 900);
+  }, 1150);
 
-  setTimeout(() => {
+  window.setTimeout(() => {
     intro.style.display = "none";
-  }, 2700);
+  }, 3300);
 }
 
-document.getElementById("untieRibbon").addEventListener("click", openInvitation);
+document.getElementById("untieRibbon")
+  .addEventListener("click", openInvitation);
 
-/* EVENT PAGES */
+/* ========== EVENT PAGE NAVIGATION ========== */
+
 const pageOrder = ["welcome", "nikah", "baraat", "walima"];
 let currentPage = "welcome";
 
@@ -1038,7 +1156,9 @@ function showPage(pageName) {
   });
 
   const selectedPage = document.getElementById("page-" + pageName);
-  if (selectedPage) selectedPage.classList.add("active");
+  if (selectedPage) {
+    selectedPage.classList.add("active");
+  }
 
   document.querySelectorAll(".nav-btn").forEach(button => {
     button.classList.toggle(
@@ -1047,10 +1167,14 @@ function showPage(pageName) {
     );
   });
 
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 }
 
-/* AUTO TOUR */
+/* ========== AUTOMATIC PAGE TOUR ========== */
+
 let tourInterval = null;
 let tourIndex = 0;
 
@@ -1075,7 +1199,8 @@ function toggleTour() {
   }, 18000);
 }
 
-/* COUNTDOWN — Pakistan local time, UTC+05:00 */
+/* ========== COUNTDOWN IN PAKISTAN TIME ========== */
+
 const events = [
   {
     id: "nikah",
@@ -1100,30 +1225,30 @@ function updateCountdowns() {
 
     if (!container) return;
 
-    const boxes = container.querySelectorAll(".time-box strong");
-    let difference = target - now;
+    const values = container.querySelectorAll(".time-box strong");
+    let remaining = target - now;
 
-    if (difference <= 0) {
-      boxes[0].textContent = "0";
-      boxes[1].textContent = "0";
-      boxes[2].textContent = "0";
-      boxes[3].textContent = "0";
+    if (remaining <= 0) {
+      values[0].textContent = "0";
+      values[1].textContent = "00";
+      values[2].textContent = "00";
+      values[3].textContent = "00";
       return;
     }
 
-    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-    difference %= 1000 * 60 * 60 * 24;
+    const days = Math.floor(remaining / 86400000);
+    remaining %= 86400000;
 
-    const hours = Math.floor(difference / (1000 * 60 * 60));
-    difference %= 1000 * 60 * 60;
+    const hours = Math.floor(remaining / 3600000);
+    remaining %= 3600000;
 
-    const minutes = Math.floor(difference / (1000 * 60));
-    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+    const minutes = Math.floor(remaining / 60000);
+    const seconds = Math.floor((remaining % 60000) / 1000);
 
-    boxes[0].textContent = days;
-    boxes[1].textContent = String(hours).padStart(2, "0");
-    boxes[2].textContent = String(minutes).padStart(2, "0");
-    boxes[3].textContent = String(seconds).padStart(2, "0");
+    values[0].textContent = days;
+    values[1].textContent = String(hours).padStart(2, "0");
+    values[2].textContent = String(minutes).padStart(2, "0");
+    values[3].textContent = String(seconds).padStart(2, "0");
   });
 }
 
@@ -1134,6 +1259,6 @@ setInterval(updateCountdowns, 1000);
 </body>
 </html>
 
- 
+
 
 
