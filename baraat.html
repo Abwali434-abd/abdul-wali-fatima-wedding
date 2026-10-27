@@ -343,6 +343,7 @@ h2{
 </style>
 </head>
 <body>
+<!-- OPENING SCREEN -->
 <div id="intro">
  <div class="curtain left"></div>
  <div class="curtain right"></div>
@@ -386,10 +387,22 @@ h2{
    <h2>Our Beautiful Beginning</h2>
    <p>Our Baraat celebration begins in...</p>
    <div class="countdown">
-    <div class="time"><b id="days">--</b><span>DAYS</span></div>
-    <div class="time"><b id="hours">--</b><span>HOURS</span></div>
-    <div class="time"><b id="minutes">--</b><span>MINUTES</span></div>
-    <div class="time"><b id="seconds">--</b><span>SECONDS</span></div>
+    <div class="time">
+     <b id="days">--</b>
+     <span>DAYS</span>
+    </div>
+    <div class="time">
+     <b id="hours">--</b>
+     <span>HOURS</span>
+    </div>
+    <div class="time">
+     <b id="minutes">--</b>
+     <span>MINUTES</span>
+    </div>
+    <div class="time">
+     <b id="seconds">--</b>
+     <span>SECONDS</span>
+    </div>
    </div>
    <p class="urdu">اللہ ہماری نئی زندگی کو خوشیوں اور برکتوں سے بھر دے</p>
   </div>
@@ -399,16 +412,16 @@ h2{
   <div class="inner event-card">
    <div class="eyebrow">A New Chapter · Baraat</div>
    <h2>Baraat</h2>
-   <div class="date">THURSDAY · 24 DECEMBER 2026</div>
+   <div class="date">WEDNESDAY · 23 DECEMBER 2026</div>
    <div class="goldline"></div>
    <p>6:00 PM – 10:00 PM</p>
    <p class="venue">The Ball Room</p>
-   <p>Raiwind Hall No. 1, Lahore, Pakistan</p>
+   <p>Raiwind Hall No. 2, Lahore, Pakistan</p>
    <p class="urdu">بارات کی پُروقار تقریب</p>
    <a class="map"
       target="_blank"
       rel="noopener"
-      href="https://www.google.com/maps/search/?api=1&query=The+Ball+Room+Raiwind+Hall+No+1+Lahore">
+      href="https://www.google.com/maps/search/?api=1&query=The+Ball+Room+Raiwind+Hall+No+2+Lahore">
       OPEN IN GOOGLE MAPS ↗
    </a>
   </div>
@@ -444,6 +457,7 @@ h2{
   </div>
  </section>
 </main>
+<!-- PAUSE AND REPLAY -->
 <div class="controls" id="controls" hidden>
  <button id="pause">Ⅱ Pause Movie</button>
  <button id="replay">↻ Replay</button>
@@ -484,6 +498,7 @@ function playMovie(){
   index === 1 ? 7500 : 6500
  );
 }
+/* OPEN INVITATION */
 ribbon.addEventListener('click',()=>{
  if(opened) return;
  opened = true;
@@ -496,6 +511,7 @@ ribbon.addEventListener('click',()=>{
   setTimeout(playMovie,600);
  },2500);
 });
+/* PAUSE / PLAY */
 pauseButton.addEventListener('click',()=>{
  paused = !paused;
  if(paused){
@@ -506,6 +522,7 @@ pauseButton.addEventListener('click',()=>{
   playMovie();
  }
 });
+/* REPLAY FROM BEGINNING */
 document.getElementById('replay').addEventListener('click',()=>{
  paused = false;
  pauseButton.textContent = 'Ⅱ Pause Movie';
@@ -514,7 +531,7 @@ document.getElementById('replay').addEventListener('click',()=>{
 });
 window.addEventListener('scroll',showVisible,{passive:true});
 /* BARAAT COUNTDOWN — LAHORE TIME */
-const target = new Date('2026-12-24T18:00:00+05:00').getTime();
+const target = new Date('2026-12-23T18:00:00+05:00').getTime();
 function countdown(){
  let diff = Math.max(0,target-Date.now());
  const d = Math.floor(diff/86400000);
@@ -535,5 +552,3 @@ showVisible();
 </script>
 </body>
 </html>
-
-
