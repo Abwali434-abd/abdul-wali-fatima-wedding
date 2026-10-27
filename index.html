@@ -46,8 +46,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background:
-    radial-gradient(ellipse at center, #0b4937, #021c15 75%);
+  background: radial-gradient(ellipse at center, #0b4937, #021c15 75%);
   overflow: hidden;
   color: var(--white);
 }
@@ -69,13 +68,8 @@ body {
   z-index: 3;
 }
 
-.left {
-  left: 0;
-}
-
-.right {
-  right: 0;
-}
+.left { left: 0; }
+.right { right: 0; }
 
 #intro.open .left {
   transform: translateX(-105%);
@@ -215,14 +209,14 @@ main.show {
 
 .scene {
   min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 65px 20px;
   position: relative;
   overflow: hidden;
-  background:
-    radial-gradient(ellipse at center, #0b4937, #031f18 72%);
+  background: radial-gradient(ellipse at center, #0b4937, #031f18 72%);
   border-bottom: 1px solid #d4af6233;
 }
 
@@ -232,6 +226,43 @@ main.show {
   top: 25px;
   color: var(--gold);
   font-size: 22px;
+}
+
+/* COUPLE INTRO — SAME COLOURS AS NIKAH EVENT CARD */
+
+#couple-intro {
+  background: linear-gradient(145deg, #fff9ec, #eee0c4);
+  border-bottom: 1px solid var(--gold);
+  color: #183e30;
+}
+
+#couple-intro::before {
+  color: #9c7838;
+}
+
+#couple-intro .script {
+  color: #174b37;
+  text-shadow: none;
+}
+
+#couple-intro .amp {
+  color: #9c7838;
+}
+
+#couple-intro .eyebrow {
+  color: #755a28;
+}
+
+#couple-intro .urdu {
+  color: #174b37;
+}
+
+#couple-intro .goldline {
+  background: var(--gold);
+}
+
+#couple-intro p:not(.urdu) {
+  color: #183e30;
 }
 
 .inner {
@@ -284,18 +315,14 @@ p {
   background: var(--gold);
 }
 
-/* DARK COUNTDOWN */
+/* COUNTDOWN */
 
 .dark {
-  background:
-    radial-gradient(ellipse at center, #08432f, #01170f 85%);
+  background: radial-gradient(ellipse at center, #08432f, #01170f 85%);
   color: var(--white);
 }
 
-.dark .eyebrow {
-  color: var(--gold-light);
-}
-
+.dark .eyebrow,
 .dark h2 {
   color: var(--gold-light);
 }
@@ -305,8 +332,6 @@ h2 {
   color: var(--gold-light);
   margin: 15px 0;
 }
-
-/* COUNTDOWN */
 
 .countdown {
   display: flex;
@@ -420,15 +445,9 @@ h2 {
 }
 
 @keyframes fly {
-  0% {
-    transform: translateX(-5vw) translateY(0);
-  }
-  50% {
-    transform: translateX(55vw) translateY(-35px);
-  }
-  100% {
-    transform: translateX(110vw) translateY(10px);
-  }
+  0% { transform: translateX(-5vw) translateY(0); }
+  50% { transform: translateX(55vw) translateY(-35px); }
+  100% { transform: translateX(110vw) translateY(10px); }
 }
 
 /* MOVIE CONTROLS */
@@ -467,7 +486,6 @@ h2 {
 @media (max-width: 600px) {
   .scene {
     padding: 50px 15px;
-    min-height: 100svh;
   }
 
   .script {
@@ -576,9 +594,9 @@ h2 {
   <div class="dove">🕊</div>
   <div class="dove">🕊</div>
 
-  <!-- COUPLE INTRO -->
+  <!-- COUPLE INTRO — CREAM & GOLD -->
 
-  <section class="scene">
+  <section class="scene" id="couple-intro">
     <div class="inner">
       <div class="eyebrow">Together with our families</div>
 
@@ -854,7 +872,7 @@ window.addEventListener('scroll', showVisible, {
 
 showVisible();
 
-/* LIVE COUNTDOWN TO NIKAH & MEHNDI — PAKISTAN TIME */
+/* LIVE COUNTDOWN — PAKISTAN TIME */
 
 const target = new Date(
   '2026-12-21T17:30:00+05:00'
@@ -875,13 +893,10 @@ function countdown() {
   const s = Math.floor(diff / 1000);
 
   document.getElementById('days').textContent = d;
-
   document.getElementById('hours').textContent =
     String(h).padStart(2, '0');
-
   document.getElementById('minutes').textContent =
     String(m).padStart(2, '0');
-
   document.getElementById('seconds').textContent =
     String(s).padStart(2, '0');
 }
