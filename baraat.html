@@ -3,255 +3,550 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Abdul Wali & Fatima | Baraat</title>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;600&family=Marcellus&family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+<title>Abdul Wali & Fatima Sajjad | Baraat Invitation</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:#fbf4ee;color:#690d1b;font-family:'Cormorant Garamond',serif;text-align:center}
-:root{--gold:#c6a15b;--red:#690d1b;--ivory:#fbf4ee}
-/* OPENING CURTAINS */
-#intro{
- position:fixed;inset:0;z-index:100;
- display:flex;align-items:center;justify-content:center;
- background:#3b0710;overflow:hidden;color:#fff8e8;
+:root {
+  --red: #590d16;
+  --deep-red: #30060d;
+  --wine: #781b29;
+  --gold: #d7b56d;
+  --light-gold: #f3dfaa;
+  --cream: #fff8ed;
 }
-.curtain{
- position:absolute;top:0;width:51%;height:100%;
- background:repeating-linear-gradient(90deg,#31050c 0 12px,#7a1425 13px 28px,#5a0b19 29px 42px);
- border:1px solid #c6a15b55;
- transition:transform 2.5s cubic-bezier(.7,0,.2,1);
- z-index:3;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-.left{left:0}
-.right{right:0}
-#intro.open .left{transform:translateX(-105%)}
-#intro.open .right{transform:translateX(105%)}
-.intro-content{position:relative;z-index:5;padding:15px;transition:opacity .7s}
-#intro.open .intro-content{opacity:0}
-.intro-title{font-family:Marcellus,serif;letter-spacing:4px;color:#f5dfaa;font-size:clamp(23px,4vw,38px)}
-.welcome{font:clamp(38px,7vw,65px) 'Great Vibes',cursive;margin:12px 0}
-.hint{font-family:Marcellus,serif;letter-spacing:3px;font-size:12px;color:#f2dca4}
-/* GOLD RIBBON */
-#ribbon{width:150px;height:130px;position:relative;display:block;margin:15px auto;background:none;border:0;cursor:pointer;filter:drop-shadow(0 5px 8px #0007)}
-.loop{position:absolute;top:22px;width:65px;height:48px;border:9px solid #d6b365;background:linear-gradient(135deg,#fff0b8,#a77a2c)}
-.loop.one{left:10px;transform:rotate(28deg);border-radius:70% 20% 70% 20%}
-.loop.two{right:10px;transform:rotate(-28deg);border-radius:20% 70% 20% 70%}
-.knot{position:absolute;left:64px;top:35px;width:27px;height:27px;background:linear-gradient(135deg,#fff1bb,#b18131);transform:rotate(45deg);z-index:2;border-radius:4px}
-.tail{position:absolute;top:54px;width:29px;height:70px;background:linear-gradient(90deg,#a77a2c,#f7dda0,#b18131);clip-path:polygon(0 0,100% 0,100% 100%,50% 78%,0 100%)}
-.tail.one{left:43px;transform:rotate(8deg)}
-.tail.two{right:42px;transform:rotate(-8deg)}
-#intro.open #ribbon{animation:untie .8s forwards}
-@keyframes untie{40%{transform:scale(1.15) rotate(10deg)}100%{transform:scale(.2) rotate(35deg);opacity:0}}
-#intro.gone{opacity:0;visibility:hidden;transition:opacity 1.5s,visibility 1.5s}
-/* INVITATION */
-main{opacity:0;transition:opacity 1.5s}
-main.show{opacity:1}
-.scene{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:65px 20px;position:relative;overflow:hidden;background:radial-gradient(ellipse,#fffdf7,#f0dfcf)}
-.scene:before{content:"✦";position:absolute;top:25px;color:var(--gold);font-size:22px}
-.inner{max-width:800px;width:100%;opacity:0;transform:translateY(30px);transition:1.2s}
-.inner.visible{opacity:1;transform:translateY(0)}
-.script{font:clamp(55px,10vw,95px) 'Great Vibes',cursive;color:var(--red);margin:10px 0}
-.amp{font:55px 'Great Vibes',cursive;color:var(--gold)}
-.eyebrow{font:12px Marcellus,serif;letter-spacing:4px;text-transform:uppercase}
-p{font-size:22px;line-height:1.5}
-.urdu{font:18px/2.4 'Noto Nastaliq Urdu',serif;direction:rtl}
-.goldline{height:1px;width:130px;margin:25px auto;background:var(--gold)}
-.dark{background:linear-gradient(145deg,#760f21,#3b0710);color:#fff8e8}
-.dark .eyebrow{color:#e8d39b}
-.dark h2{color:#f0d69a}
-.dark .urdu{color:#f4dfac}
-h2{font:clamp(52px,8vw,75px) 'Great Vibes',cursive;color:var(--red);margin:15px 0}
-.countdown{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:30px 0}
-.time{border:1px solid #c6a15b;padding:16px;min-width:72px}
-.time b{display:block;font:32px Marcellus,serif}
-.time span{font-size:11px;letter-spacing:2px}
-.event-card{max-width:760px;width:100%;padding:35px 20px;border:1px solid var(--gold);outline:1px solid #c6a15b55;outline-offset:-9px;background:#fffdf7;box-shadow:0 20px 60px #46351a18}
-.date{color:var(--gold);font:15px Marcellus,serif;letter-spacing:2px}
-.venue{font-weight:600;color:var(--red)}
-.map{display:inline-block;padding:12px 20px;margin:12px;border:1px solid var(--gold);color:var(--red);text-decoration:none;font:12px Marcellus,serif;letter-spacing:1px}
-.map:hover{background:var(--red);color:white}
-.dove{position:fixed;left:-50px;z-index:20;pointer-events:none;font-size:30px;animation:fly 18s linear infinite}
-.dove:nth-child(2){top:20%;animation-delay:2s}
-.dove:nth-child(3){top:55%;animation-delay:8s}
-.dove:nth-child(4){top:75%;animation-delay:13s}
-@keyframes fly{0%{transform:translateX(-5vw) translateY(0)}50%{transform:translateX(55vw) translateY(-35px)}100%{transform:translateX(110vw) translateY(10px)}}
-.controls{position:fixed;bottom:12px;right:12px;z-index:50;display:flex;gap:8px}
-.controls button{padding:10px 14px;border-radius:25px;border:1px solid var(--gold);background:#fff9e8;color:var(--red);cursor:pointer}
-/* NEW RSVP PAGE */
-.rsvp-list{list-style:none;width:100%;margin:18px 0;padding:0}
-.rsvp-list li{font-size:clamp(21px,5vw,27px);padding:12px 5px;border-bottom:1px solid #c6a15b55;color:#690d1b}
-.rsvp-list li:last-child{border-bottom:none}
-.rsvp-name{font:clamp(38px,8vw,58px) 'Great Vibes',cursive;color:var(--red);margin:18px 0}
-.rsvp-heading{font:clamp(45px,8vw,65px) 'Great Vibes',cursive;color:var(--red);margin:15px 0}
-@media(max-width:500px){
- .scene{padding:50px 15px}
- .time{min-width:62px;padding:12px 8px}
- p{font-size:19px}
- .eyebrow{letter-spacing:2px}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background: var(--deep-red);
+  color: var(--cream);
+  font-family: 'Cormorant Garamond', serif;
+  overflow-x: hidden;
+}
+button {
+  font-family: inherit;
+}
+.scene {
+  min-height: 100svh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  padding: 65px 22px;
+  background:
+    radial-gradient(ellipse at center, rgba(135, 35, 47, .5), transparent 68%),
+    linear-gradient(145deg, #390710, #68121f 48%, #31050c);
+}
+.scene::before {
+  content: "";
+  position: absolute;
+  inset: 16px;
+  border: 1px solid rgba(215,181,109,.65);
+  pointer-events: none;
+}
+.scene::after {
+  content: "✦";
+  position: absolute;
+  top: 27px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--gold);
+  font-size: 21px;
+}
+.content {
+  width: min(760px, 100%);
+  position: relative;
+  z-index: 2;
+  animation: appear 1.3s ease both;
+}
+@keyframes appear {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.eyebrow {
+  color: var(--light-gold);
+  font-family: 'Playfair Display', serif;
+  font-size: 11px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+.gold-line {
+  height: 1px;
+  width: 110px;
+  background: var(--gold);
+  margin: 23px auto;
+}
+.small-text {
+  font-size: 19px;
+  line-height: 1.7;
+  color: #f4e7d1;
+}
+.urdu {
+  font-family: 'Amiri', serif;
+  font-size: 23px;
+  color: var(--light-gold);
+  direction: rtl;
+  line-height: 1.9;
+  margin-top: 20px;
+}
+h1, h2, h3 {
+  font-weight: 400;
+}
+.script {
+  font-family: 'Great Vibes', cursive;
+  color: var(--light-gold);
+  font-weight: 400;
+}
+.couple-name {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(55px, 10vw, 94px);
+  line-height: 1.15;
+  color: var(--light-gold);
+  text-shadow: 0 3px 25px rgba(0,0,0,.25);
+}
+.ampersand {
+  font-family: 'Great Vibes', cursive;
+  font-size: 42px;
+  color: var(--gold);
+  margin: 5px 0;
+}
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: var(--deep-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: opacity 1s ease, visibility 1s ease;
+}
+.intro.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.curtain {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 51%;
+  background:
+    repeating-linear-gradient(90deg,
+      rgba(255,255,255,.035) 0,
+      rgba(0,0,0,.09) 15px,
+      rgba(255,255,255,.025) 31px),
+    linear-gradient(90deg, #30050c, #781a29, #4a0a14);
+  box-shadow: 0 0 45px rgba(0,0,0,.5);
+  transition: transform 1.8s cubic-bezier(.7,0,.2,1);
+}
+.curtain.left { left: 0; }
+.curtain.right { right: 0; }
+.intro.open .curtain.left { transform: translateX(-100%); }
+.intro.open .curtain.right { transform: translateX(100%); }
+.intro-card {
+  position: relative;
+  z-index: 3;
+  padding: 35px 20px;
+  width: min(520px, 90%);
+  transition: opacity .6s ease;
+}
+.intro.open .intro-card {
+  opacity: 0;
+}
+.intro-title {
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 4px;
+  font-size: clamp(13px, 3vw, 17px);
+  color: var(--light-gold);
+}
+.intro-heading {
+  font-family: 'Great Vibes', cursive;
+  color: var(--light-gold);
+  font-size: clamp(44px, 9vw, 72px);
+  margin: 25px 0;
+}
+.ribbon {
+  margin: 20px auto 0;
+  border: 1px solid var(--gold);
+  background: linear-gradient(135deg, #e7cb83, #b58a3c, #f2dda6);
+  color: #421019;
+  padding: 13px 28px;
+  letter-spacing: 3px;
+  font-family: 'Playfair Display', serif;
+  font-size: 11px;
+  cursor: pointer;
+  box-shadow: 0 5px 25px #0005;
+  transition: transform .25s ease;
+}
+.ribbon:hover { transform: scale(1.04); }
+.dove {
+  position: absolute;
+  color: rgba(255,248,237,.8);
+  font-size: 25px;
+  animation: float 7s ease-in-out infinite;
+}
+.dove.one { top: 15%; left: 12%; }
+.dove.two { top: 22%; right: 12%; animation-delay: 1s; }
+.dove.three { bottom: 15%; left: 17%; animation-delay: 2s; }
+@keyframes float {
+  0%,100% { transform: translateY(0) rotate(-5deg); }
+  50% { transform: translateY(-17px) rotate(5deg); }
+}
+.event-card {
+  border: 1px solid rgba(215,181,109,.65);
+  padding: clamp(28px, 6vw, 48px) 22px;
+  background: rgba(30,4,10,.24);
+  box-shadow: 0 15px 50px rgba(0,0,0,.13);
+}
+.event-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(30px, 6vw, 48px);
+  color: var(--light-gold);
+  margin: 12px 0 25px;
+}
+.date {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: var(--light-gold);
+  line-height: 1.9;
+}
+.venue {
+  font-size: 28px;
+  color: var(--light-gold);
+  margin-top: 23px;
+}
+.map-link {
+  display: inline-block;
+  margin-top: 24px;
+  border-bottom: 1px solid var(--gold);
+  color: var(--light-gold);
+  text-decoration: none;
+  padding-bottom: 5px;
+  font-family: 'Playfair Display', serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin: 30px auto;
+  max-width: 520px;
+}
+.time-box {
+  padding: 17px 5px;
+  border: 1px solid rgba(215,181,109,.55);
+  background: rgba(255,255,255,.025);
+}
+.time-number {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(24px, 5vw, 37px);
+  color: var(--light-gold);
+}
+.time-label {
+  display: block;
+  margin-top: 8px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #ead8b8;
+}
+.rsvp-heading {
+  font-family: 'Great Vibes', cursive;
+  color: var(--light-gold);
+  font-size: clamp(54px, 10vw, 82px);
+  line-height: 1.2;
+}
+.rsvp-by {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(20px, 4vw, 28px);
+  color: var(--light-gold);
+  margin-top: 12px;
+}
+.rsvp-label {
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 4px;
+  font-size: 14px;
+  color: var(--gold);
+  margin: 34px 0 18px;
+}
+.rsvp-list {
+  list-style: none;
+  font-size: clamp(19px, 4vw, 25px);
+  line-height: 1.85;
+  color: #fff6e8;
+}
+.rsvp-list li::before {
+  content: "✦";
+  color: var(--gold);
+  font-size: 11px;
+  margin-right: 12px;
+  vertical-align: middle;
+}
+.closing-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(55px, 11vw, 94px);
+  line-height: 1.2;
+  color: var(--light-gold);
+}
+.closing-names {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(20px, 4vw, 28px);
+  line-height: 1.8;
+  color: var(--cream);
+}
+.closing-message {
+  max-width: 500px;
+  margin: 20px auto 0;
+  font-size: 21px;
+  line-height: 1.6;
+  color: #f0dfc3;
+}
+.footer-note {
+  color: var(--gold);
+  font-size: 12px;
+  letter-spacing: 3px;
+  margin-top: 35px;
+}
+.controls {
+  position: fixed;
+  z-index: 20;
+  bottom: 16px;
+  right: 16px;
+  display: flex;
+  gap: 8px;
+}
+.controls button {
+  color: var(--light-gold);
+  border: 1px solid rgba(215,181,109,.6);
+  background: rgba(35,4,10,.92);
+  padding: 9px 12px;
+  font-size: 12px;
+  cursor: pointer;
+}
+@media (max-width: 480px) {
+  .scene { padding: 48px 22px; }
+  .scene::before { inset: 10px; }
+  .eyebrow { letter-spacing: 3px; }
+  .countdown { gap: 6px; }
+  .time-box { padding: 14px 3px; }
+  .time-label { font-size: 8px; letter-spacing: 1px; }
+  .controls { bottom: 10px; right: 10px; }
 }
 </style>
 </head>
 <body>
-<!-- OPENING SCREEN -->
-<div id="intro">
- <div class="curtain left"></div>
- <div class="curtain right"></div>
- <div class="intro-content">
-  <div class="intro-title">BARAAT INVITATION</div>
-  <button id="ribbon" aria-label="Click the ribbon to open">
-   <span class="tail one"></span><span class="tail two"></span>
-   <span class="loop one"></span><span class="loop two"></span>
-   <span class="knot"></span>
-  </button>
-  <div class="welcome">Welcome to Our Baraat</div>
-  <div class="hint">CLICK THE RIBBON</div>
- </div>
+<!-- OPENING CURTAINS -->
+<div class="intro" id="intro">
+  <div class="curtain left"></div>
+  <div class="curtain right"></div>
+  <div class="dove one">🕊</div>
+  <div class="dove two">🕊</div>
+  <div class="dove three">🕊</div>
+  <div class="intro-card">
+    <div class="intro-title">BARAAT INVITATION</div>
+    <div class="intro-heading">A Beautiful Beginning</div>
+    <div class="gold-line"></div>
+    <p class="small-text">A day of love, blessings and togetherness</p>
+    <button class="ribbon" onclick="openInvitation()">CLICK THE RIBBON</button>
+  </div>
 </div>
-<main id="invitation">
- <div class="dove">🕊</div><div class="dove">🕊</div><div class="dove">🕊</div>
- <!-- PAGE 1: COUPLE INTRO -->
- <section class="scene">
-  <div class="inner">
-   <div class="eyebrow">Together with our families</div>
-   <p class="urdu">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
-   <p class="urdu">محبت، خوشی اور دعاؤں کے اس خوبصورت سفر میں</p>
-   <div class="script">Abdul Wali</div>
-   <div class="amp">&amp;</div>
-   <div class="script">Fatima Sajjad</div>
-   <div class="goldline"></div>
-   <p>Request the pleasure of your company<br>at our Baraat celebration.</p>
-   <p class="urdu">آپ کی شرکت ہمارے لیے باعثِ مسرت ہوگی</p>
-   <div class="eyebrow">Lahore · December 2026</div>
+<!-- PAGE 1: COUPLE INTRO -->
+<section class="scene">
+  <div class="content">
+    <div class="eyebrow">Together with our families</div>
+    <p class="urdu">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
+    <div class="gold-line"></div>
+    <!-- Fatima is intentionally written first -->
+    <h1 class="couple-name">Fatima Sajjad</h1>
+    <div class="ampersand">&</div>
+    <h1 class="couple-name">Abdul Wali</h1>
+    <div class="gold-line"></div>
+    <p class="small-text">
+      Request the pleasure of your company<br>
+      at the celebration of our Baraat.
+    </p>
+    <p class="urdu">آپ کی شرکت ہمارے لیے باعثِ مسرت ہوگی</p>
+    <p class="footer-note">LAHORE · DECEMBER 2026</p>
   </div>
- </section>
- <!-- PAGE 2: COUNTDOWN -->
- <section class="scene dark">
-  <div class="inner">
-   <div class="eyebrow">The countdown to forever</div>
-   <h2>Our Baraat Day</h2>
-   <p>The celebration begins in...</p>
-   <div class="countdown" id="countdown">
-    <div class="time"><b id="days">--</b><span>DAYS</span></div>
-    <div class="time"><b id="hours">--</b><span>HOURS</span></div>
-    <div class="time"><b id="minutes">--</b><span>MINUTES</span></div>
-    <div class="time"><b id="seconds">--</b><span>SECONDS</span></div>
-   </div>
-   <p class="urdu">اللہ ہماری نئی زندگی کو خوشیوں اور برکتوں سے بھر دے</p>
+</section>
+<!-- PAGE 2: COUNTDOWN -->
+<section class="scene">
+  <div class="content">
+    <div class="eyebrow">A day to remember</div>
+    <h2 class="script" style="font-size:clamp(46px,9vw,72px)">
+      The countdown to forever
+    </h2>
+    <div class="gold-line"></div>
+    <p class="small-text">Our Baraat celebration begins in...</p>
+    <div class="countdown">
+      <div class="time-box">
+        <span class="time-number" id="days">--</span>
+        <span class="time-label">DAYS</span>
+      </div>
+      <div class="time-box">
+        <span class="time-number" id="hours">--</span>
+        <span class="time-label">HOURS</span>
+      </div>
+      <div class="time-box">
+        <span class="time-number" id="minutes">--</span>
+        <span class="time-label">MINUTES</span>
+      </div>
+      <div class="time-box">
+        <span class="time-number" id="seconds">--</span>
+        <span class="time-label">SECONDS</span>
+      </div>
+    </div>
+    <p class="urdu">اللہ ہماری نئی زندگی کو خوشیوں اور برکتوں سے بھر دے</p>
+    <p class="footer-note">A NEW CHAPTER · BARAAT</p>
   </div>
- </section>
- <!-- PAGE 3: BARAAT DETAILS -->
- <section class="scene">
-  <div class="inner event-card">
-   <div class="eyebrow">Our Special Day</div>
-   <h2>Baraat</h2>
-   <div class="date">WEDNESDAY · 23 DECEMBER 2026</div>
-   <div class="goldline"></div>
-   <p>6:00 PM – 10:00 PM</p>
-   <p class="venue">The Ball Room</p>
-   <p>Raiwind Hall No. 2, Lahore, Pakistan</p>
-   <p class="urdu">بارات کی تقریب میں شرکت کی دعوت</p>
-   <a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=The+Ball+Room+Raiwind+Hall+No+2+Lahore">OPEN IN GOOGLE MAPS ↗</a>
+</section>
+<!-- PAGE 3: BARAAT DETAILS -->
+<section class="scene">
+  <div class="content event-card">
+    <div class="eyebrow">With love and blessings</div>
+    <h2 class="event-title">Baraat</h2>
+    <div class="gold-line"></div>
+    <p class="date">WEDNESDAY · 23 DECEMBER 2026</p>
+    <p class="date">6:00 PM – 10:00 PM</p>
+    <h3 class="venue">The Ball Room</h3>
+    <p class="small-text">Raiwind Hall No. 2<br>Lahore, Pakistan</p>
+    <p class="urdu">بارات کی پُرمسرت تقریب</p>
+    <a class="map-link"
+       href="https://www.google.com/maps/search/?api=1&query=The+Ball+Room+Raiwind+Hall+No+2+Lahore"
+       target="_blank" rel="noopener">
+       OPEN IN GOOGLE MAPS ↗
+    </a>
   </div>
- </section>
- <!-- PAGE 4: NEW LOOKING FORWARD + RSVP PAGE -->
- <section class="scene">
-  <div class="inner event-card">
-   <div class="eyebrow">With warm regards</div>
-   <div class="goldline"></div>
-   <p>Looking Forward</p>
-   <div class="rsvp-name">Mr. &amp; Mrs. Sajjad Akbar</div>
-   <div class="goldline"></div>
-   <h2 class="rsvp-heading">R.S.V.P</h2>
-   <ul class="rsvp-list">
-    <li>Mr. &amp; Mrs. Aqib</li>
-    <li>Mr. &amp; Mrs. Ahtisham</li>
-    <li>Fatima’s Grandmother</li>
-    <li>Ayan Sajjad</li>
-    <li>Maryam Sajjad</li>
-   </ul>
+</section>
+<!-- PAGE 4: LOOKING FORWARD / RSVP -->
+<section class="scene">
+  <div class="content">
+    <div class="eyebrow">With warm regards</div>
+    <h2 class="rsvp-heading">Looking Forward</h2>
+    <div class="gold-line"></div>
+    <p class="rsvp-by">Mr. &amp; Mrs. Sajjad Akbar</p>
+    <p class="rsvp-label">R.S.V.P.</p>
+    <ul class="rsvp-list">
+      <li>Mr. &amp; Mrs. Aqib</li>
+      <li>Mr. &amp; Mrs. Ahtisham</li>
+      <li>Fatima’s Grandmother</li>
+      <li>Ayan Sajjad</li>
+      <li>Maryam Sajjad</li>
+    </ul>
+    <div class="gold-line"></div>
+    <p class="small-text">We look forward to celebrating with you.</p>
   </div>
- </section>
- <!-- PAGE 5: CLOSING -->
- <section class="scene dark">
-  <div class="inner">
-   <div class="eyebrow">With love and gratitude</div>
-   <div class="script" style="color:#f0d69a">Thank You</div>
-   <div class="goldline"></div>
-   <p>Your presence and prayers will make our day even more special.</p>
-   <p class="urdu">آپ کی محبت اور دعاؤں کے منتظر</p>
-   <div class="script" style="color:#f0d69a">Abdul Wali &amp; Fatima</div>
-   <div class="eyebrow">Forever Begins · Lahore · 2026</div>
+</section>
+<!-- PAGE 5: THANK YOU / CLOSING -->
+<section class="scene">
+  <div class="content">
+    <div class="eyebrow">With love and gratitude</div>
+    <h2 class="closing-title">Thank You</h2>
+    <div class="gold-line"></div>
+    <p class="closing-names">
+      Fatima Sajjad<br>
+      <span class="script" style="font-size:42px;color:var(--gold)">&amp;</span><br>
+      Abdul Wali
+    </p>
+    <p class="closing-message">
+      Your presence and prayers<br>
+      will make our day even more special.
+    </p>
+    <p class="urdu">آپ کی محبت اور دعاؤں کے منتظر</p>
+    <p class="footer-note">FOREVER BEGINS · LAHORE · 2026</p>
   </div>
- </section>
-</main>
-<div class="controls" id="controls" hidden>
- <button id="pause">Ⅱ Pause Movie</button>
- <button id="replay">↻ Replay</button>
+</section>
+<div class="controls">
+  <button id="pauseBtn" onclick="togglePause()">Ⅱ Pause Movie</button>
+  <button onclick="replayInvitation()">↻ Replay</button>
 </div>
 <script>
-const intro=document.getElementById('intro');
-const ribbon=document.getElementById('ribbon');
-const main=document.getElementById('invitation');
-const scenes=[...document.querySelectorAll('.scene')];
-const controls=document.getElementById('controls');
-const pauseButton=document.getElementById('pause');
-let opened=false,paused=false,index=0,timer=null;
-function showVisible(){
- document.querySelectorAll('.inner').forEach(el=>{
-  if(el.getBoundingClientRect().top<window.innerHeight*.9)
-   el.classList.add('visible');
- });
+const intro = document.getElementById('intro');
+let movieTimer = null;
+let paused = false;
+let started = false;
+function openInvitation() {
+  intro.classList.add('open');
+  setTimeout(() => {
+    intro.classList.add('hidden');
+    startMovie();
+  }, 1600);
 }
-function stopMovie(){clearTimeout(timer);timer=null}
-function playMovie(){
- stopMovie();
- if(paused||!opened||index>=scenes.length)return;
- scenes[index].scrollIntoView({behavior:'smooth',block:'start'});
- showVisible();
- index++;
- timer=setTimeout(playMovie,index===1?7500:6500);
+function startMovie() {
+  if (started) return;
+  started = true;
+  paused = false;
+  document.getElementById('pauseBtn').textContent = 'Ⅱ Pause Movie';
+  runMovie();
 }
-ribbon.addEventListener('click',()=>{
- if(opened)return;
- opened=true;
- intro.classList.add('open');
- setTimeout(()=>{
-  intro.classList.add('gone');
-  main.classList.add('show');
-  controls.hidden=false;
-  index=0;
-  setTimeout(playMovie,600);
- },2500);
-});
-pauseButton.addEventListener('click',()=>{
- paused=!paused;
- if(paused){stopMovie();pauseButton.textContent='▶ Play Movie'}
- else{pauseButton.textContent='Ⅱ Pause Movie';playMovie()}
-});
-document.getElementById('replay').addEventListener('click',()=>{
- paused=false;
- pauseButton.textContent='Ⅱ Pause Movie';
- index=0;
- playMovie();
-});
-window.addEventListener('scroll',showVisible,{passive:true});
-/* Countdown to Baraat — Pakistan time */
-const target=new Date('2026-12-23T18:00:00+05:00').getTime();
-function countdown(){
- let diff=Math.max(0,target-Date.now());
- const d=Math.floor(diff/86400000);diff%=86400000;
- const h=Math.floor(diff/3600000);diff%=3600000;
- const m=Math.floor(diff/60000);diff%=60000;
- const s=Math.floor(diff/1000);
- document.getElementById('days').textContent=d;
- document.getElementById('hours').textContent=String(h).padStart(2,'0');
- document.getElementById('minutes').textContent=String(m).padStart(2,'0');
- document.getElementById('seconds').textContent=String(s).padStart(2,'0');
+function runMovie() {
+  clearInterval(movieTimer);
+  // Automatically moves through the invitation scenes.
+  // Change 6500 to a larger number to keep each page longer.
+  movieTimer = setInterval(() => {
+    if (paused) return;
+    const maxScroll =
+      document.documentElement.scrollHeight - window.innerHeight;
+    if (window.scrollY >= maxScroll - 10) {
+      clearInterval(movieTimer);
+      return;
+    }
+    window.scrollBy({
+      top: window.innerHeight,
+      behavior: 'smooth'
+    });
+  }, 6500);
 }
-countdown();
-setInterval(countdown,1000);
+function togglePause() {
+  paused = !paused;
+  document.getElementById('pauseBtn').textContent =
+    paused ? '▶ Play Movie' : 'Ⅱ Pause Movie';
+  if (!paused && started) runMovie();
+}
+function replayInvitation() {
+  clearInterval(movieTimer);
+  paused = false;
+  started = false;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  intro.classList.remove('hidden', 'open');
+  document.getElementById('pauseBtn').textContent = 'Ⅱ Pause Movie';
+}
+function updateCountdown() {
+  // Pakistan Standard Time: UTC+05:00
+  const target = new Date('2026-12-23T18:00:00+05:00').getTime();
+  const now = Date.now();
+  const difference = target - now;
+  if (difference <= 0) {
+    ['days', 'hours', 'minutes', 'seconds'].forEach(id => {
+      document.getElementById(id).textContent = '00';
+    });
+    return;
+  }
+  document.getElementById('days').textContent =
+    Math.floor(difference / (1000 * 60 * 60 * 24));
+  document.getElementById('hours').textContent =
+    Math.floor((difference / (1000 * 60 * 60)) % 24);
+  document.getElementById('minutes').textContent =
+    Math.floor((difference / (1000 * 60)) % 60);
+  document.getElementById('seconds').textContent =
+    Math.floor((difference / 1000) % 60);
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
 </script>
 </body>
 </html>
+
 
