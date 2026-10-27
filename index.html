@@ -3,339 +3,763 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>abdul-wali-fatima-wedding</title>
+<meta name="theme-color" content="#03291f">
+
+<title>Abdul Wali & Fatima Sajjad | Wedding Invitation</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;600&family=Marcellus&family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+
 <style>
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
- margin:0;background:#fbf7ee;color:#174d3e;
- font-family:'Cormorant Garamond',serif;text-align:center
+* {
+  box-sizing: border-box;
 }
-:root{
- --gold:#c6a15b;--green:#174d3e;--ivory:#fbf7ee
+
+html {
+  scroll-behavior: smooth;
 }
+
+:root {
+  --gold: #d4af62;
+  --gold-light: #f4dfaa;
+  --green: #06402f;
+  --green-dark: #021c15;
+  --green-deep: #01150f;
+  --ivory: #f8f0de;
+  --white: #fff9ec;
+}
+
+body {
+  margin: 0;
+  background: var(--green-deep);
+  color: var(--white);
+  font-family: 'Cormorant Garamond', serif;
+  text-align: center;
+  overflow-x: hidden;
+}
+
 /* OPENING CURTAINS */
-#intro{
- position:fixed;inset:0;z-index:100;
- display:flex;align-items:center;justify-content:center;
- background:#12382e;overflow:hidden;color:#fff8e8
+
+#intro {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(ellipse at center, #0b4937, #021c15 75%);
+  overflow: hidden;
+  color: var(--white);
 }
-.curtain{
- position:absolute;top:0;width:51%;height:100%;
- background:repeating-linear-gradient(
-  90deg,#0b281f 0 12px,#1d5140 13px 28px,#174333 29px 42px
- );
- border:1px solid #c6a15b55;
- transition:transform 2.5s cubic-bezier(.7,0,.2,1);
- z-index:3
+
+.curtain {
+  position: absolute;
+  top: 0;
+  width: 51%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    #01170f 0 12px,
+    #0a4835 13px 28px,
+    #06402f 29px 42px
+  );
+  border: 1px solid #d4af6255;
+  box-shadow: inset 0 0 60px #0007;
+  transition: transform 2.5s cubic-bezier(.7,0,.2,1);
+  z-index: 3;
 }
-.left{left:0}
-.right{right:0}
-#intro.open .left{transform:translateX(-105%)}
-#intro.open .right{transform:translateX(105%)}
-.intro-content{
- position:relative;z-index:5;padding:15px;
- transition:opacity .7s
+
+.left {
+  left: 0;
 }
-#intro.open .intro-content{opacity:0}
-.intro-title{
- font-family:Marcellus,serif;letter-spacing:4px;
- color:#f5dfaa;font-size:clamp(23px,4vw,38px)
+
+.right {
+  right: 0;
 }
-.welcome{
- font:clamp(38px,7vw,65px) 'Great Vibes',cursive;
- margin:12px 0
+
+#intro.open .left {
+  transform: translateX(-105%);
 }
-.hint{
- font-family:Marcellus,serif;letter-spacing:3px;
- font-size:12px;color:#f2dca4
+
+#intro.open .right {
+  transform: translateX(105%);
 }
+
+.intro-content {
+  position: relative;
+  z-index: 5;
+  padding: 15px;
+  transition: opacity .7s;
+}
+
+#intro.open .intro-content {
+  opacity: 0;
+}
+
+.intro-title {
+  font-family: Marcellus, serif;
+  letter-spacing: 4px;
+  color: var(--gold-light);
+  font-size: clamp(20px, 4vw, 36px);
+}
+
+.welcome {
+  font: clamp(36px, 7vw, 65px) 'Great Vibes', cursive;
+  margin: 12px 0;
+  color: var(--gold-light);
+}
+
+.hint {
+  font-family: Marcellus, serif;
+  letter-spacing: 3px;
+  font-size: 11px;
+  color: var(--gold);
+}
+
 /* GOLD RIBBON */
-#ribbon{
- width:150px;height:130px;position:relative;
- display:block;margin:15px auto;background:none;
- border:0;cursor:pointer;
- filter:drop-shadow(0 5px 8px #0007)
+
+#ribbon {
+  width: 150px;
+  height: 130px;
+  position: relative;
+  display: block;
+  margin: 15px auto;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  filter: drop-shadow(0 5px 8px #0007);
 }
-.loop{
- position:absolute;top:22px;width:65px;height:48px;
- border:9px solid #d6b365;
- background:linear-gradient(135deg,#fff0b8,#a77a2c)
+
+.loop {
+  position: absolute;
+  top: 22px;
+  width: 65px;
+  height: 48px;
+  border: 8px solid var(--gold);
+  background: linear-gradient(135deg, #fff1bb, #a77a2c);
 }
-.loop.one{
- left:10px;transform:rotate(28deg);
- border-radius:70% 20% 70% 20%
+
+.loop.one {
+  left: 10px;
+  transform: rotate(28deg);
+  border-radius: 70% 20% 70% 20%;
 }
-.loop.two{
- right:10px;transform:rotate(-28deg);
- border-radius:20% 70% 20% 70%
+
+.loop.two {
+  right: 10px;
+  transform: rotate(-28deg);
+  border-radius: 20% 70% 20% 70%;
 }
-.knot{
- position:absolute;left:64px;top:35px;width:27px;height:27px;
- background:linear-gradient(135deg,#fff1bb,#b18131);
- transform:rotate(45deg);z-index:2;border-radius:4px
+
+.knot {
+  position: absolute;
+  left: 64px;
+  top: 35px;
+  width: 27px;
+  height: 27px;
+  background: linear-gradient(135deg, #fff1bb, #b18131);
+  transform: rotate(45deg);
+  z-index: 2;
+  border-radius: 4px;
 }
-.tail{
- position:absolute;top:54px;width:29px;height:70px;
- background:linear-gradient(90deg,#a77a2c,#f7dda0,#b18131);
- clip-path:polygon(0 0,100% 0,100% 100%,50% 78%,0 100%)
+
+.tail {
+  position: absolute;
+  top: 54px;
+  width: 29px;
+  height: 70px;
+  background: linear-gradient(90deg, #a77a2c, #f7dda0, #b18131);
+  clip-path: polygon(0 0,100% 0,100% 100%,50% 78%,0 100%);
 }
-.tail.one{left:43px;transform:rotate(8deg)}
-.tail.two{right:42px;transform:rotate(-8deg)}
-#intro.open #ribbon{animation:untie .8s forwards}
-@keyframes untie{
- 40%{transform:scale(1.15) rotate(10deg)}
- 100%{transform:scale(.2) rotate(35deg);opacity:0}
+
+.tail.one {
+  left: 43px;
+  transform: rotate(8deg);
 }
-#intro.gone{
- opacity:0;visibility:hidden;
- transition:opacity 1.5s,visibility 1.5s
+
+.tail.two {
+  right: 42px;
+  transform: rotate(-8deg);
 }
-/* INVITATION SCENES */
-main{opacity:0;transition:opacity 1.5s}
-main.show{opacity:1}
-.scene{
- min-height:100vh;display:flex;
- align-items:center;justify-content:center;
- padding:65px 20px;position:relative;overflow:hidden;
- background:radial-gradient(ellipse,#fffef9,#eee0c4)
+
+#intro.open #ribbon {
+  animation: untie .8s forwards;
 }
-.scene:before{
- content:"✦";position:absolute;top:25px;
- color:var(--gold);font-size:22px
+
+@keyframes untie {
+  40% {
+    transform: scale(1.15) rotate(10deg);
+  }
+  100% {
+    transform: scale(.2) rotate(35deg);
+    opacity: 0;
+  }
 }
-.inner{
- max-width:800px;width:100%;opacity:0;
- transform:translateY(30px);transition:1.2s
+
+#intro.gone {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1.5s, visibility 1.5s;
 }
-.inner.visible{opacity:1;transform:translateY(0)}
-.script{
- font:clamp(55px,10vw,95px) 'Great Vibes',cursive;
- color:var(--green);margin:10px 0
+
+/* INVITATION */
+
+main {
+  opacity: 0;
+  transition: opacity 1.5s;
 }
-.amp{font:55px 'Great Vibes',cursive;color:var(--gold)}
-.eyebrow{
- font:12px Marcellus,serif;
- letter-spacing:4px;text-transform:uppercase
+
+main.show {
+  opacity: 1;
 }
-p{font-size:22px;line-height:1.5}
-.urdu{
- font:18px/2.4 'Noto Nastaliq Urdu',serif;
- direction:rtl
+
+.scene {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 65px 20px;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at center, #0b4937, #031f18 72%);
+  border-bottom: 1px solid #d4af6233;
 }
-.goldline{
- height:1px;width:130px;margin:25px auto;
- background:var(--gold)
+
+.scene::before {
+  content: "✦";
+  position: absolute;
+  top: 25px;
+  color: var(--gold);
+  font-size: 22px;
 }
-.dark{
- background:linear-gradient(145deg,#143e32,#0d2b24);
- color:#fff8e8
+
+.inner {
+  max-width: 800px;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.2s, transform 1.2s;
 }
-.dark .eyebrow{color:#e8d39b}
-.dark h2{color:#f0d69a}
-.dark .urdu{color:#f4dfac}
-h2{
- font:clamp(52px,8vw,75px) 'Great Vibes',cursive;
- color:var(--green);margin:15px 0
+
+.inner.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
-.countdown{
- display:flex;gap:12px;justify-content:center;
- flex-wrap:wrap;margin:30px 0
+
+.script {
+  font: clamp(52px, 10vw, 95px) 'Great Vibes', cursive;
+  color: var(--gold-light);
+  margin: 10px 0;
+  text-shadow: 0 2px 18px #0005;
 }
-.time{
- border:1px solid #c6a15b;padding:16px;min-width:72px
+
+.amp {
+  font: clamp(40px, 7vw, 55px) 'Great Vibes', cursive;
+  color: var(--gold);
 }
-.time b{display:block;font:32px Marcellus,serif}
-.time span{font-size:11px;letter-spacing:2px}
-.event-card{
- max-width:760px;width:100%;padding:35px 20px;
- border:1px solid var(--gold);
- outline:1px solid #c6a15b55;outline-offset:-9px;
- background:#fffdf7;box-shadow:0 20px 60px #46351a18
+
+.eyebrow {
+  font: 12px Marcellus, serif;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold-light);
 }
-.date{
- color:var(--gold);font:15px Marcellus,serif;
- letter-spacing:2px
+
+p {
+  font-size: 22px;
+  line-height: 1.5;
 }
-.venue{font-weight:600;color:var(--green)}
-.map{
- display:inline-block;padding:12px 20px;margin:12px;
- border:1px solid var(--gold);color:var(--green);
- text-decoration:none;font:12px Marcellus,serif;
- letter-spacing:1px
+
+.urdu {
+  font: 18px/2.4 'Noto Nastaliq Urdu', serif;
+  direction: rtl;
+  color: var(--gold-light);
 }
-.map:hover{background:var(--green);color:white}
+
+.goldline {
+  height: 1px;
+  width: 130px;
+  margin: 25px auto;
+  background: var(--gold);
+}
+
+/* DARK COUNTDOWN */
+
+.dark {
+  background:
+    radial-gradient(ellipse at center, #08432f, #01170f 85%);
+  color: var(--white);
+}
+
+.dark .eyebrow {
+  color: var(--gold-light);
+}
+
+.dark h2 {
+  color: var(--gold-light);
+}
+
+h2 {
+  font: clamp(48px, 8vw, 75px) 'Great Vibes', cursive;
+  color: var(--gold-light);
+  margin: 15px 0;
+}
+
+/* COUNTDOWN */
+
+.countdown {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 30px 0;
+}
+
+.time {
+  border: 1px solid var(--gold);
+  background: #011b14aa;
+  padding: 16px;
+  min-width: 85px;
+  box-shadow: inset 0 0 20px #d4af6209;
+}
+
+.time b {
+  display: block;
+  font: 32px Marcellus, serif;
+  color: var(--gold-light);
+}
+
+.time span {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--white);
+}
+
+/* EVENT CARDS */
+
+.event-card {
+  max-width: 760px;
+  width: 100%;
+  padding: 40px 25px;
+  border: 1px solid var(--gold);
+  outline: 1px solid #d4af6255;
+  outline-offset: -9px;
+  background: linear-gradient(145deg, #fff9ec, #eee0c4);
+  color: #183e30;
+  box-shadow: 0 20px 60px #0004;
+}
+
+.event-card .eyebrow {
+  color: #755a28;
+}
+
+.event-card h2 {
+  color: #174b37;
+}
+
+.date {
+  color: #9c7838;
+  font: 15px Marcellus, serif;
+  letter-spacing: 2px;
+  line-height: 1.8;
+}
+
+.venue {
+  font-weight: 600;
+  color: var(--green);
+}
+
+.event-card .urdu {
+  color: #174b37;
+}
+
+.map {
+  display: inline-block;
+  padding: 12px 20px;
+  margin: 12px;
+  border: 1px solid var(--gold);
+  background: var(--green);
+  color: var(--ivory);
+  text-decoration: none;
+  font: 12px Marcellus, serif;
+  letter-spacing: 1px;
+  transition: .3s;
+}
+
+.map:hover {
+  background: #01170f;
+  color: var(--gold-light);
+}
+
 /* FLYING DOVES */
-.dove{
- position:fixed;left:-50px;z-index:20;
- pointer-events:none;font-size:30px;
- animation:fly 18s linear infinite
+
+.dove {
+  position: fixed;
+  left: -50px;
+  z-index: 20;
+  pointer-events: none;
+  font-size: 30px;
+  animation: fly 18s linear infinite;
+  filter: drop-shadow(0 3px 5px #0004);
 }
-.dove:nth-child(2){top:20%;animation-delay:2s}
-.dove:nth-child(3){top:55%;animation-delay:8s}
-.dove:nth-child(4){top:75%;animation-delay:13s}
-@keyframes fly{
- 0%{transform:translateX(-5vw) translateY(0)}
- 50%{transform:translateX(55vw) translateY(-35px)}
- 100%{transform:translateX(110vw) translateY(10px)}
+
+.dove:nth-child(2) {
+  top: 20%;
+  animation-delay: 2s;
 }
-/* CONTROLS */
-.controls{
- position:fixed;bottom:12px;right:12px;
- z-index:50;display:flex;gap:8px
+
+.dove:nth-child(3) {
+  top: 55%;
+  animation-delay: 8s;
 }
-.controls button{
- padding:10px 14px;border-radius:25px;
- border:1px solid var(--gold);
- background:#fff9e8;color:var(--green);cursor:pointer
+
+.dove:nth-child(4) {
+  top: 75%;
+  animation-delay: 13s;
 }
-@media(max-width:500px){
- .scene{padding:50px 15px}
- .time{min-width:62px;padding:12px 8px}
- p{font-size:19px}
- .eyebrow{letter-spacing:2px}
- .event-card{padding:30px 15px}
+
+@keyframes fly {
+  0% {
+    transform: translateX(-5vw) translateY(0);
+  }
+  50% {
+    transform: translateX(55vw) translateY(-35px);
+  }
+  100% {
+    transform: translateX(110vw) translateY(10px);
+  }
+}
+
+/* MOVIE CONTROLS */
+
+.controls {
+  position: fixed;
+  bottom: 12px;
+  right: 12px;
+  z-index: 50;
+  display: flex;
+  gap: 8px;
+}
+
+.controls button {
+  padding: 10px 14px;
+  border-radius: 25px;
+  border: 1px solid var(--gold);
+  background: #043a2a;
+  color: var(--gold-light);
+  cursor: pointer;
+  font-family: Marcellus, serif;
+  font-size: 12px;
+  box-shadow: 0 3px 15px #0004;
+}
+
+.controls button:hover {
+  background: #0b543d;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* MOBILE RESPONSIVE */
+
+@media (max-width: 600px) {
+  .scene {
+    padding: 50px 15px;
+    min-height: 100svh;
+  }
+
+  .script {
+    font-size: clamp(48px, 12vw, 72px);
+  }
+
+  .time {
+    min-width: 65px;
+    padding: 12px 8px;
+  }
+
+  .time b {
+    font-size: 25px;
+  }
+
+  .time span {
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+
+  p {
+    font-size: 19px;
+  }
+
+  .eyebrow {
+    letter-spacing: 2px;
+    font-size: 10px;
+  }
+
+  .event-card {
+    padding: 32px 15px;
+  }
+
+  .date {
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  .map {
+    font-size: 10px;
+    padding: 12px;
+    margin: 8px 0;
+  }
+
+  .controls {
+    bottom: 8px;
+    right: 8px;
+    gap: 6px;
+  }
+
+  .controls button {
+    padding: 9px 11px;
+    font-size: 10px;
+  }
+
+  .urdu {
+    font-size: 16px;
+  }
+
+  #ribbon {
+    transform: scale(.9);
+    margin: 5px auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
 }
 </style>
 </head>
+
 <body>
+
 <!-- OPENING SCREEN -->
+
 <div id="intro">
- <div class="curtain left"></div>
- <div class="curtain right"></div>
- <div class="intro-content">
-  <div class="intro-title">WEDDING INVITATION</div>
-  <button id="ribbon" aria-label="Click the ribbon to open">
-   <span class="tail one"></span>
-   <span class="tail two"></span>
-   <span class="loop one"></span>
-   <span class="loop two"></span>
-   <span class="knot"></span>
-  </button>
-  <div class="welcome">Welcome to Our Wedding</div>
-  <div class="hint">CLICK THE RIBBON</div>
- </div>
+  <div class="curtain left"></div>
+  <div class="curtain right"></div>
+
+  <div class="intro-content">
+    <div class="intro-title">WEDDING INVITATION</div>
+
+    <button id="ribbon" aria-label="Click the ribbon to open">
+      <span class="tail one"></span>
+      <span class="tail two"></span>
+      <span class="loop one"></span>
+      <span class="loop two"></span>
+      <span class="knot"></span>
+    </button>
+
+    <div class="welcome">Welcome to Our Wedding</div>
+    <div class="hint">CLICK THE RIBBON</div>
+  </div>
 </div>
+
 <main id="invitation">
- <div class="dove">🕊</div>
- <div class="dove">🕊</div>
- <div class="dove">🕊</div>
- <!-- COUPLE INTRO -->
- <section class="scene">
-  <div class="inner">
-   <div class="eyebrow">Together with our families</div>
-   <p class="urdu">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
-   <p class="urdu">محبت، خوشی اور دعاؤں کے اس خوبصورت سفر میں</p>
-   <div class="script">Abdul Wali</div>
-   <div class="amp">&amp;</div>
-   <div class="script">Fatima Sajjad</div>
-   <div class="goldline"></div>
-   <p>Request the pleasure of your company<br>
-   as we begin our forever.</p>
-   <p class="urdu">آپ کی شرکت ہمارے لیے باعثِ مسرت ہوگی</p>
-   <div class="eyebrow">Lahore · December 2026</div>
-  </div>
- </section>
- <!-- COUNTDOWN -->
- <section class="scene dark">
-  <div class="inner">
-   <div class="eyebrow">The countdown to forever</div>
-   <h2>Our Beautiful Beginning</h2>
-   <p>The celebration begins in...</p>
-   <div class="countdown">
-    <div class="time">
-     <b id="days">--</b><span>DAYS</span>
+
+  <div class="dove">🕊</div>
+  <div class="dove">🕊</div>
+  <div class="dove">🕊</div>
+
+  <!-- COUPLE INTRO -->
+
+  <section class="scene">
+    <div class="inner">
+      <div class="eyebrow">Together with our families</div>
+
+      <p class="urdu">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
+
+      <p class="urdu">
+        محبت، خوشی اور دعاؤں کے اس خوبصورت سفر میں
+      </p>
+
+      <div class="script">Abdul Wali</div>
+      <div class="amp">&amp;</div>
+      <div class="script">Fatima Sajjad</div>
+
+      <div class="goldline"></div>
+
+      <p>
+        Request the pleasure of your company<br>
+        as we begin our forever.
+      </p>
+
+      <p class="urdu">
+        آپ کی شرکت ہمارے لیے باعثِ مسرت ہوگی
+      </p>
+
+      <div class="eyebrow">Lahore · December 2026</div>
     </div>
-    <div class="time">
-     <b id="hours">--</b><span>HOURS</span>
+  </section>
+
+  <!-- COUNTDOWN -->
+
+  <section class="scene dark">
+    <div class="inner">
+      <div class="eyebrow">The countdown to forever</div>
+
+      <h2>Our Beautiful Beginning</h2>
+
+      <p>The celebration begins in...</p>
+
+      <div class="countdown">
+        <div class="time">
+          <b id="days">--</b>
+          <span>DAYS</span>
+        </div>
+
+        <div class="time">
+          <b id="hours">--</b>
+          <span>HOURS</span>
+        </div>
+
+        <div class="time">
+          <b id="minutes">--</b>
+          <span>MINUTES</span>
+        </div>
+
+        <div class="time">
+          <b id="seconds">--</b>
+          <span>SECONDS</span>
+        </div>
+      </div>
+
+      <p class="urdu">
+        اللہ ہماری نئی زندگی کو خوشیوں اور برکتوں سے بھر دے
+      </p>
     </div>
-    <div class="time">
-     <b id="minutes">--</b><span>MINUTES</span>
+  </section>
+
+  <!-- NIKAH AND MEHNDI -->
+
+  <section class="scene">
+    <div class="inner event-card">
+      <div class="eyebrow">Event One · The Beginning</div>
+
+      <h2>Nikah &amp; Mehndi</h2>
+
+      <div class="date">MONDAY · 21 DECEMBER 2026</div>
+
+      <div class="goldline"></div>
+
+      <p>5:30 PM – 10:30 PM</p>
+
+      <p class="venue">Cesperd Farmhouse</p>
+      <p>Lahore, Pakistan</p>
+
+      <p class="urdu">نکاح اور مہندی کی پُرمسرت تقریب</p>
+
+      <a class="map"
+         target="_blank"
+         rel="noopener noreferrer"
+         href="https://www.google.com/maps/search/?api=1&query=Cesperd+Farmhouse+Lahore">
+        OPEN IN GOOGLE MAPS ↗
+      </a>
     </div>
-    <div class="time">
-     <b id="seconds">--</b><span>SECONDS</span>
+  </section>
+
+  <!-- BARAAT -->
+
+  <section class="scene">
+    <div class="inner event-card">
+      <div class="eyebrow">Event Two · The Wedding Day</div>
+
+      <h2>Baraat</h2>
+
+      <div class="date">WEDNESDAY · 23 DECEMBER 2026</div>
+
+      <div class="goldline"></div>
+
+      <p>6:00 PM – 10:00 PM</p>
+
+      <p class="venue">The Ball Room</p>
+      <p>Raiwind Hall No. 2, Lahore, Pakistan</p>
+
+      <p class="urdu">بارات کی تقریب میں شرکت کی دعوت</p>
+
+      <a class="map"
+         target="_blank"
+         rel="noopener noreferrer"
+         href="https://www.google.com/maps/search/?api=1&query=The+Ball+Room+Raiwind+Hall+No+2+Lahore">
+        OPEN IN GOOGLE MAPS ↗
+      </a>
     </div>
-   </div>
-   <p class="urdu">اللہ ہماری نئی زندگی کو خوشیوں اور برکتوں سے بھر دے</p>
-  </div>
- </section>
- <!-- NIKAH & MEHNDI -->
- <section class="scene">
-  <div class="inner event-card">
-   <div class="eyebrow">Event One · The Beginning</div>
-   <h2>Nikah &amp; Mehndi</h2>
-   <div class="date">MONDAY · 21 DECEMBER 2026</div>
-   <div class="goldline"></div>
-   <p>5:30 PM – 10:30 PM</p>
-   <p class="venue">Cesperd Farmhouse</p>
-   <p>Lahore, Pakistan</p>
-   <p class="urdu">نکاح اور مہندی کی پُرمسرت تقریب</p>
-   <a class="map"
-      target="_blank"
-      rel="noopener"
-      href="https://www.google.com/maps/search/?api=1&query=Cesperd+Farmhouse+Lahore">
-      OPEN IN GOOGLE MAPS ↗️
-   </a>
-  </div>
- </section>
- <!-- BARAAT -->
- <section class="scene">
-  <div class="inner event-card">
-   <div class="eyebrow">Event Two · The Wedding Day</div>
-   <h2>Baraat</h2>
-   <div class="date">WEDNESDAY · 23 DECEMBER 2026</div>
-   <div class="goldline"></div>
-   <p>6:00 PM – 10:00 PM</p>
-   <p class="venue">The Ball Room</p>
-   <p>Raiwind Hall No. 2, Lahore, Pakistan</p>
-   <p class="urdu">بارات کی تقریب میں شرکت کی دعوت</p>
-   <a class="map"
-      target="_blank"
-      rel="noopener"
-      href="https://www.google.com/maps/search/?api=1&query=The+Ball+Room+Raiwind+Hall+No+2+Lahore">
-      OPEN IN GOOGLE MAPS ↗️
-   </a>
-  </div>
- </section>
- <!-- WALIMA -->
- <section class="scene">
-  <div class="inner event-card">
-   <div class="eyebrow">Event Three · A New Chapter</div>
-   <h2>Walima</h2>
-   <div class="date">THURSDAY · 24 DECEMBER 2026</div>
-   <div class="goldline"></div>
-   <p>6:00 PM – 10:00 PM</p>
-   <p class="venue">The Ball Room</p>
-   <p>Raiwind Hall No. 1, Lahore, Pakistan</p>
-   <p class="urdu">ولیمہ کی پُروقار تقریب</p>
-   <a class="map"
-      target="_blank"
-      rel="noopener"
-      href="https://www.google.com/maps/search/?api=1&query=The+Ball+Room+Raiwind+Hall+No+1+Lahore">
-      OPEN IN GOOGLE MAPS ↗️
-   </a>
-  </div>
- </section>
- <!-- CLOSING SCENE -->
- <section class="scene">
-  <div class="inner">
-   <div class="eyebrow">With love and gratitude</div>
-   <div class="script">Abdul Wali</div>
-   <div class="amp">&amp;</div>
-   <div class="script">Fatima Sajjad</div>
-   <div class="goldline"></div>
-   <p>Your presence and prayers will make our day even more special.</p>
-   <p class="urdu">آپ کی محبت اور دعاؤں کے منتظر</p>
-   <div class="eyebrow">Forever Begins · Lahore · 2026</div>
-  </div>
- </section>
+  </section>
+
+  <!-- WALIMA -->
+
+  <section class="scene">
+    <div class="inner event-card">
+      <div class="eyebrow">Event Three · A New Chapter</div>
+
+      <h2>Walima</h2>
+
+      <div class="date">THURSDAY · 24 DECEMBER 2026</div>
+
+      <div class="goldline"></div>
+
+      <p>6:00 PM – 10:00 PM</p>
+
+      <p class="venue">The Ball Room</p>
+      <p>Raiwind Hall No. 1, Lahore, Pakistan</p>
+
+      <p class="urdu">ولیمہ کی پُروقار تقریب</p>
+
+      <a class="map"
+         target="_blank"
+         rel="noopener noreferrer"
+         href="https://www.google.com/maps/search/?api=1&query=The+Ball+Room+Raiwind+Hall+No+1+Lahore">
+        OPEN IN GOOGLE MAPS ↗
+      </a>
+    </div>
+  </section>
+
+  <!-- CLOSING SCENE -->
+
+  <section class="scene">
+    <div class="inner">
+      <div class="eyebrow">With love and gratitude</div>
+
+      <div class="script">Abdul Wali</div>
+      <div class="amp">&amp;</div>
+      <div class="script">Fatima Sajjad</div>
+
+      <div class="goldline"></div>
+
+      <p>
+        Your presence and prayers will make our day even more special.
+      </p>
+
+      <p class="urdu">آپ کی محبت اور دعاؤں کے منتظر</p>
+
+      <div class="eyebrow">Forever Begins · Lahore · 2026</div>
+    </div>
+  </section>
+
 </main>
+
 <!-- MOVIE CONTROLS -->
+
 <div class="controls" id="controls" hidden>
- <button id="pause">Ⅱ Pause Movie</button>
- <button id="replay">↻ Replay</button>
+  <button id="pause" type="button">Ⅱ Pause Movie</button>
+  <button id="replay" type="button">↻ Replay</button>
 </div>
+
 <script>
 const intro = document.getElementById('intro');
 const ribbon = document.getElementById('ribbon');
@@ -343,83 +767,128 @@ const main = document.getElementById('invitation');
 const scenes = [...document.querySelectorAll('.scene')];
 const controls = document.getElementById('controls');
 const pauseButton = document.getElementById('pause');
+const replayButton = document.getElementById('replay');
+
 let opened = false;
 let paused = false;
 let index = 0;
 let timer = null;
-function showVisible(){
- document.querySelectorAll('.inner').forEach(el=>{
-  if(el.getBoundingClientRect().top < window.innerHeight * 0.9){
-   el.classList.add('visible');
-  }
- });
+
+function showVisible() {
+  document.querySelectorAll('.inner').forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight * 0.9) {
+      el.classList.add('visible');
+    }
+  });
 }
-function stopMovie(){
- clearTimeout(timer);
- timer = null;
+
+function stopMovie() {
+  clearTimeout(timer);
+  timer = null;
 }
-function playMovie(){
- stopMovie();
- if(paused || !opened || index >= scenes.length) return;
- scenes[index].scrollIntoView({
-  behavior:'smooth',
-  block:'start'
- });
- showVisible();
- index++;
- timer = setTimeout(
-  playMovie,
-  index === 1 ? 7500 : 6500
- );
-}
-ribbon.addEventListener('click',()=>{
- if(opened) return;
- opened = true;
- intro.classList.add('open');
- setTimeout(()=>{
-  intro.classList.add('gone');
-  main.classList.add('show');
-  controls.hidden = false;
-  index = 0;
-  setTimeout(playMovie,600);
- },2500);
-});
-pauseButton.addEventListener('click',()=>{
- paused = !paused;
- if(paused){
+
+function playMovie() {
   stopMovie();
-  pauseButton.textContent = '▶️ Play Movie';
- }else{
-  pauseButton.textContent = 'Ⅱ Pause Movie';
-  playMovie();
- }
-});
-document.getElementById('replay').addEventListener('click',()=>{
- paused = false;
- pauseButton.textContent = 'Ⅱ Pause Movie';
- index = 0;
- playMovie();
-});
-window.addEventListener('scroll',showVisible,{passive:true});
-showVisible();
-/* LIVE COUNTDOWN TO NIKAH & MEHNDI — LAHORE TIME */
-const target = new Date('2026-12-21T17:30:00+05:00').getTime();
-function countdown(){
- let diff = Math.max(0,target-Date.now());
- const d = Math.floor(diff/86400000);
- diff %= 86400000;
- const h = Math.floor(diff/3600000);
- diff %= 3600000;
- const m = Math.floor(diff/60000);
- diff %= 60000;
- const s = Math.floor(diff/1000);
- document.getElementById('days').textContent = d;
- document.getElementById('hours').textContent = String(h).padStart(2,'0');
- document.getElementById('minutes').textContent = String(m).padStart(2,'0');
- document.getElementById('seconds').textContent = String(s).padStart(2,'0');
+
+  if (paused || !opened || index >= scenes.length) {
+    return;
+  }
+
+  scenes[index].scrollIntoView({
+    behavior: 'smooth',
+    block: 'start'
+  });
+
+  showVisible();
+
+  index++;
+
+  timer = setTimeout(
+    playMovie,
+    index === 1 ? 7500 : 6500
+  );
 }
+
+ribbon.addEventListener('click', () => {
+  if (opened) return;
+
+  opened = true;
+  intro.classList.add('open');
+
+  setTimeout(() => {
+    intro.classList.add('gone');
+    main.classList.add('show');
+    controls.hidden = false;
+
+    index = 0;
+
+    showVisible();
+
+    setTimeout(playMovie, 600);
+  }, 2500);
+});
+
+pauseButton.addEventListener('click', () => {
+  paused = !paused;
+
+  if (paused) {
+    stopMovie();
+    pauseButton.textContent = '▶ Play Movie';
+  } else {
+    pauseButton.textContent = 'Ⅱ Pause Movie';
+    playMovie();
+  }
+});
+
+replayButton.addEventListener('click', () => {
+  paused = false;
+  pauseButton.textContent = 'Ⅱ Pause Movie';
+  index = 0;
+
+  playMovie();
+});
+
+window.addEventListener('scroll', showVisible, {
+  passive: true
+});
+
+showVisible();
+
+/* LIVE COUNTDOWN TO NIKAH & MEHNDI — PAKISTAN TIME */
+
+const target = new Date(
+  '2026-12-21T17:30:00+05:00'
+).getTime();
+
+function countdown() {
+  let diff = Math.max(0, target - Date.now());
+
+  const d = Math.floor(diff / 86400000);
+  diff %= 86400000;
+
+  const h = Math.floor(diff / 3600000);
+  diff %= 3600000;
+
+  const m = Math.floor(diff / 60000);
+  diff %= 60000;
+
+  const s = Math.floor(diff / 1000);
+
+  document.getElementById('days').textContent = d;
+
+  document.getElementById('hours').textContent =
+    String(h).padStart(2, '0');
+
+  document.getElementById('minutes').textContent =
+    String(m).padStart(2, '0');
+
+  document.getElementById('seconds').textContent =
+    String(s).padStart(2, '0');
+}
+
 countdown();
-setInterval(countdown,1000);
+setInterval(countdown, 1000);
 </script>
+
 </body>
 </html>
