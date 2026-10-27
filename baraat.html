@@ -3,348 +3,255 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Baraat Invitation | Abdul Wali & Fatima</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<title>Abdul Wali & Fatima | Baraat</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;600&family=Marcellus&family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
 <style>
-:root {
-  --red: #690d18;
-  --dark-red: #35050c;
-  --deep-red: #210308;
-  --gold: #e2bd75;
-  --light-gold: #f8e7b5;
-  --cream: #fff6e8;
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#fbf4ee;color:#690d1b;font-family:'Cormorant Garamond',serif;text-align:center}
+:root{--gold:#c6a15b;--red:#690d1b;--ivory:#fbf4ee}
+/* OPENING CURTAINS */
+#intro{
+ position:fixed;inset:0;z-index:100;
+ display:flex;align-items:center;justify-content:center;
+ background:#3b0710;overflow:hidden;color:#fff8e8;
 }
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.curtain{
+ position:absolute;top:0;width:51%;height:100%;
+ background:repeating-linear-gradient(90deg,#31050c 0 12px,#7a1425 13px 28px,#5a0b19 29px 42px);
+ border:1px solid #c6a15b55;
+ transition:transform 2.5s cubic-bezier(.7,0,.2,1);
+ z-index:3;
 }
-body {
-  background: var(--deep-red);
-  color: var(--cream);
-  font-family: 'Cormorant Garamond', serif;
-  text-align: center;
-}
-.page {
-  display: none;
-  min-height: 100vh;
-  padding: 35px 20px;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-.page.active {
-  display: flex;
-  animation: fadeIn 1s ease;
-}
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.frame {
-  width: min(100%, 540px);
-  min-height: 82vh;
-  padding: 45px 23px;
-  border: 1px solid var(--gold);
-  outline: 1px solid rgba(226,189,117,.35);
-  outline-offset: 7px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background:
-    radial-gradient(ellipse at top, rgba(226,189,117,.16), transparent 60%),
-    linear-gradient(145deg, #841625, #4a0812 60%, #30040a);
-  position: relative;
-}
-.frame::before,
-.frame::after {
-  content: "✦";
-  position: absolute;
-  color: var(--gold);
-  font-size: 24px;
-}
-.frame::before {
-  top: 12px;
-  left: 15px;
-}
-.frame::after {
-  bottom: 12px;
-  right: 15px;
-}
-.eyebrow {
-  color: var(--light-gold);
-  font-size: 12px;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-}
-.ornament {
-  color: var(--gold);
-  font-size: 28px;
-  letter-spacing: 7px;
-  margin: 19px 0;
-}
-h1 {
-  font-weight: 500;
-  font-size: clamp(39px, 9vw, 59px);
-  line-height: 1.15;
-  margin: 17px 0;
-  color: var(--light-gold);
-}
-.script {
-  font-family: 'Great Vibes', cursive;
-  color: var(--gold);
-  font-size: clamp(38px, 9vw, 58px);
-  margin: 12px 0;
-}
-p {
-  font-size: 20px;
-  line-height: 1.6;
-}
-.gold-line {
-  height: 1px;
-  width: 115px;
-  background: var(--gold);
-  margin: 22px auto;
-}
-.event-detail {
-  margin: 11px 0;
-}
-.event-detail strong {
-  display: block;
-  color: var(--light-gold);
-  font-size: 23px;
-  font-weight: 600;
-}
-.countdown {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 9px;
-  margin: 24px 0;
-}
-.count-box {
-  min-width: 65px;
-  padding: 11px 8px;
-  border: 1px solid rgba(226,189,117,.8);
-  background: rgba(30,0,5,.2);
-}
-.count-box strong {
-  display: block;
-  font-size: 26px;
-  color: var(--light-gold);
-}
-.count-box span {
-  font-size: 10px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-button, .map-link {
-  display: inline-block;
-  padding: 13px 28px;
-  margin-top: 24px;
-  background: var(--gold);
-  color: var(--dark-red);
-  border: 1px solid var(--gold);
-  font-family: inherit;
-  font-size: 19px;
-  cursor: pointer;
-  text-decoration: none;
-  transition: .3s;
-}
-button:hover, .map-link:hover {
-  background: transparent;
-  color: var(--light-gold);
-}
-.rsvp-list {
-  list-style: none;
-  width: 100%;
-  margin-top: 14px;
-}
-.rsvp-list li {
-  padding: 10px 0;
-  font-size: 23px;
-  color: var(--cream);
-  border-bottom: 1px solid rgba(226,189,117,.25);
-}
-.rsvp-list li:last-child {
-  border-bottom: none;
-}
-.curtain {
-  position: fixed;
-  z-index: 10;
-  top: 0;
-  width: 50.5%;
-  height: 100vh;
-  pointer-events: none;
-  background:
-    repeating-linear-gradient(
-      90deg,
-      #35050c 0,
-      #690d18 18px,
-      #8c1b2a 35px,
-      #4a0812 53px
-    );
-  box-shadow: inset 0 0 45px rgba(0,0,0,.45);
-  transition: transform 2s ease-in-out;
-}
-.curtain.left {
-  left: 0;
-  border-right: 2px solid var(--gold);
-}
-.curtain.right {
-  right: 0;
-  border-left: 2px solid var(--gold);
-}
-.curtain.open.left {
-  transform: translateX(-100%);
-}
-.curtain.open.right {
-  transform: translateX(100%);
-}
-.curtain-label {
-  position: fixed;
-  z-index: 11;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: 'Great Vibes', cursive;
-  color: var(--light-gold);
-  font-size: clamp(36px, 9vw, 65px);
-  white-space: nowrap;
-  transition: opacity .6s ease;
-  pointer-events: none;
-  text-shadow: 0 3px 20px #000;
-}
-.curtain-label.hide {
-  opacity: 0;
-}
-@media (max-width: 400px) {
-  .frame { padding: 38px 16px; }
-  .rsvp-list li { font-size: 21px; }
+.left{left:0}
+.right{right:0}
+#intro.open .left{transform:translateX(-105%)}
+#intro.open .right{transform:translateX(105%)}
+.intro-content{position:relative;z-index:5;padding:15px;transition:opacity .7s}
+#intro.open .intro-content{opacity:0}
+.intro-title{font-family:Marcellus,serif;letter-spacing:4px;color:#f5dfaa;font-size:clamp(23px,4vw,38px)}
+.welcome{font:clamp(38px,7vw,65px) 'Great Vibes',cursive;margin:12px 0}
+.hint{font-family:Marcellus,serif;letter-spacing:3px;font-size:12px;color:#f2dca4}
+/* GOLD RIBBON */
+#ribbon{width:150px;height:130px;position:relative;display:block;margin:15px auto;background:none;border:0;cursor:pointer;filter:drop-shadow(0 5px 8px #0007)}
+.loop{position:absolute;top:22px;width:65px;height:48px;border:9px solid #d6b365;background:linear-gradient(135deg,#fff0b8,#a77a2c)}
+.loop.one{left:10px;transform:rotate(28deg);border-radius:70% 20% 70% 20%}
+.loop.two{right:10px;transform:rotate(-28deg);border-radius:20% 70% 20% 70%}
+.knot{position:absolute;left:64px;top:35px;width:27px;height:27px;background:linear-gradient(135deg,#fff1bb,#b18131);transform:rotate(45deg);z-index:2;border-radius:4px}
+.tail{position:absolute;top:54px;width:29px;height:70px;background:linear-gradient(90deg,#a77a2c,#f7dda0,#b18131);clip-path:polygon(0 0,100% 0,100% 100%,50% 78%,0 100%)}
+.tail.one{left:43px;transform:rotate(8deg)}
+.tail.two{right:42px;transform:rotate(-8deg)}
+#intro.open #ribbon{animation:untie .8s forwards}
+@keyframes untie{40%{transform:scale(1.15) rotate(10deg)}100%{transform:scale(.2) rotate(35deg);opacity:0}}
+#intro.gone{opacity:0;visibility:hidden;transition:opacity 1.5s,visibility 1.5s}
+/* INVITATION */
+main{opacity:0;transition:opacity 1.5s}
+main.show{opacity:1}
+.scene{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:65px 20px;position:relative;overflow:hidden;background:radial-gradient(ellipse,#fffdf7,#f0dfcf)}
+.scene:before{content:"✦";position:absolute;top:25px;color:var(--gold);font-size:22px}
+.inner{max-width:800px;width:100%;opacity:0;transform:translateY(30px);transition:1.2s}
+.inner.visible{opacity:1;transform:translateY(0)}
+.script{font:clamp(55px,10vw,95px) 'Great Vibes',cursive;color:var(--red);margin:10px 0}
+.amp{font:55px 'Great Vibes',cursive;color:var(--gold)}
+.eyebrow{font:12px Marcellus,serif;letter-spacing:4px;text-transform:uppercase}
+p{font-size:22px;line-height:1.5}
+.urdu{font:18px/2.4 'Noto Nastaliq Urdu',serif;direction:rtl}
+.goldline{height:1px;width:130px;margin:25px auto;background:var(--gold)}
+.dark{background:linear-gradient(145deg,#760f21,#3b0710);color:#fff8e8}
+.dark .eyebrow{color:#e8d39b}
+.dark h2{color:#f0d69a}
+.dark .urdu{color:#f4dfac}
+h2{font:clamp(52px,8vw,75px) 'Great Vibes',cursive;color:var(--red);margin:15px 0}
+.countdown{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:30px 0}
+.time{border:1px solid #c6a15b;padding:16px;min-width:72px}
+.time b{display:block;font:32px Marcellus,serif}
+.time span{font-size:11px;letter-spacing:2px}
+.event-card{max-width:760px;width:100%;padding:35px 20px;border:1px solid var(--gold);outline:1px solid #c6a15b55;outline-offset:-9px;background:#fffdf7;box-shadow:0 20px 60px #46351a18}
+.date{color:var(--gold);font:15px Marcellus,serif;letter-spacing:2px}
+.venue{font-weight:600;color:var(--red)}
+.map{display:inline-block;padding:12px 20px;margin:12px;border:1px solid var(--gold);color:var(--red);text-decoration:none;font:12px Marcellus,serif;letter-spacing:1px}
+.map:hover{background:var(--red);color:white}
+.dove{position:fixed;left:-50px;z-index:20;pointer-events:none;font-size:30px;animation:fly 18s linear infinite}
+.dove:nth-child(2){top:20%;animation-delay:2s}
+.dove:nth-child(3){top:55%;animation-delay:8s}
+.dove:nth-child(4){top:75%;animation-delay:13s}
+@keyframes fly{0%{transform:translateX(-5vw) translateY(0)}50%{transform:translateX(55vw) translateY(-35px)}100%{transform:translateX(110vw) translateY(10px)}}
+.controls{position:fixed;bottom:12px;right:12px;z-index:50;display:flex;gap:8px}
+.controls button{padding:10px 14px;border-radius:25px;border:1px solid var(--gold);background:#fff9e8;color:var(--red);cursor:pointer}
+/* NEW RSVP PAGE */
+.rsvp-list{list-style:none;width:100%;margin:18px 0;padding:0}
+.rsvp-list li{font-size:clamp(21px,5vw,27px);padding:12px 5px;border-bottom:1px solid #c6a15b55;color:#690d1b}
+.rsvp-list li:last-child{border-bottom:none}
+.rsvp-name{font:clamp(38px,8vw,58px) 'Great Vibes',cursive;color:var(--red);margin:18px 0}
+.rsvp-heading{font:clamp(45px,8vw,65px) 'Great Vibes',cursive;color:var(--red);margin:15px 0}
+@media(max-width:500px){
+ .scene{padding:50px 15px}
+ .time{min-width:62px;padding:12px 8px}
+ p{font-size:19px}
+ .eyebrow{letter-spacing:2px}
 }
 </style>
 </head>
 <body>
-<div class="curtain left" id="leftCurtain"></div>
-<div class="curtain right" id="rightCurtain"></div>
-<div class="curtain-label" id="curtainLabel">Baraat Invitation</div>
-<!-- PAGE 1: OPENING -->
-<section class="page active" id="page1">
-  <div class="frame">
-    <div class="eyebrow">With Love & Blessings</div>
-    <div class="ornament">✦ ❧ ✦</div>
-    <p>You are cordially invited to celebrate</p>
-    <h1>The Baraat</h1>
-    <div class="gold-line"></div>
-    <p class="script">Abdul Wali &amp; Fatima</p>
-    <p>A royal celebration of love, family and forever.</p>
-    <button onclick="showPage(2)">Open Invitation</button>
+<!-- OPENING SCREEN -->
+<div id="intro">
+ <div class="curtain left"></div>
+ <div class="curtain right"></div>
+ <div class="intro-content">
+  <div class="intro-title">BARAAT INVITATION</div>
+  <button id="ribbon" aria-label="Click the ribbon to open">
+   <span class="tail one"></span><span class="tail two"></span>
+   <span class="loop one"></span><span class="loop two"></span>
+   <span class="knot"></span>
+  </button>
+  <div class="welcome">Welcome to Our Baraat</div>
+  <div class="hint">CLICK THE RIBBON</div>
+ </div>
+</div>
+<main id="invitation">
+ <div class="dove">🕊</div><div class="dove">🕊</div><div class="dove">🕊</div>
+ <!-- PAGE 1: COUPLE INTRO -->
+ <section class="scene">
+  <div class="inner">
+   <div class="eyebrow">Together with our families</div>
+   <p class="urdu">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
+   <p class="urdu">محبت، خوشی اور دعاؤں کے اس خوبصورت سفر میں</p>
+   <div class="script">Abdul Wali</div>
+   <div class="amp">&amp;</div>
+   <div class="script">Fatima Sajjad</div>
+   <div class="goldline"></div>
+   <p>Request the pleasure of your company<br>at our Baraat celebration.</p>
+   <p class="urdu">آپ کی شرکت ہمارے لیے باعثِ مسرت ہوگی</p>
+   <div class="eyebrow">Lahore · December 2026</div>
   </div>
-</section>
-<!-- PAGE 2: EVENT DETAILS -->
-<section class="page" id="page2">
-  <div class="frame">
-    <div class="eyebrow">Together With Our Families</div>
-    <div class="ornament">❧ ✦ ❧</div>
-    <p>Request the pleasure of your company at the</p>
-    <h1>Baraat Ceremony</h1>
-    <p class="script">Abdul Wali &amp; Fatima</p>
-    <div class="gold-line"></div>
-    <div class="event-detail">
-      <strong>Date</strong>
-      <p>ADD BARAAT DATE</p>
-    </div>
-    <div class="event-detail">
-      <strong>Time</strong>
-      <p>ADD BARAAT TIME</p>
-    </div>
-    <div class="event-detail">
-      <strong>Venue</strong>
-      <p>ADD VENUE & CITY</p>
-    </div>
-    <div class="countdown" id="countdown">
-      <div class="count-box"><strong id="days">--</strong><span>Days</span></div>
-      <div class="count-box"><strong id="hours">--</strong><span>Hours</span></div>
-      <div class="count-box"><strong id="minutes">--</strong><span>Minutes</span></div>
-      <div class="count-box"><strong id="seconds">--</strong><span>Seconds</span></div>
-    </div>
-    <button onclick="showPage(3)">Continue</button>
+ </section>
+ <!-- PAGE 2: COUNTDOWN -->
+ <section class="scene dark">
+  <div class="inner">
+   <div class="eyebrow">The countdown to forever</div>
+   <h2>Our Baraat Day</h2>
+   <p>The celebration begins in...</p>
+   <div class="countdown" id="countdown">
+    <div class="time"><b id="days">--</b><span>DAYS</span></div>
+    <div class="time"><b id="hours">--</b><span>HOURS</span></div>
+    <div class="time"><b id="minutes">--</b><span>MINUTES</span></div>
+    <div class="time"><b id="seconds">--</b><span>SECONDS</span></div>
+   </div>
+   <p class="urdu">اللہ ہماری نئی زندگی کو خوشیوں اور برکتوں سے بھر دے</p>
   </div>
-</section>
-<!-- PAGE 3: RSVP -->
-<section class="page" id="page3">
-  <div class="frame">
-    <div class="eyebrow">Your Presence Is Our Honour</div>
-    <div class="ornament">✦ ❧ ✦</div>
-    <p>Looking Forward</p>
-    <p class="script">Mr. &amp; Mrs. Sajjad Akbar</p>
-    <div class="gold-line"></div>
-    <h1 style="font-size:38px;">R.S.V.P</h1>
-    <ul class="rsvp-list">
-      <li>Mr. &amp; Mrs. Aqib</li>
-      <li>Mr. &amp; Mrs. Ahtisham</li>
-      <li>Fatima’s Grandmother</li>
-      <li>Ayan Sajjad</li>
-      <li>Maryam Sajjad</li>
-    </ul>
-    <button onclick="showPage(4)">Final Page</button>
+ </section>
+ <!-- PAGE 3: BARAAT DETAILS -->
+ <section class="scene">
+  <div class="inner event-card">
+   <div class="eyebrow">Our Special Day</div>
+   <h2>Baraat</h2>
+   <div class="date">WEDNESDAY · 23 DECEMBER 2026</div>
+   <div class="goldline"></div>
+   <p>6:00 PM – 10:00 PM</p>
+   <p class="venue">The Ball Room</p>
+   <p>Raiwind Hall No. 2, Lahore, Pakistan</p>
+   <p class="urdu">بارات کی تقریب میں شرکت کی دعوت</p>
+   <a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=The+Ball+Room+Raiwind+Hall+No+2+Lahore">OPEN IN GOOGLE MAPS ↗</a>
   </div>
-</section>
-<!-- PAGE 4: CLOSING -->
-<section class="page" id="page4">
-  <div class="frame">
-    <div class="ornament">✦ ❧ ✦</div>
-    <p class="script">Thank You</p>
-    <h1>With Love & Gratitude</h1>
-    <div class="gold-line"></div>
-    <p>We look forward to sharing our special day with you.</p>
-    <p class="script">Abdul Wali &amp; Fatima</p>
-    <div class="ornament">❧ ✦ ❧</div>
-    <button onclick="showPage(1)">Start Again</button>
+ </section>
+ <!-- PAGE 4: NEW LOOKING FORWARD + RSVP PAGE -->
+ <section class="scene">
+  <div class="inner event-card">
+   <div class="eyebrow">With warm regards</div>
+   <div class="goldline"></div>
+   <p>Looking Forward</p>
+   <div class="rsvp-name">Mr. &amp; Mrs. Sajjad Akbar</div>
+   <div class="goldline"></div>
+   <h2 class="rsvp-heading">R.S.V.P</h2>
+   <ul class="rsvp-list">
+    <li>Mr. &amp; Mrs. Aqib</li>
+    <li>Mr. &amp; Mrs. Ahtisham</li>
+    <li>Fatima’s Grandmother</li>
+    <li>Ayan Sajjad</li>
+    <li>Maryam Sajjad</li>
+   </ul>
   </div>
-</section>
+ </section>
+ <!-- PAGE 5: CLOSING -->
+ <section class="scene dark">
+  <div class="inner">
+   <div class="eyebrow">With love and gratitude</div>
+   <div class="script" style="color:#f0d69a">Thank You</div>
+   <div class="goldline"></div>
+   <p>Your presence and prayers will make our day even more special.</p>
+   <p class="urdu">آپ کی محبت اور دعاؤں کے منتظر</p>
+   <div class="script" style="color:#f0d69a">Abdul Wali &amp; Fatima</div>
+   <div class="eyebrow">Forever Begins · Lahore · 2026</div>
+  </div>
+ </section>
+</main>
+<div class="controls" id="controls" hidden>
+ <button id="pause">Ⅱ Pause Movie</button>
+ <button id="replay">↻ Replay</button>
+</div>
 <script>
-function showPage(pageNumber) {
-  document.querySelectorAll('.page').forEach(page => {
-    page.classList.remove('active');
-  });
-  document.getElementById('page' + pageNumber).classList.add('active');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+const intro=document.getElementById('intro');
+const ribbon=document.getElementById('ribbon');
+const main=document.getElementById('invitation');
+const scenes=[...document.querySelectorAll('.scene')];
+const controls=document.getElementById('controls');
+const pauseButton=document.getElementById('pause');
+let opened=false,paused=false,index=0,timer=null;
+function showVisible(){
+ document.querySelectorAll('.inner').forEach(el=>{
+  if(el.getBoundingClientRect().top<window.innerHeight*.9)
+   el.classList.add('visible');
+ });
 }
-// Opening curtain animation
-window.addEventListener('load', function() {
-  setTimeout(function() {
-    document.getElementById('leftCurtain').classList.add('open');
-    document.getElementById('rightCurtain').classList.add('open');
-    document.getElementById('curtainLabel').classList.add('hide');
-    setTimeout(function() {
-      document.getElementById('leftCurtain').style.display = 'none';
-      document.getElementById('rightCurtain').style.display = 'none';
-      document.getElementById('curtainLabel').style.display = 'none';
-    }, 2200);
-  }, 900);
+function stopMovie(){clearTimeout(timer);timer=null}
+function playMovie(){
+ stopMovie();
+ if(paused||!opened||index>=scenes.length)return;
+ scenes[index].scrollIntoView({behavior:'smooth',block:'start'});
+ showVisible();
+ index++;
+ timer=setTimeout(playMovie,index===1?7500:6500);
+}
+ribbon.addEventListener('click',()=>{
+ if(opened)return;
+ opened=true;
+ intro.classList.add('open');
+ setTimeout(()=>{
+  intro.classList.add('gone');
+  main.classList.add('show');
+  controls.hidden=false;
+  index=0;
+  setTimeout(playMovie,600);
+ },2500);
 });
-// Countdown: update this date to your actual Baraat date and time.
-const baraatDate = new Date('2026-12-24T18:00:00+05:00').getTime();
-function updateCountdown() {
-  const distance = baraatDate - Date.now();
-  if (distance <= 0) {
-    document.getElementById('countdown').innerHTML =
-      '<p>Today is the special day!</p>';
-    return;
-  }
-  document.getElementById('days').textContent =
-    Math.floor(distance / (1000 * 60 * 60 * 24));
-  document.getElementById('hours').textContent =
-    Math.floor((distance / (1000 * 60 * 60)) % 24);
-  document.getElementById('minutes').textContent =
-    Math.floor((distance / (1000 * 60)) % 60);
-  document.getElementById('seconds').textContent =
-    Math.floor((distance / 1000) % 60);
+pauseButton.addEventListener('click',()=>{
+ paused=!paused;
+ if(paused){stopMovie();pauseButton.textContent='▶ Play Movie'}
+ else{pauseButton.textContent='Ⅱ Pause Movie';playMovie()}
+});
+document.getElementById('replay').addEventListener('click',()=>{
+ paused=false;
+ pauseButton.textContent='Ⅱ Pause Movie';
+ index=0;
+ playMovie();
+});
+window.addEventListener('scroll',showVisible,{passive:true});
+/* Countdown to Baraat — Pakistan time */
+const target=new Date('2026-12-23T18:00:00+05:00').getTime();
+function countdown(){
+ let diff=Math.max(0,target-Date.now());
+ const d=Math.floor(diff/86400000);diff%=86400000;
+ const h=Math.floor(diff/3600000);diff%=3600000;
+ const m=Math.floor(diff/60000);diff%=60000;
+ const s=Math.floor(diff/1000);
+ document.getElementById('days').textContent=d;
+ document.getElementById('hours').textContent=String(h).padStart(2,'0');
+ document.getElementById('minutes').textContent=String(m).padStart(2,'0');
+ document.getElementById('seconds').textContent=String(s).padStart(2,'0');
 }
-updateCountdown();
-setInterval(updateCountdown, 1000);
+countdown();
+setInterval(countdown,1000);
 </script>
 </body>
 </html>
+
