@@ -3,374 +3,477 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#210333">
+
 <title>Abdul Wali & Fatima Sajjad | Walima Invitation</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;600&family=Marcellus&family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;500;600;700&family=Marcellus&family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
 
 <style>
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+
+html{
+  scroll-behavior:smooth;
+  scroll-snap-type:y proximity;
+}
 
 :root{
- --gold:#c6a15b;
- --green:#3b075b;
- --ivory:#fbf7ee;
- --dark:#210333;
- --lightgold:#f0d69a;
+  --purple:#4B146B;
+  --deep:#210333;
+  --dark:#210333;
+  --royal:#4B146B;
+  --gold:#d4af67;
+  --lightgold:#f5dfa5;
+  --cream:#fff8ee;
+  --paper:#f5e8d2;
 }
 
 body{
- margin:0;
- background:var(--ivory);
- color:var(--green);
- font-family:'Cormorant Garamond',serif;
- text-align:center;
+  margin:0;
+  background:var(--cream);
+  color:var(--purple);
+  text-align:center;
+  font-family:'Cormorant Garamond',serif;
+  overflow-x:hidden;
 }
 
+button,a{-webkit-tap-highlight-color:transparent}
+button{font:inherit}
+
 /* OPENING CURTAINS */
+
 #intro{
- position:fixed;
- inset:0;
- z-index:100;
- display:flex;
- align-items:center;
- justify-content:center;
- background:#210333;
- overflow:hidden;
- color:#fff8e8;
+  position:fixed;
+  inset:0;
+  z-index:1000;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  background:radial-gradient(
+    ellipse at center,
+    #4B146B 0%,
+    #210333 65%,
+    #100019 100%
+  );
+  color:var(--cream);
+  transition:opacity 1.2s,visibility 1.2s;
+}
+
+#intro.gone{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
 }
 
 .curtain{
- position:absolute;
- top:0;
- width:51%;
- height:100%;
- background:repeating-linear-gradient(
-  90deg,
-  #170022 0 12px,
-  #4b146b 13px 28px,
-  #2b0640 29px 42px
- );
- border:1px solid #c6a15b55;
- transition:transform 2.5s cubic-bezier(.7,0,.2,1);
- z-index:3;
+  position:absolute;
+  top:0;
+  width:51%;
+  height:100%;
+  z-index:3;
+  background:repeating-linear-gradient(
+    90deg,
+    #210333 0px,
+    #321044 12px,
+    #4B146B 22px,
+    #351047 34px,
+    #210333 45px
+  );
+  border:1px solid #d4af6744;
+  box-shadow:inset 0 0 35px #10001988;
+  transition:transform 2.4s cubic-bezier(.7,0,.2,1);
 }
 
-.left{left:0}
-.right{right:0}
+.curtain.left{
+  left:0;
+  border-right:2px solid var(--gold);
+}
 
-#intro.open .left{transform:translateX(-105%)}
-#intro.open .right{transform:translateX(105%)}
+.curtain.right{
+  right:0;
+  border-left:2px solid var(--gold);
+}
+
+#intro.open .curtain.left{transform:translateX(-105%)}
+#intro.open .curtain.right{transform:translateX(105%)}
 
 .intro-content{
- position:relative;
- z-index:5;
- padding:15px;
- transition:opacity .7s;
+  position:relative;
+  z-index:5;
+  width:90%;
+  max-width:570px;
+  padding:30px 15px;
+  border:1px solid #d4af6788;
+  outline:1px solid #d4af6733;
+  outline-offset:8px;
+  transition:opacity .6s;
 }
 
 #intro.open .intro-content{opacity:0}
 
 .intro-title{
- font-family:Marcellus,serif;
- letter-spacing:4px;
- color:#f5dfaa;
- font-size:clamp(23px,4vw,38px);
+  font-family:'Marcellus',serif;
+  font-size:clamp(18px,4vw,29px);
+  letter-spacing:5px;
+  color:var(--lightgold);
 }
 
+.intro-divider{color:var(--gold);margin:15px}
+
 .welcome{
- font:clamp(38px,7vw,65px) 'Great Vibes',cursive;
- margin:12px 0;
+  font-family:'Great Vibes',cursive;
+  font-size:clamp(37px,8vw,65px);
+  color:var(--lightgold);
+  margin:10px 0;
 }
 
 .hint{
- font-family:Marcellus,serif;
- letter-spacing:3px;
- font-size:12px;
- color:#f2dca4;
+  color:#f0d8a0;
+  font-family:'Marcellus',serif;
+  font-size:11px;
+  letter-spacing:4px;
+  margin-top:12px;
 }
 
-/* GOLD RIBBON */
+/* GOLDEN RIBBON */
+
 #ribbon{
- width:150px;
- height:130px;
- position:relative;
- display:block;
- margin:15px auto;
- background:none;
- border:0;
- cursor:pointer;
- filter:drop-shadow(0 5px 8px #0007);
+  position:relative;
+  display:block;
+  width:150px;
+  height:125px;
+  margin:15px auto;
+  border:0;
+  background:transparent;
+  cursor:pointer;
+  filter:drop-shadow(0 5px 8px #0008);
 }
 
 .loop{
- position:absolute;
- top:22px;
- width:65px;
- height:48px;
- border:9px solid #d6b365;
- background:linear-gradient(135deg,#fff0b8,#a77a2c);
+  position:absolute;
+  top:25px;
+  width:65px;
+  height:47px;
+  border:8px solid var(--gold);
+  background:linear-gradient(135deg,#fff2c1,#b18131);
 }
 
 .loop.one{
- left:10px;
- transform:rotate(28deg);
- border-radius:70% 20% 70% 20%;
+  left:10px;
+  transform:rotate(28deg);
+  border-radius:70% 20% 70% 20%;
 }
 
 .loop.two{
- right:10px;
- transform:rotate(-28deg);
- border-radius:20% 70% 20% 70%;
+  right:10px;
+  transform:rotate(-28deg);
+  border-radius:20% 70% 20% 70%;
 }
 
 .knot{
- position:absolute;
- left:64px;
- top:35px;
- width:27px;
- height:27px;
- background:linear-gradient(135deg,#fff1bb,#b18131);
- transform:rotate(45deg);
- z-index:2;
- border-radius:4px;
+  position:absolute;
+  left:64px;
+  top:37px;
+  width:27px;
+  height:27px;
+  z-index:2;
+  transform:rotate(45deg);
+  border-radius:4px;
+  background:linear-gradient(135deg,#fff2c1,#b18131);
 }
 
 .tail{
- position:absolute;
- top:54px;
- width:29px;
- height:70px;
- background:linear-gradient(90deg,#a77a2c,#f7dda0,#b18131);
- clip-path:polygon(0 0,100% 0,100% 100%,50% 78%,0 100%);
+  position:absolute;
+  top:57px;
+  width:30px;
+  height:65px;
+  background:linear-gradient(90deg,#a77a2c,#f7dda0,#b18131);
+  clip-path:polygon(0 0,100% 0,100% 100%,50% 78%,0 100%);
 }
 
-.tail.one{left:43px;transform:rotate(8deg)}
+.tail.one{left:42px;transform:rotate(8deg)}
 .tail.two{right:42px;transform:rotate(-8deg)}
 
 #intro.open #ribbon{animation:untie .8s forwards}
 
 @keyframes untie{
- 40%{transform:scale(1.15) rotate(10deg)}
- 100%{transform:scale(.2) rotate(35deg);opacity:0}
+  40%{transform:scale(1.12) rotate(10deg)}
+  100%{transform:scale(.2) rotate(35deg);opacity:0}
 }
 
-#intro.gone{
- opacity:0;
- visibility:hidden;
- transition:opacity 1.5s,visibility 1.5s;
-}
+/* PAGE LAYOUT */
 
-/* INVITATION PAGES */
-main{
- opacity:0;
- transition:opacity 1.5s;
-}
-
+main{opacity:0;transition:opacity 1.2s}
 main.show{opacity:1}
 
 .scene{
- min-height:100vh;
- display:flex;
- align-items:center;
- justify-content:center;
- padding:65px 20px;
- position:relative;
- overflow:hidden;
- background:radial-gradient(ellipse,#fffef9,#eee3f5);
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  min-height:100svh;
+  padding:65px 22px;
+  overflow:hidden;
+  scroll-snap-align:start;
+  background:radial-gradient(ellipse at center,#fffdf7,#f0e2cd);
 }
 
-.scene:before{
- content:"✦";
- position:absolute;
- top:25px;
- color:var(--gold);
- font-size:22px;
+.scene::before{
+  content:"✦";
+  position:absolute;
+  top:23px;
+  color:var(--gold);
+  font-size:25px;
+}
+
+.scene::after{
+  content:"❧";
+  position:absolute;
+  bottom:15px;
+  color:#c7a15e88;
+  font-size:30px;
 }
 
 .inner{
- max-width:800px;
- width:100%;
- opacity:0;
- transform:translateY(30px);
- transition:1.2s;
+  position:relative;
+  z-index:2;
+  width:100%;
+  max-width:800px;
+  opacity:0;
+  transform:translateY(25px);
+  transition:opacity 1s,transform 1s;
 }
 
-.inner.visible{
- opacity:1;
- transform:translateY(0);
+.inner.visible{opacity:1;transform:translateY(0)}
+
+.eyebrow{
+  font-family:'Marcellus',serif;
+  font-size:12px;
+  letter-spacing:4px;
+  line-height:1.8;
+  text-transform:uppercase;
 }
 
 .script{
- font:clamp(55px,10vw,95px) 'Great Vibes',cursive;
- color:var(--green);
- margin:10px 0;
+  margin:10px 0;
+  font-family:'Great Vibes',cursive;
+  font-size:clamp(52px,9vw,88px);
+  line-height:1.2;
+  color:var(--purple);
+  overflow-wrap:anywhere;
 }
 
 .amp{
- font:55px 'Great Vibes',cursive;
- color:var(--gold);
-}
-
-.eyebrow{
- font:12px Marcellus,serif;
- letter-spacing:4px;
- text-transform:uppercase;
+  font-family:'Great Vibes',cursive;
+  font-size:55px;
+  color:var(--gold);
+  line-height:1;
 }
 
 p{
- font-size:22px;
- line-height:1.5;
+  font-size:22px;
+  line-height:1.55;
+  margin:14px 0;
 }
 
 .urdu{
- font:18px/2.4 'Noto Nastaliq Urdu',serif;
- direction:rtl;
+  font-family:'Noto Nastaliq Urdu',serif;
+  font-size:17px;
+  line-height:2.5;
+  direction:rtl;
 }
 
 .goldline{
- height:1px;
- width:130px;
- margin:25px auto;
- background:var(--gold);
+  width:130px;
+  height:1px;
+  margin:25px auto;
+  background:var(--gold);
+  position:relative;
 }
 
-/* DARK ROYAL PURPLE PAGES */
+.goldline::after{
+  content:"✦";
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  padding:0 8px;
+  background:inherit;
+  color:var(--gold);
+  font-size:13px;
+}
+
+/* ROYAL PURPLE SECTIONS */
+
 .dark{
- background:linear-gradient(145deg,#4b146b,#210333);
- color:#fff8e8;
+  color:var(--cream);
+  background:radial-gradient(
+    ellipse at center,
+    #4B146B 0%,
+    #210333 65%,
+    #100019 100%
+  );
 }
 
-.dark .eyebrow{color:#f0dba8}
-.dark h2{color:#f0d69a}
-.dark .urdu{color:#f4dfac}
+.dark::before,.dark::after{color:var(--gold)}
+.dark .eyebrow{color:var(--lightgold)}
+.dark h2{color:var(--lightgold)}
+.dark .urdu{color:#f5dfaa}
+.dark .goldline::after{background:#321044}
 
 h2{
- font:clamp(52px,8vw,75px) 'Great Vibes',cursive;
- color:var(--green);
- margin:15px 0;
+  margin:15px 0;
+  color:var(--purple);
+  font-family:'Great Vibes',cursive;
+  font-size:clamp(48px,8vw,75px);
+  font-weight:400;
 }
 
 /* COUNTDOWN */
+
 .countdown{
- display:flex;
- gap:12px;
- justify-content:center;
- flex-wrap:wrap;
- margin:30px 0;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
+  margin:30px auto;
 }
 
 .time{
- border:1px solid var(--gold);
- padding:16px;
- min-width:72px;
+  width:105px;
+  min-width:0;
+  padding:17px 8px;
+  border:1px solid var(--gold);
+  background:#ffffff06;
+  box-shadow:inset 0 0 0 3px #d4af6715;
 }
 
 .time b{
- display:block;
- font:32px Marcellus,serif;
+  display:block;
+  font-family:'Marcellus',serif;
+  font-size:clamp(25px,5vw,34px);
+  font-weight:400;
+  color:var(--lightgold);
 }
 
 .time span{
- font-size:11px;
- letter-spacing:2px;
+  display:block;
+  margin-top:6px;
+  font-size:10px;
+  letter-spacing:2px;
+  color:#f0d8a0;
 }
 
 /* EVENT CARD */
+
 .event-card{
- max-width:760px;
- width:100%;
- padding:35px 20px;
- border:1px solid var(--gold);
- outline:1px solid #c6a15b55;
- outline-offset:-9px;
- background:#fffdf7;
- box-shadow:0 20px 60px #21033318;
+  max-width:760px;
+  padding:40px 24px;
+  border:1px solid var(--gold);
+  outline:1px solid #d4af6755;
+  outline-offset:-10px;
+  background:#fffdf7;
+  box-shadow:0 20px 60px #46351a18;
 }
 
 .date{
- color:var(--gold);
- font:15px Marcellus,serif;
- letter-spacing:2px;
+  color:#a57c35;
+  font-family:'Marcellus',serif;
+  font-size:15px;
+  letter-spacing:2px;
+  line-height:1.9;
 }
 
 .venue{
- font-weight:600;
- color:var(--green);
+  color:var(--purple);
+  font-size:27px;
+  font-weight:700;
 }
 
 .map{
- display:inline-block;
- padding:12px 20px;
- margin:12px;
- border:1px solid var(--gold);
- color:var(--green);
- text-decoration:none;
- font:12px Marcellus,serif;
- letter-spacing:1px;
+  display:inline-block;
+  max-width:100%;
+  margin:12px auto;
+  padding:13px 19px;
+  border:1px solid var(--gold);
+  color:var(--purple);
+  text-decoration:none;
+  font-family:'Marcellus',serif;
+  font-size:12px;
+  letter-spacing:1px;
+  transition:.3s;
 }
 
 .map:hover{
- background:var(--green);
- color:white;
+  background:var(--purple);
+  color:white;
 }
 
-/* RSVP PAGE */
+/* RSVP CARD */
+
 .rsvp-card{
- max-width:700px;
- width:100%;
- padding:40px 22px;
- border:1px solid var(--gold);
- outline:1px solid #c6a15b55;
- outline-offset:-10px;
- background:#fffdf7;
- box-shadow:0 20px 60px #21033318;
+  width:100%;
+  max-width:700px;
+  padding:42px 25px;
+  border:1px solid var(--gold);
+  outline:1px solid #d4af6755;
+  outline-offset:-10px;
+  background:#fffdf7;
+  box-shadow:0 20px 60px #46351a18;
 }
 
 .rsvp-heading{
- font:clamp(42px,7vw,65px) 'Great Vibes',cursive;
- color:var(--green);
- margin:0 0 8px;
+  margin:8px 0;
+  color:var(--purple);
+  font-family:'Great Vibes',cursive;
+  font-size:clamp(44px,7vw,65px);
+  font-weight:400;
 }
 
 .rsvp-subheading{
- font:12px Marcellus,serif;
- letter-spacing:4px;
- color:var(--gold);
- text-transform:uppercase;
+  color:#a57c35;
+  font-family:'Marcellus',serif;
+  font-size:12px;
+  letter-spacing:3px;
+  line-height:1.8;
+  text-transform:uppercase;
 }
 
 .rsvp-list{
- list-style:none;
- padding:0;
- margin:25px 0 0;
+  list-style:none;
+  padding:0;
+  margin:25px 0 0;
 }
 
 .rsvp-list li{
- font-size:24px;
- line-height:1.8;
- color:var(--green);
+  color:var(--purple);
+  font-size:24px;
+  line-height:1.8;
 }
 
 .rsvp-list li::after{
- content:"";
- display:block;
- width:45px;
- height:1px;
- background:#c6a15b77;
- margin:3px auto;
+  content:"";
+  display:block;
+  width:45px;
+  height:1px;
+  margin:4px auto;
+  background:#c6a15b77;
 }
 
 .rsvp-list li:last-child::after{display:none}
 
 /* FLYING DOVES */
+
 .dove{
- position:fixed;
- left:-50px;
- z-index:20;
- pointer-events:none;
- font-size:30px;
- animation:fly 18s linear infinite;
+  position:fixed;
+  left:-50px;
+  z-index:20;
+  pointer-events:none;
+  font-size:26px;
+  opacity:.7;
+  animation:fly 20s linear infinite;
 }
 
 .dove:nth-child(2){top:20%;animation-delay:2s}
@@ -378,37 +481,112 @@ h2{
 .dove:nth-child(4){top:75%;animation-delay:13s}
 
 @keyframes fly{
- 0%{transform:translateX(-5vw) translateY(0)}
- 50%{transform:translateX(55vw) translateY(-35px)}
- 100%{transform:translateX(110vw) translateY(10px)}
+  0%{transform:translateX(-5vw) translateY(0)}
+  50%{transform:translateX(55vw) translateY(-35px)}
+  100%{transform:translateX(110vw) translateY(10px)}
 }
 
-/* PAUSE AND REPLAY */
+/* MOVIE CONTROLS */
+
 .controls{
- position:fixed;
- bottom:12px;
- right:12px;
- z-index:50;
- display:flex;
- gap:8px;
+  position:fixed;
+  right:12px;
+  bottom:12px;
+  z-index:50;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
 }
+
+.controls[hidden]{display:none}
 
 .controls button{
- padding:10px 14px;
- border-radius:25px;
- border:1px solid var(--gold);
- background:#fff9e8;
- color:var(--green);
- cursor:pointer;
+  padding:10px 14px;
+  border:1px solid var(--gold);
+  border-radius:30px;
+  background:#fff8ee;
+  color:var(--purple);
+  font-family:'Marcellus',serif;
+  font-size:12px;
+  cursor:pointer;
 }
 
-@media(max-width:500px){
- .scene{padding:50px 15px}
- .time{min-width:62px;padding:12px 8px}
- p{font-size:19px}
- .eyebrow{letter-spacing:2px}
- .event-card,.rsvp-card{padding:30px 16px}
- .rsvp-list li{font-size:21px}
+/* MOBILE RESPONSIVE */
+
+@media(max-width:600px){
+  html{scroll-snap-type:y proximity}
+
+  .scene{
+    min-height:100svh;
+    padding:55px 15px;
+  }
+
+  .intro-content{
+    width:82%;
+    padding:25px 12px;
+  }
+
+  .intro-title{letter-spacing:3px}
+  .hint{letter-spacing:2px}
+
+  .eyebrow{
+    font-size:10px;
+    letter-spacing:2px;
+  }
+
+  .script{font-size:clamp(48px,12vw,70px)}
+  .amp{font-size:45px}
+  p{font-size:19px}
+
+  .urdu{
+    font-size:15px;
+    line-height:2.4;
+  }
+
+  .countdown{gap:8px}
+
+  .time{
+    width:calc(50% - 8px);
+    max-width:115px;
+    padding:12px 6px;
+  }
+
+  .event-card,.rsvp-card{padding:32px 17px}
+
+  .date{
+    font-size:12px;
+    letter-spacing:1px;
+  }
+
+  .venue{font-size:24px}
+  .rsvp-list li{font-size:21px}
+
+  .map{
+    padding:12px;
+    font-size:10px;
+    letter-spacing:.5px;
+  }
+
+  .controls{
+    right:8px;
+    bottom:8px;
+    gap:5px;
+  }
+
+  .controls button{
+    padding:9px 11px;
+    font-size:10px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .dove{animation:none}
+  html{scroll-behavior:auto}
+
+  *,*::before,*::after{
+    transition-duration:.01ms!important;
+    animation-duration:.01ms!important;
+  }
 }
 </style>
 </head>
@@ -416,163 +594,207 @@ h2{
 <body>
 
 <!-- OPENING SCREEN -->
+
 <div id="intro">
- <div class="curtain left"></div>
- <div class="curtain right"></div>
+  <div class="curtain left"></div>
+  <div class="curtain right"></div>
 
- <div class="intro-content">
-  <div class="intro-title">WALIMA INVITATION</div>
+  <div class="intro-content">
+    <div class="intro-title">WALIMA INVITATION</div>
+    <div class="intro-divider">✦ ───── ❧ ───── ✦</div>
 
-  <button id="ribbon" aria-label="Click the ribbon to open">
-   <span class="tail one"></span>
-   <span class="tail two"></span>
-   <span class="loop one"></span>
-   <span class="loop two"></span>
-   <span class="knot"></span>
-  </button>
+    <button id="ribbon" aria-label="Click the golden ribbon to open invitation">
+      <span class="tail one"></span>
+      <span class="tail two"></span>
+      <span class="loop one"></span>
+      <span class="loop two"></span>
+      <span class="knot"></span>
+    </button>
 
-  <div class="welcome">Welcome to Our Walima</div>
-  <div class="hint">CLICK THE RIBBON</div>
- </div>
+    <div class="welcome">Welcome to Our Walima</div>
+    <div class="hint">CLICK THE RIBBON</div>
+  </div>
 </div>
+
+<!-- WALIMA INVITATION WEBSITE -->
 
 <main id="invitation">
 
- <div class="dove">🕊</div>
- <div class="dove">🕊</div>
- <div class="dove">🕊</div>
+  <div class="dove">🕊</div>
+  <div class="dove">🕊</div>
+  <div class="dove">🕊</div>
 
- <!-- COUPLE INTRO -->
- <section class="scene">
-  <div class="inner">
-   <div class="eyebrow">Together with our families</div>
+  <!-- PAGE 1: COUPLE INTRO -->
 
-   <p class="urdu">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
-   <p class="urdu">محبت، خوشی اور دعاؤں کے اس خوبصورت سفر میں</p>
+  <section class="scene">
+    <div class="inner">
 
-   <div class="script">Abdul Wali</div>
-   <div class="amp">&amp;</div>
-   <div class="script">Fatima Sajjad</div>
+      <div class="eyebrow">Together with our families</div>
 
-   <div class="goldline"></div>
+      <p class="urdu">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
 
-   <p>Request the pleasure of your company<br>
-   at the celebration of our Walima.</p>
+      <p class="urdu">
+        محبت، خوشی اور دعاؤں کے اس خوبصورت سفر میں
+      </p>
 
-   <p class="urdu">آپ کی شرکت ہمارے لیے باعثِ مسرت ہوگی</p>
+      <div class="script">Abdul Wali</div>
+      <div class="amp">&amp;</div>
+      <div class="script">Fatima Sajjad</div>
 
-   <div class="eyebrow">Lahore · December 2026</div>
-  </div>
- </section>
+      <div class="goldline"></div>
 
- <!-- COUNTDOWN -->
- <section class="scene dark">
-  <div class="inner">
-   <div class="eyebrow">The countdown to forever</div>
-   <h2>Our Beautiful Beginning</h2>
-   <p>Our Walima celebration begins in...</p>
+      <p>
+        Request the pleasure of your company<br>
+        at the celebration of our Walima.
+      </p>
 
-   <div class="countdown">
-    <div class="time">
-     <b id="days">--</b>
-     <span>DAYS</span>
+      <p class="urdu">آپ کی شرکت ہمارے لیے باعثِ مسرت ہوگی</p>
+
+      <div class="eyebrow">Lahore · December 2026</div>
+
     </div>
-    <div class="time">
-     <b id="hours">--</b>
-     <span>HOURS</span>
+  </section>
+
+  <!-- PAGE 2: COUNTDOWN -->
+
+  <section class="scene dark">
+    <div class="inner">
+
+      <div class="eyebrow">The countdown to forever</div>
+
+      <h2>Our Beautiful Beginning</h2>
+
+      <p>Our Walima celebration begins in...</p>
+
+      <div class="countdown">
+
+        <div class="time">
+          <b id="days">--</b>
+          <span>DAYS</span>
+        </div>
+
+        <div class="time">
+          <b id="hours">--</b>
+          <span>HOURS</span>
+        </div>
+
+        <div class="time">
+          <b id="minutes">--</b>
+          <span>MINUTES</span>
+        </div>
+
+        <div class="time">
+          <b id="seconds">--</b>
+          <span>SECONDS</span>
+        </div>
+
+      </div>
+
+      <p class="urdu">
+        اللہ ہماری نئی زندگی کو خوشیوں اور برکتوں سے بھر دے
+      </p>
+
     </div>
-    <div class="time">
-     <b id="minutes">--</b>
-     <span>MINUTES</span>
+  </section>
+
+  <!-- PAGE 3: WALIMA DETAILS -->
+
+  <section class="scene">
+    <div class="inner event-card">
+
+      <div class="eyebrow">A New Chapter · Walima</div>
+
+      <h2>Walima</h2>
+
+      <div class="date">
+        THURSDAY · 24 DECEMBER 2026
+      </div>
+
+      <div class="goldline"></div>
+
+      <p>6:00 PM – 10:00 PM</p>
+
+      <p class="venue">The Ball Room</p>
+
+      <p>Raiwind Hall No. 1, Lahore, Pakistan</p>
+
+      <p class="urdu">ولیمہ کی پُروقار تقریب</p>
+
+      <a
+        class="map"
+        href="https://www.google.com/maps/search/?api=1&query=The+Ball+Room+Raiwind+Hall+No+1+Lahore"
+        target="_blank"
+        rel="noopener noreferrer">
+        OPEN IN GOOGLE MAPS ↗
+      </a>
+
     </div>
-    <div class="time">
-     <b id="seconds">--</b>
-     <span>SECONDS</span>
+  </section>
+
+  <!-- PAGE 4: RSVP -->
+
+  <section class="scene">
+    <div class="inner rsvp-card">
+
+      <div class="rsvp-subheading">With warm regards</div>
+
+      <h2 class="rsvp-heading">Looking Forward</h2>
+
+      <div class="eyebrow">By Mr. &amp; Mrs. Imran Ahmed</div>
+
+      <div class="goldline"></div>
+
+      <div class="rsvp-subheading">R.S.V.P. By</div>
+
+      <ul class="rsvp-list">
+        <li>Mr. &amp; Mrs. Irfan Ahmed</li>
+        <li>Mr. &amp; Mrs. Zeeshan Ahmed</li>
+        <li>Mr. &amp; Mrs. Saad Ahmed</li>
+        <li>Abdul Moiz</li>
+        <li>M. Mahad</li>
+      </ul>
+
     </div>
-   </div>
+  </section>
 
-   <p class="urdu">اللہ ہماری نئی زندگی کو خوشیوں اور برکتوں سے بھر دے</p>
-  </div>
- </section>
+  <!-- PAGE 5: FINAL THANK YOU -->
 
- <!-- EVENT DETAILS -->
- <section class="scene">
-  <div class="inner event-card">
-   <div class="eyebrow">A New Chapter · Walima</div>
-   <h2>Walima</h2>
+  <section class="scene dark">
+    <div class="inner">
 
-   <div class="date">THURSDAY · 24 DECEMBER 2026</div>
+      <div class="eyebrow">With love and gratitude</div>
 
-   <div class="goldline"></div>
+      <div class="script" style="color:#f5dfa5">
+        Abdul Wali
+      </div>
 
-   <p>6:00 PM – 10:00 PM</p>
-   <p class="venue">The Ball Room</p>
-   <p>Raiwind Hall No. 1, Lahore, Pakistan</p>
-   <p class="urdu">ولیمہ کی پُروقار تقریب</p>
+      <div class="amp">&amp;</div>
 
-   <a class="map"
-      target="_blank"
-      rel="noopener"
-      href="https://www.google.com/maps/search/?api=1&query=The+Ball+Room+Raiwind+Hall+No+1+Lahore">
-      OPEN IN GOOGLE MAPS ↗
-   </a>
-  </div>
- </section>
+      <div class="script" style="color:#f5dfa5">
+        Fatima Sajjad
+      </div>
 
- <!-- RSVP -->
- <section class="scene">
-  <div class="inner rsvp-card">
-   <div class="rsvp-subheading">With warm regards</div>
+      <div class="goldline"></div>
 
-   <h2 class="rsvp-heading">Looking Forward</h2>
+      <p>
+        Your presence and prayers<br>
+        will make our day even more special.
+      </p>
 
-   <div class="eyebrow">By Mr. &amp; Mrs. Imran Ahmed</div>
+      <p class="urdu">آپ کی محبت اور دعاؤں کے منتظر</p>
 
-   <div class="goldline"></div>
+      <div class="eyebrow">A New Chapter · Lahore · 2026</div>
 
-   <p class="rsvp-subheading">R.S.V.P. By</p>
-
-   <ul class="rsvp-list">
-    <li>Mr. &amp; Mrs. Irfan Ahmed</li>
-    <li>Mr. &amp; Mrs. Zeeshan Ahmed</li>
-    <li>Mr. &amp; Mrs. Saad Ahmed</li>
-    <li>Abdul Moiz</li>
-    <li>M. Mahad</li>
-   </ul>
-  </div>
- </section>
-
- <!-- FINAL CLOSING PAGE -->
- <section class="scene dark">
-  <div class="inner">
-   <div class="eyebrow">With love and gratitude</div>
-
-   <div class="script" style="color:#f0d69a">
-    Abdul Wali
-   </div>
-
-   <div class="amp">&amp;</div>
-
-   <div class="script" style="color:#f0d69a">
-    Fatima Sajjad
-   </div>
-
-   <div class="goldline"></div>
-
-   <p>Your presence and prayers<br>
-   will make our day even more special.</p>
-
-   <p class="urdu">آپ کی محبت اور دعاؤں کے منتظر</p>
-
-   <div class="eyebrow">Forever Begins · Lahore · 2026</div>
-  </div>
- </section>
+    </div>
+  </section>
 
 </main>
 
+<!-- MOVIE CONTROLS -->
+
 <div class="controls" id="controls" hidden>
- <button id="pause">Ⅱ Pause Movie</button>
- <button id="replay">↻ Replay</button>
+  <button id="pause">Ⅱ Pause Movie</button>
+  <button id="replay">↻ Replay</button>
 </div>
 
 <script>
@@ -582,106 +804,149 @@ const main = document.getElementById('invitation');
 const scenes = [...document.querySelectorAll('.scene')];
 const controls = document.getElementById('controls');
 const pauseButton = document.getElementById('pause');
+const replayButton = document.getElementById('replay');
 
 let opened = false;
 let paused = false;
 let index = 0;
 let timer = null;
 
-function showVisible(){
- document.querySelectorAll('.inner').forEach(el=>{
-  if(el.getBoundingClientRect().top < window.innerHeight * 0.9){
-   el.classList.add('visible');
+/* SHOW CONTENT WHEN VISIBLE */
+
+function showVisible() {
+  document.querySelectorAll('.inner').forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight * 0.9) {
+      el.classList.add('visible');
+    }
+  });
+}
+
+/* STOP AUTO MOVIE */
+
+function stopMovie() {
+  clearTimeout(timer);
+  timer = null;
+}
+
+/* AUTOMATIC SCENE MOVEMENT */
+
+function playMovie() {
+  stopMovie();
+
+  if (paused || !opened || index >= scenes.length) {
+    return;
   }
- });
-}
 
-function stopMovie(){
- clearTimeout(timer);
- timer = null;
-}
+  scenes[index].scrollIntoView({
+    behavior: 'smooth',
+    block: 'start'
+  });
 
-function playMovie(){
- stopMovie();
+  showVisible();
 
- if(paused || !opened || index >= scenes.length) return;
+  index++;
 
- scenes[index].scrollIntoView({
-  behavior:'smooth',
-  block:'start'
- });
-
- showVisible();
- index++;
-
- timer = setTimeout(playMovie,index === 1 ? 7500 : 6500);
+  timer = setTimeout(
+    playMovie,
+    index === 1 ? 7500 : 6500
+  );
 }
 
 /* OPEN INVITATION */
-ribbon.addEventListener('click',()=>{
- if(opened) return;
 
- opened = true;
- intro.classList.add('open');
+ribbon.addEventListener('click', () => {
+  if (opened) return;
 
- setTimeout(()=>{
-  intro.classList.add('gone');
-  main.classList.add('show');
-  controls.hidden = false;
-  index = 0;
-  setTimeout(playMovie,600);
- },2500);
+  opened = true;
+  intro.classList.add('open');
+
+  setTimeout(() => {
+    intro.classList.add('gone');
+    main.classList.add('show');
+    controls.hidden = false;
+
+    index = 0;
+    showVisible();
+
+    setTimeout(playMovie, 600);
+  }, 2400);
 });
 
-/* PAUSE / PLAY */
-pauseButton.addEventListener('click',()=>{
- paused = !paused;
+/* PAUSE / RESUME */
 
- if(paused){
-  stopMovie();
-  pauseButton.textContent = '▶ Play Movie';
- }else{
-  pauseButton.textContent = 'Ⅱ Pause Movie';
-  playMovie();
- }
+pauseButton.addEventListener('click', () => {
+  paused = !paused;
+
+  if (paused) {
+    stopMovie();
+    pauseButton.textContent = '▶ Play Movie';
+  } else {
+    pauseButton.textContent = 'Ⅱ Pause Movie';
+
+    const current = scenes.findIndex(scene => {
+      const rect = scene.getBoundingClientRect();
+
+      return rect.top >= -100 &&
+             rect.top < window.innerHeight * 0.6;
+    });
+
+    index = current >= 0 ? current + 1 : index;
+    playMovie();
+  }
 });
 
 /* REPLAY */
-document.getElementById('replay').addEventListener('click',()=>{
- paused = false;
- pauseButton.textContent = 'Ⅱ Pause Movie';
- index = 0;
- playMovie();
+
+replayButton.addEventListener('click', () => {
+  stopMovie();
+
+  paused = false;
+  pauseButton.textContent = 'Ⅱ Pause Movie';
+
+  index = 0;
+  playMovie();
 });
 
-/* REVEAL CONTENT */
-window.addEventListener('scroll',showVisible,{passive:true});
+/* REVEAL CONTENT ON SCROLL */
 
-/* WALIMA COUNTDOWN — LAHORE TIME */
-const target = new Date('2026-12-24T18:00:00+05:00').getTime();
+window.addEventListener('scroll', showVisible, {
+  passive: true
+});
 
-function countdown(){
- let diff = Math.max(0,target-Date.now());
+/* COUNTDOWN — PAKISTAN TIME */
 
- const d = Math.floor(diff/86400000);
- diff %= 86400000;
+const target = new Date(
+  '2026-12-24T18:00:00+05:00'
+).getTime();
 
- const h = Math.floor(diff/3600000);
- diff %= 3600000;
+function countdown() {
+  let diff = Math.max(0, target - Date.now());
 
- const m = Math.floor(diff/60000);
- diff %= 60000;
+  const days = Math.floor(diff / 86400000);
+  diff %= 86400000;
 
- const s = Math.floor(diff/1000);
+  const hours = Math.floor(diff / 3600000);
+  diff %= 3600000;
 
- document.getElementById('days').textContent = d;
- document.getElementById('hours').textContent = String(h).padStart(2,'0');
- document.getElementById('minutes').textContent = String(m).padStart(2,'0');
- document.getElementById('seconds').textContent = String(s).padStart(2,'0');
+  const minutes = Math.floor(diff / 60000);
+  diff %= 60000;
+
+  const seconds = Math.floor(diff / 1000);
+
+  document.getElementById('days').textContent = days;
+
+  document.getElementById('hours').textContent =
+    String(hours).padStart(2, '0');
+
+  document.getElementById('minutes').textContent =
+    String(minutes).padStart(2, '0');
+
+  document.getElementById('seconds').textContent =
+    String(seconds).padStart(2, '0');
 }
 
 countdown();
-setInterval(countdown,1000);
+setInterval(countdown, 1000);
 showVisible();
 </script>
 
